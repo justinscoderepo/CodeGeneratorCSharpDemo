@@ -35,5 +35,36 @@
             <param name = "model">category model.</param>
             <returns>The <see cref = "T:Example.Models.CategoryModel"/>.</returns>
         </member>
+        <member name="T:Example.WebApi.Controllers.GenderController">
+            <summary> The gender controller. </summary>
+        </member>
+        <member name="M:Example.WebApi.Controllers.GenderController.#ctor(Example.Business.Contracts.IGenderService)">
+            <summary> The gender constructor. </summary>
+        </member>
+        <member name="M:Example.WebApi.Controllers.GenderController.Get(Example.Models.GenderModel,Example.Models.Common.PaginationModel,Example.Models.Common.SortModel)">
+            <summary>Get the gender list.</summary>
+            <param name = "model">The gender model.</param>
+            <returns>The <see cref = "T:Microsoft.AspNetCore.Mvc.IActionResult"/>.</returns>
+        </member>
+        <member name="M:Example.WebApi.Controllers.GenderController.Create(Example.Models.GenderModel)">
+            <summary>Create the gender.</summary>
+            <param name = "model">gender model.</param>
+            <returns>The <see cref = "T:Microsoft.AspNetCore.Mvc.IActionResult"/>.</returns>
+        </member>
+        <member name="M:Example.WebApi.Controllers.GenderController.Save(Example.Models.GenderModel)">
+            <summary>Update the gender.</summary>
+            <param name = "model">gender model.</param>
+            <returns>The <see cref = "T:Microsoft.AspNetCore.Mvc.IActionResult"/>.</returns>
+        </member>
+        <member name="M:Example.WebApi.Controllers.GenderController.Remove(Example.Models.GenderModel)">
+            <summary>Remove gender.</summary>
+            <param name = "model">gender model.</param>
+            <returns>The <see cref = "T:Microsoft.AspNetCore.Mvc.IActionResult"/>.</returns>
+        </member>
+        <member name="M:Example.WebApi.Controllers.GenderController.SaveRow(Example.Models.GenderModel)">
+            <summary>Save gender.</summary>
+            <param name = "model">gender model.</param>
+            <returns>The <see cref = "T:Example.Models.GenderModel"/>.</returns>
+        </member>
     </members>
 </doc>

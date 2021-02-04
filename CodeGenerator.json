@@ -13,7 +13,7 @@
   },
   "TemplateList": [
     {
-      "DestinationFolder": "Example.Models/{{modulePageNameLabelShort}}/",
+      "DestinationFolder": "Example.Models/",
       "DestinationFile": "{{modulePageName}}Model.cs",
       "TemplateSourceFile": "servermodel.txt",
       "Code": null,

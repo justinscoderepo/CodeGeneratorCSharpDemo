@@ -38,8 +38,45 @@
     "Pages": {
       "Gender": {
         "PageName": "Gender",
-        "FieldsList": {}
+        "FieldsList": {
+          "gd_title": {
+            "Order": 0,
+            "ServerName": "gd_title"
+          },
+          "gd_id": {
+            "Order": 0,
+            "ServerName": "gd_id"
+          }
+        },
+        "Modules": [
+          "Entity",
+          "Model",
+          "ManualService",
+          "GetService",
+          "Sort",
+          "Pagination",
+          "SetService",
+          "RemoveService",
+          "Controller",
+          "Get",
+          "Create",
+          "Set",
+          "Remove",
+          "ModelBuilderSeed",
+          "EnumBuilder"
+        ]
       }
-    }
+    },
+    "ModelBuilder": true,
+    "ModelData": [
+      {
+        "gd_id": "1",
+        "gd_title": "Male"
+      },
+      {
+        "gd_id": "2",
+        "gd_title": "Female"
+      }
+    ]
   }
 }

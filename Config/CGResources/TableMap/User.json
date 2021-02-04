@@ -211,7 +211,68 @@
         "MinLimit": 0
       }
     },
-    "Pages": {},
+    "Pages": {
+      "UserDetails": {
+        "PageName": "UserDetails",
+        "FieldsList": {
+          "us_status": {
+            "Order": 0,
+            "ServerName": "us_status",
+            "ForeignTableDetails": {
+              "ServerName": "ml_status",
+              "FieldsList": {
+                "stus_title": {
+                  "Order": 0,
+                  "ServerName": "stus_title"
+                }
+              }
+            }
+          },
+          "us_logo": {
+            "Order": 0,
+            "ServerName": "us_logo"
+          },
+          "us_reported": {
+            "Order": 0,
+            "ServerName": "us_reported",
+            "ForeignTableDetails": {
+              "ServerName": "ml_status",
+              "FieldsList": {
+                "stus_title": {
+                  "Order": 0,
+                  "ServerName": "stus_title"
+                }
+              }
+            }
+          },
+          "us_commissionrate": {
+            "Order": 0,
+            "ServerName": "us_commissionrate"
+          },
+          "us_modifieddate": {
+            "Order": 0,
+            "ServerName": "us_modifieddate"
+          },
+          "us_createdby": {
+            "Order": 0,
+            "ServerName": "us_createdby",
+            "ForeignTableDetails": {
+              "ServerName": "ml_user",
+              "FieldsList": {
+                "us_name": {
+                  "Order": 0,
+                  "ServerName": "us_name"
+                }
+              }
+            }
+          }
+        },
+        "Modules": [
+          "Model",
+          "Entity"
+        ]
+      }
+    },
     "ModelBuilder": false,
     "ModelData": []
   }
