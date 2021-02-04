@@ -1,124 +1,72 @@
 {
-    "Key": "ml_city",
-    "Value": {
-      "isGlobalTable": false,
-      "LocalName": "City",
-      "PublicName": "City",
-      "ServerName": "ml_city",
-      "FieldsList": {
-        "cit_id": {
-          "Label": "Id",
-          "LocalName": "Id",
-          "Order": 0,
-          "ServerName": "cit_id",
-          "ExternalName": "id",
-          "ServerDataType": "int",
-          "SqlDataType": "Int",
-          "TSDataType": "number",
-          "Limit": 10,
-          "IsNullable": "NOT NULL",
-          "IsPrimaryKey": true,
-          "IsForeignKey": false,
-          "MinLimit": 0
-        },
-        "cit_recid": {
-          "Label": "RecId",
-          "LocalName": "RecId",
-          "Order": 0,
-          "ServerName": "cit_recid",
-          "ExternalName": "recid",
-          "ServerDataType": "int",
-          "SqlDataType": "Int",
-          "TSDataType": "number",
-          "Limit": 200,
-          "IsNullable": "NULL",
-          "IsPrimaryKey": false,
-          "IsForeignKey": false,
-          "MinLimit": 0
-        },
-        "cit_country_code": {
-          "Label": "CountryCode",
-          "LocalName": "CountryCode",
-          "Order": 0,
-          "ServerName": "cit_country_code",
-          "ExternalName": "countryCode",
-          "ServerDataType": "string",
-          "SqlDataType": "nvarchar",
-          "TSDataType": "string",
-          "Limit": 200,
-          "IsNullable": "NULL",
-          "IsPrimaryKey": false,
-          "IsForeignKey": false,
-          "MinLimit": 0
-        },
-        "cit_title": {
-          "Label": "Title",
-          "LocalName": "Title",
-          "Order": 0,
-          "ServerName": "cit_title",
-          "ExternalName": "countryName",
-          "ServerDataType": "string",
-          "SqlDataType": "nvarchar",
-          "TSDataType": "string",
-          "Limit": 200,
-          "IsNullable": "NOT NULL",
-          "IsPrimaryKey": false,
-          "IsForeignKey": false,
-          "MinLimit": 0
-        }
+  "Key": "ml_city",
+  "Value": {
+    "isGlobalTable": false,
+    "LocalName": "City",
+    "PublicName": "City",
+    "ServerName": "ml_city",
+    "FieldsList": {
+      "cit_id": {
+        "Label": "Id",
+        "LocalName": "Id",
+        "Order": 0,
+        "ServerName": "cit_id",
+        "ExternalName": "id",
+        "ServerDataType": "int",
+        "SqlDataType": "Int",
+        "TSDataType": "number",
+        "Limit": 10,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": true,
+        "IsForeignKey": false,
+        "MinLimit": 0
       },
-      "Pages": {
-        "Country": {
-          "PageName": "Country",
-          "Modules": [
-            "Entity",
-            "Model",
-            "ManualService",
-            "GetService",
-            "Controller",
-            "Get",
-            "GetById",
-            "FunctionalComponentManage",
-            "DuxManage",
-            "DuxList",
-            "FunctionalComponentList",
-            "Sort",
-            "Pagination",
-            "SetService",
-            "ModelGenericList",
-            "ApiModel",
-            "EntityICollection",
-            "RangeService",
-            "CreateRange",
-            "UpdateRange",
-            "DeleteRange",
-            "Create",
-            "Set",
-            "RemoveService",
-            "Remove",
-            "ApiController",
-            "ApiSyncService",
-            "Lists"
-          ],
-          "FieldsList": {
-            "cit_id": {
-              "ServerName": "cit_id"
-            },
-            "cit_title": {
-              "ServerName": "cit_title",
-              "Properties": [
-                "SortableField",
-                "ContainsFilter"
-              ]
-            },
-            "cit_recid": {
-              "ServerName": "cit_recid"
-            },
-            "cit_country_code": {
-              "ServerName": "cit_country_code"
-            }
-          }
-        }
+      "cit_recid": {
+        "Label": "RecId",
+        "LocalName": "RecId",
+        "Order": 0,
+        "ServerName": "cit_recid",
+        "ExternalName": "recid",
+        "ServerDataType": "int",
+        "SqlDataType": "Int",
+        "TSDataType": "number",
+        "Limit": 200,
+        "IsNullable": "NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "cit_country_code": {
+        "Label": "CountryCode",
+        "LocalName": "CountryCode",
+        "Order": 0,
+        "ServerName": "cit_country_code",
+        "ExternalName": "countryCode",
+        "ServerDataType": "string",
+        "SqlDataType": "nvarchar",
+        "TSDataType": "string",
+        "Limit": 200,
+        "IsNullable": "NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "cit_title": {
+        "Label": "Title",
+        "LocalName": "Title",
+        "Order": 0,
+        "ServerName": "cit_title",
+        "ExternalName": "countryName",
+        "ServerDataType": "string",
+        "SqlDataType": "nvarchar",
+        "TSDataType": "string",
+        "Limit": 200,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
       }
-    }
+    },
+    "Pages": {}
   }
+}

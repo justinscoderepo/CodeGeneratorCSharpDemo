@@ -10,14 +10,14 @@ using System;
 using System.IO;
 using System.Reflection;
 using System.Text;
-using Example.Data;
-using Example.Data.Repository;
-using Example.Business.Services;
-using Example.Business.Contracts;
-using Example.Business.Services.Contracts;
-using Example.Business.Configuration;
+using {{configProjectName}}.Data;
+using {{configProjectName}}.Data.Repository;
+using {{configProjectName}}.Business.Services;
+using {{configProjectName}}.Business.Contracts;
+using {{configProjectName}}.Business.Services.Contracts;
+using {{configProjectName}}.Business.Configuration;
 
-namespace Example
+namespace {{configProjectName}}
 {
     public class Startup
     {
@@ -52,7 +52,7 @@ namespace Example
             services.Configure<AwsS3Configuration>(Configuration.GetSection("AwsS3Settings"));
             services.Configure<AwsSesConfiguration>(Configuration.GetSection("AwsSesSettings"));
 
-            services.AddDbContext<ExampleDbContext>(options =>
+            services.AddDbContext<{{configProjectName}}DbContext>(options =>
             {
                 options.UseLazyLoadingProxies();
                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"));
@@ -78,7 +78,7 @@ namespace Example
             {
                 var version = Assembly.GetEntryAssembly().GetName().Version;
                 var apiBuildNumber = $"{version.Major}.{version.Minor}.{version.Revision}";
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Example REST API", Version = "v1", Description = $"<strong>Build #: </strong> {apiBuildNumber}" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "{{configProjectName}} REST API", Version = "v1", Description = $"<strong>Build #: </strong> {apiBuildNumber}" });
                 // Set the comments path for the Swagger JSON and UI.
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
@@ -123,7 +123,7 @@ namespace Example
             // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("./swagger/v1/swagger.json", "Example REST API'S V1");
+                c.SwaggerEndpoint("./swagger/v1/swagger.json", "{{configProjectName}} REST API'S V1");
                 c.RoutePrefix = string.Empty;
             });
         }
@@ -134,7 +134,7 @@ namespace Example
                 .GetRequiredService<IServiceScopeFactory>()
                 .CreateScope())
             {
-                using (var context = serviceScope.ServiceProvider.GetService<ExampleDbContext>())
+                using (var context = serviceScope.ServiceProvider.GetService<{{configProjectName}}DbContext>())
                 {
                     context.Database.Migrate();
                 }

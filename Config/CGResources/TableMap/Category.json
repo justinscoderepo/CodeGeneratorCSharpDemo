@@ -83,10 +83,55 @@
       "Order": {
         "PageName": "Category",
         "FieldsList": {},
-        "Modules": ["Model", "ModelAssociate"]
+        "Modules": [
+          "Model",
+          "ModelAssociate"
+        ]
       }
     },
-    "ModelBuilder": false,
-    "ModelData": []
+    "ModelBuilder": true,
+    "ModelData": [
+      {
+        "ca_name": "Category 1",
+        "ca_description": "category desc",
+        "ca_createddate": "12-12-2020",
+        "ca_modifieddate": "12-12-2020",
+        "ca_id": "1"
+      }
+    ],
+    "Pages": {
+      "Category": {
+        "PageName": "Category",
+        "FieldsList": {
+          "ca_id": {
+            "Order": 0,
+            "ServerName": "ca_id"
+          },
+          "ca_description": {
+            "Order": 0,
+            "ServerName": "ca_description"
+          },
+          "ca_name": {
+            "Order": 0,
+            "ServerName": "ca_name"
+          }
+        },
+        "Modules": [
+          "Entity",
+          "ManualService",
+          "GetService",
+          "SetService",
+          "RemoveService",
+          "Controller",
+          "Model",
+          "EnumBuilder",
+          "ModelBuilderSeed",
+          "Remove",
+          "Get",
+          "Create",
+          "Set"
+        ]
+      }
+    }
   }
 }

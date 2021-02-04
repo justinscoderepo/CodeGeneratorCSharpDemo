@@ -49,34 +49,7 @@
         "MinLimit": 0
       }
     },
-    "Pages": {
-      "TributeCard": {
-        "PageName": "TributeCard",
-        "Modules": [
-          "Controller",
-          "Entity",
-          "Get",
-          "GetById",
-          "GetService",
-          "ManualService",
-          "Model"
-        ],
-        "FieldsList": {
-          "tri_title": {
-            "ServerName": "trc_title",
-            "Properties": []
-          },
-          "tri_message": {
-            "ServerName": "trc_message",
-            "Properties": []
-          },
-          "trc_id": {
-            "ServerName": "trc_id",
-            "Properties": []
-          }
-        }
-      }
-    },
+    "Pages": {},
     "ModelBuilder": true,
     "ModelData": [
       {

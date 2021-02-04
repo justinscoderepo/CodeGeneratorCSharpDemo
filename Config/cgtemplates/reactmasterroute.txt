@@ -1,0 +1,49 @@
+import React from "react";
+//// region ModuleListIndexList#
+#Template import List{{subModulePageNamePlural}} from "../../Modules/{{subModulePageNameLabelShort}}/List{{subModulePageNamePlural}}";
+#Template import Manage{{subModulePageNamePlural}} from "../../Modules/{{subModulePageNameLabelShort}}/Manage{{subModulePageNamePlural}}";
+//// endregion ModuleListIndexList#
+//// region ModuleListContainersView#
+#Template import View{{subModulePageNamePlural}} from "../../Modules/{{subModulePageNameLabelShort}}/View{{subModulePageNamePlural}}";
+//// endregion ModuleListContainersView#
+export const autoAdminRoutes = [
+//// region ModuleListContainersManage#
+#Template {
+#Template      path: "/admin/{{subModulePageNameAsWordHyphenizeLower}}/add",
+#Template      title: "Add {{subModulePageNameAsWordPlural}}",
+#Template      exact: true,
+#Template      component: Manage{{subModulePageNamePlural}},
+#Template    },
+//// endregion ModuleListContainersManage#
+
+//// region ModuleListIndexManage#
+#Template {
+#Template     path: "/admin/{{subModulePageNameAsWordHyphenizeLower}}/edit/:id",
+#Template     title: "Edit {{subModulePageNameAsWordPlural}}",
+#Template     exact: true,
+#Template     component: Manage{{subModulePageNamePlural}},
+    },
+//// endregion ModuleListIndexManage#
+    
+    
+//// region ModuleListIndexView#
+#Template {
+#Template     path: "/admin/{{subModulePageNameAsWordHyphenizeLower}}/view/:id",
+#Template     title: "View {{subModulePageNameAsWordPlural}}",
+#Template     exact: true,
+#Template     component: View{{subModulePageNamePlural}},
+    },
+//// endregion ModuleListIndexView#
+
+
+//// region ModuleListContainersList#
+#Template  {
+#Template      path: "/admin/{{subModulePageNameAsWordHyphenizeLower}}/list",
+#Template      title: "List {{subModulePageNameAsWordPlural}}",
+#Template      exact: true,
+#Template      component: List{{subModulePageNamePlural}},
+#Template     },
+//// endregion ModuleListContainersList#
+
+  ];
+  

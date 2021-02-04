@@ -211,13 +211,7 @@
         "MinLimit": 0
       }
     },
-    "Pages": {
-      "User": {
-        "PageName": "User",
-        "FieldsList": {},
-        "Modules": ["Model", "ModelAssociate"]
-      }
-    },
+    "Pages": {},
     "ModelBuilder": false,
     "ModelData": []
   }

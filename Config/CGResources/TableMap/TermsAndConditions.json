@@ -35,31 +35,6 @@
         "MinLimit": 0
       }
     },
-    "Pages": {
-      "TermsAndConditions": {
-        "PageName": "TermsAndConditions",
-        "Modules": [
-          "Controller",
-          "Create",
-          "Entity",
-          "Get",
-          "Model",
-          "Remove",
-          "RemoveService",
-          "ManualService",
-          "GetService",
-          "SetService",
-          "Set"
-        ],
-        "FieldsList": {
-          "taco_title": {
-            "ServerName": "taco_title"
-          },
-          "taco_id": {
-            "ServerName": "taco_id"
-          }
-        }
-      }
-    }
+    "Pages": {}
   }
 }

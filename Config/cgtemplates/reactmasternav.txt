@@ -1,0 +1,21 @@
+import React, { Component } from 'react';
+import { Nav, NavDropdown} from 'react-bootstrap';
+
+class MasterPagesNav extends Component {
+    render() {
+        return (
+            <>
+                <Nav className="mr-auto">
+                    <NavDropdown title="Master Pages">
+                    <ul style={{"height": 500, "overflow-y":"scroll"}}>
+                   //// region ModuleListFunctionalComponentList#
+            #Template <NavDropdown.Item href="/admin/{{subModulePageNameAsWordHyphenizeLower}}/list">{{subModulePageNameAsWordPlural}}</NavDropdown.Item>
+                   //// endregion ModuleListFunctionalComponentList#
+                    </ul>
+                    </NavDropdown>
+                </Nav>
+            </>
+        )
+    }
+}
+export default MasterPagesNav

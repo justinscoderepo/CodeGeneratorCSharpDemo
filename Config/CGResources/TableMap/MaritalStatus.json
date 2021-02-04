@@ -35,32 +35,6 @@
         "MinLimit": 0
       }
     },
-    "Pages": {
-      "MaritalStatus": {
-        "PageName": "MaritalStatus",
-        "Modules": [
-          "Entity",
-          "Model",
-          "ManualService",
-          "GetService",
-          "Controller",
-          "Get",
-          "GetById",
-          "FunctionalComponentManage",
-          "DuxManage",
-          "FunctionalComponentList",
-          "DuxList"
-        ],
-        "FieldsList": {
-          "ms_id": {
-            "ServerName": "ms_id"
-          },
-          "ms_title": {
-            "ServerName": "ms_title",
-            "Properties": ["Generating", "ContainsFilter"]
-          }
-        }
-      }
-    }
+    "Pages": {}
   }
 }

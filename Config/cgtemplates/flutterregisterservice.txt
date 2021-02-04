@@ -1,0 +1,4 @@
+////////#module_AuthRegister
+import 'package:example/utilities/elementmanager.dart';
+class RegisterService extends ServiceManager {}
+////////#endmodule_AuthRegister

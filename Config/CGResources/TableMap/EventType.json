@@ -35,32 +35,6 @@
         "MinLimit": 0
       }
     },
-    "Pages": {
-      "Gender": {
-        "PageName": "Gender",
-        "Modules": [
-          "Entity",
-          "Model",
-          "GetService",
-          "Controller",
-          "Get",
-          "ManualService",
-          "GetById",
-          "FunctionalComponentManage",
-          "DuxManage",
-          "DuxList",
-          "FunctionalComponentList"
-        ],
-        "FieldsList": {
-          "evt_id": {
-            "ServerName": "evt_id"
-          },
-          "evt_type": {
-            "ServerName": "evt_type",
-            "Properties": ["SortableField", "Generating"]
-          }
-        }
-      }
-    }
+    "Pages": {}
   }
 }

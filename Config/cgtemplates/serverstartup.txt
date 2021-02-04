@@ -11,16 +11,16 @@ using System;
 using System.IO;
 using System.Reflection;
 using System.Text;
-using Example.Entities;
-using Example.Entities.Repository;
-using Example.Business;
-using Example.Business.Service;
-using Example.Business.Contracts;
-//using Example.Business.Handlers;
-using Example.Models;
-//using Example.WebApi.Controllers.Utilities;
+using {{configProjectName}}.Entities;
+using {{configProjectName}}.Entities.Repository;
+using {{configProjectName}}.Business;
+using {{configProjectName}}.Business.Service;
+using {{configProjectName}}.Business.Contracts;
+//using {{configProjectName}}.WebApi.Handlers;
+using {{configProjectName}}.Models;
+using {{configProjectName}}.WebApi.Controllers.Utilities;
 
-namespace Example
+namespace {{configProjectName}}
 {
     public class Startup
     {
@@ -48,7 +48,7 @@ namespace Example
             services.AddRouting(opt => opt.LowercaseUrls = true);
             //services.AddScoped<IAuthenticationHandler, AuthenticationHandler>();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-            //services.AddScoped<IFileUploadService, FileUploadService>();
+            services.AddScoped<IFileUploadService, FileUploadService>();
            
           
             //// region ModuleListManualService#
@@ -56,7 +56,7 @@ namespace Example
             #Template services.AddScoped<I{{subModulePageName}}Service,{{subModulePageName}}Service>();
             //// endregion ModuleListManualService#
 
-            services.AddDbContext<ExampleDbContext>(options =>
+            services.AddDbContext<{{configProjectName}}DbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
@@ -87,7 +87,7 @@ namespace Example
                 c.EnableAnnotations();
                 var version = Assembly.GetEntryAssembly().GetName().Version;
                 var apiBuildNumber = $"{version.Major}.{version.Minor}.{version.Revision}";
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Example REST API", Version = "v1", Description = $"<strong>Build #: </strong> {apiBuildNumber}" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "{{configProjectName}} REST API", Version = "v1", Description = $"<strong>Build #: </strong> {apiBuildNumber}" });
                 
                 var xmlFile = $"\\wwwroot\\documentation.xml";
                 var xmlPath = _env.ContentRootPath + xmlFile;
@@ -137,7 +137,7 @@ namespace Example
                 c.DisplayRequestDuration();
                 if (env.IsDevelopment())
                 {
-                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Example REST API'S V1");
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "{{configProjectName}} REST API'S V1");
                     c.RoutePrefix = string.Empty;
                 }
                 else
@@ -154,7 +154,7 @@ namespace Example
                 .GetRequiredService<IServiceScopeFactory>()
                 .CreateScope())
             {
-                using (var context = serviceScope.ServiceProvider.GetService<ExampleDbContext>())
+                using (var context = serviceScope.ServiceProvider.GetService<{{configProjectName}}DbContext>())
                 {
                     context.Database.Migrate();
                 }

@@ -1,0 +1,94 @@
+////////#module_CardListing
+import 'package:provider/provider.dart';
+import 'package:example/state/user_session.dart';
+import 'package:example/utilities/elementmanager.dart';
+import 'package:flutter/material.dart';
+import 'package:example/elements/PageTitle.dart';
+import 'package:example/elements/FullColumn.dart';
+import 'package:example/elements/Location.dart';
+import 'package:example/elements/Box.dart';
+import 'package:example/elements/FormControl.dart';
+import 'package:example/elements/ListBinder.dart';
+import 'package:example/elements/UIButton.dart';
+import 'package:example/elements/Link.dart';
+import 'package:example/elements/ListHeading.dart';
+import 'package:example/elements/ListDescription.dart';
+import 'package:example/elements/ListRow.dart';
+import 'package:example/elements/InfoText.dart';
+
+// ignore: must_be_immutable
+class {{modulePageName}}View extends ElementManager {
+  @override
+  _{{modulePageName}}ChildView createState() {
+    return _{{modulePageName}}ChildView();
+  }
+}
+
+class _{{modulePageName}}ChildView extends State<{{modulePageName}}View> {
+  _{{modulePageName}}ChildView({Key key});
+  Map<String, InputProperties> state = {
+////////        #region {{modulePageName}}_Default_selected#Template
+////////#property_ListFeature
+#Template           "{{fieldName}}": 
+#Template               new InputProperties([
+
+#Template                   "required"
+
+#Template                ]),
+////////#endproperty_ListFeature
+////////        #endregion {{modulePageName}}_Default_selected#Template
+////////        #region {{modulePageName}}_allparams#Template
+////////        #endregion {{modulePageName}}_allparams#Template
+  };
+
+  BuildContext _context;
+  Map<String, FormProperties> formState = new Map<String, FormProperties>();
+  @override
+  void initState() {
+
+  }
+  @override
+  Widget build(BuildContext context) {
+    
+    return Container(
+      child: Column(
+        children: <Widget>[
+            FullColumn(
+              children: <Widget>[
+              PageTitle(text: "{{modulePageNameAsWord}}"),                  
+                  Box(
+                    children: <Widget>[
+                    ListBinder(
+                        action: "{{modulePageNameAsWordHyphenizeLower}}",
+                        childrenTemplate: (rowData) {
+                        return ListRow(
+                          rowData: rowData,
+                          redirect:"{{modulePageNameLabelShortSingularLower}}/{{modulePageNameSingularHyphenizeLower}}_details",
+                          id:"{{modulePrimaryLabelFirstCharLower}}",
+                          children: <Widget>[
+////////        #region {{modulePageName}}_Default_selected2#Template
+////////#property_Heading
+#Template                          ListHeading(text:rowData["{{fieldNameFirstCharLower}}"]), 
+////////#endproperty_Heading
+////////#property_Description
+#Template                          ListDescription(text:rowData["{{fieldNameFirstCharLower}}"]), 
+////////#endproperty_Description
+////////#property_Location
+#Template                          Location(text:rowData["{{fieldNameFirstCharLower}}"]), 
+////////#endproperty_Location
+////////#property_InfoText
+#Template                          InfoText(text:rowData["{{fieldNameFirstCharLower}}"]), 
+////////#endproperty_InfoText
+////////        #endregion {{modulePageName}}_Default_selected2#Template
+////////        #region {{modulePageName}}_allparams2#Template
+////////        #endregion {{modulePageName}}_allparams2#Template   
+                          ]);
+                      })
+                ]), 
+            ]), 
+        ], ////Column Widgets Ends
+      ), ////Column Ends
+    ); ////Container Ends
+  }
+}
+////////#endmodule_CardListing

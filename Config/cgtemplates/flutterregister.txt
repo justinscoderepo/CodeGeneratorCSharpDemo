@@ -1,0 +1,113 @@
+////////#module_AuthRegister
+import 'package:provider/provider.dart';
+import 'package:example/state/user_session.dart';
+import 'package:example/utilities/elementmanager.dart';
+import 'package:flutter/material.dart';
+import 'package:example/elements/Model.dart';
+import 'package:example/elements/ModelTitle.dart';
+import 'package:example/elements/FullColumn.dart';
+import 'package:example/elements/SubmitForm.dart';
+import 'package:example/elements/FormControl.dart';
+import 'package:example/elements/UIButton.dart';
+import 'package:example/elements/Link.dart';
+
+
+class RegisterView extends ElementManager {
+  @override
+  _RegisterChildView createState() {
+    return _RegisterChildView();
+  }
+}
+
+class _RegisterChildView extends State<RegisterView> {
+  _RegisterChildView({Key key});
+  Map<String, InputProperties> state = {
+////////        #region {{modulePageName}}_Default_selected#Template
+#Template           "{{fieldName}}": 
+#Template               new InputProperties([
+////////#property_Required
+#Template                   "required"
+////////#endproperty_Required
+#Template                ]),
+////////        #endregion {{modulePageName}}_Default_selected#Template
+////////        #region {{modulePageName}}_allparams#Template
+////////        #endregion {{modulePageName}}_allparams#Template  
+  };
+
+  BuildContext _context;
+  Map<String, FormProperties> formState = new Map<String, FormProperties>();
+  onSuccess(data) async {
+    Provider.of<UserSession>(_context,listen:false).save(data);
+    Navigator.pushNamed(context, "/");
+  }
+  @override
+  Widget build(BuildContext context) {
+    _context = context;
+    var formController = new FormController();
+    formState["form"] = new FormProperties(state,
+        service: widget.service, controller: formController);
+    return Container(
+      padding: EdgeInsets.only(
+        top: 30,
+        bottom: 40,
+      ),
+     
+      child: Column(
+        children: <Widget>[
+          Model(             
+              children: <Widget>[
+                FullColumn(children: <Widget>[
+                  ModelTitle(text: "Register"),                  
+                  SubmitForm(
+                      controller: formController,
+                      method: "Post",
+                      onSuccess: this.onSuccess,
+                      action: "{{modulePageNameAsWordHyphenizeLower}}/register",
+                      children: <Widget>[
+////////        #region {{modulePageName}}_Default_selected2#Template
+#Template                              FormControl(
+////////#property_EmailInput
+#Template                                  type: "email", autocomplete: "email",
+////////#endproperty_EmailInput
+////////#property_PasswordInput
+#Template                                  type: "password", autocomplete: "current-password",
+////////#endproperty_PasswordInput
+#Template                                  input: this.state["{{fieldName}}"],
+#Template                                  label: "{{fieldLabel}}", placeholder: "Please enter {{fieldName}}",
+#Template                                  name: "{{fieldName}}"),
+////////        #endregion {{modulePageName}}_Default_selected2#Template
+////////        #region {{modulePageName}}_allparams2#Template
+////////        #endregion {{modulePageName}}_allparams2#Template
+                          FullColumn(
+                              padding: EdgeInsets.all(20),
+                              children: <Widget>[
+                                UIButton(
+                                    onPressed: formState["form"].onFormSubmit,
+                                    type: "submit",
+                                    properties:
+                                        ["primary","center"],
+                                    text: "Log in"),
+                                    SizedBox(height: 20, width: 100),
+                        FullColumn(
+                              children: <Widget>[
+                                Link(
+                                    redirect: "{{modulePageNameAsWordHyphenizeLower}}/register",
+                                    properties:
+                                        ["ellipsis","bold","left"],
+                                    text: "New User? Register ..."),
+                                Link(
+                                    redirect: "{{modulePageNameAsWordHyphenizeLower}}/forgot-password",
+                                    properties:
+                                        ["ellipsis","bold","right"],
+                                    text: "Forgot Password? Reset ..."),
+                              ])
+                          ]), 
+                      ]), 
+                ]), 
+              ]), 
+        ], ////Column Widgets Ends
+      ), ////Column Ends
+    ); ////Container Ends
+  }
+}
+////////#endmodule_AuthRegister

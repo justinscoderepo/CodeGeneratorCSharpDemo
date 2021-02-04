@@ -1,0 +1,300 @@
+#module_ContainersList
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import React from "react";
+import {
+  DataTable,
+  TBody,
+  THead,
+  ThCol,
+  TCol,
+  TRow,
+  TColActionDate,
+  TColPublishedBy,
+  TColBadge,
+  HeadingBlock,
+  DataTableHolder,
+} from "../../../SharedComponents/Table/TableElements";
+import {
+  AddRow,
+  DataColHead,
+  ListPagination,
+  ViewDate,
+  CheckBoxElement,
+  ActionsBlock,
+  EditRow,
+  DeleteRow,
+  PublishRow,
+} from "../../../SharedComponents/ListComponents/Components";
+import ListComponent from "../../../SharedComponents/ListComponents/ListComponent";
+import Loader from "../../../SharedComponents/Loader";
+  
+  
+class List{{modulePageName}}Container extends ListComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      apiResponse: {},
+      singleSelect: false,
+      multiSelect: false,
+      rowData: {},
+      isLoaderActive: false,
+    }
+  }
+  componentDidMount() {
+  #module_ContentRenderApi
+    this.setJsonUrl("content");
+    this.setpredicates({TypeTitle: "{{modulePageName}}"});
+  #endmodule_ContentRenderApi
+ #module_DefaultRenderApi
+    this.renderApi("{{modulePageNameAsWordHyphenizeLower}}");
+  #endmodule_DefaultRenderApi
+  }
+  onRowClick = (e,id) => {
+    const { history } = this.props;
+    e.stopPropagation();
+    e.preventDefault();
+    history.push("/admin/{{modulePageNameAsWordHyphenizeLower}}/view/" + id);
+  }
+  render() {
+     const {
+      apiResponse,
+      singleSelect,
+      multiSelect,
+      rowData,
+      isLoaderActive,
+    } = this.state;
+    const { history } = this.props;
+
+    return (
+      <>
+       {isLoaderActive === true ? <Loader /> : ""}
+   <HeadingBlock title="{{modulePageNameAsWord}}">
+          <div>
+            <AddRow
+              singleSelect={singleSelect}
+              multiSelect={multiSelect}
+              history={history}
+              redirecturl={"/admin/{{modulePageNameAsWordHyphenizeLower}}/add"}
+            ></AddRow>
+            <EditRow
+              editText="Edit"
+              rowData={rowData}
+              singleSelect={singleSelect}
+              history={history}
+              redirecturl={"/admin/{{modulePageNameAsWordHyphenizeLower}}/edit/" + rowData.id}
+            ></EditRow>
+            <DeleteRow
+              deleteText="Delete"
+              singleSelect={singleSelect}
+              multiSelect={multiSelect}
+              history={history}
+              redirecturl={"/admin/{{modulePageNameAsWordHyphenizeLower}}/list"}
+              renderapi={"content"}
+              model={rowData}
+            ></DeleteRow>
+            <PublishRow
+                singleSelect= {singleSelect}
+                multiSelect = {multiSelect}
+                history = {history}
+                redirecturl = "/admin/{{modulePageNameAsWordHyphenizeLower}}/list"
+                renderapi ="content"
+                rowData = {rowData}
+            ></PublishRow>
+          </div>
+        </HeadingBlock>
+
+
+        
+        <DataTableHolder 
+          pagination={<ListPagination  {...this.setpagination()} />}>
+          <DataTable>
+            <THead>
+              <TRow>
+                <ThCol scope="col" className="text-center w-80">
+                  <CheckBoxElement
+                    {...this.setproperties({
+                      isSelectAll: true,
+                      totalItems: apiResponse.totalItems,
+                    })}
+                  />
+                </ThCol>
+              #region {{modulePageName}}_int_Primary#Template
+             #endregion {{modulePageName}}_int_Primary#Template
+              #region {{modulePageName}}_Default_selected_Reverse#Template
+#property_DataColHead
+////////#Template         <DataColHead 
+////////#Template              {...this.setheadproperties({title:"{{fieldLabelAsWord}}", sublist:"{{currentTablePublicNameFirstCharLower}}List"
+////////#property_TableSortField
+////////#Template               ,coltype: "sort"
+////////#endproperty_TableSortField
+////////#property_TableFilterField
+////////#Template               ,coltype: "filter", filterapi:"{{foreignLocalNameAsWordHyphenizeLower}}", sublistfilterfield: "{{foreignLocalName}}",
+////////#endproperty_TableFilterField
+////////#property_TableSearchField
+////////#Template               ,enablesearch:true, className: "app-l-search-column"
+////////#endproperty_TableSearchField
+////////#Template         })}/>
+#endproperty_DataColHead
+
+////////#property_DefaultColHead
+////////#Template <ThCol> {{fieldLabelAsWord}} </ThCol>
+////////#endproperty_DefaultColHead
+////////        #endregion {{modulePageName}}_Default_selected_Reverse#Template
+
+////////        #region {{modulePageName}}_string_selected_ReverseForeignField#Template
+#property_DataColHead
+////////#Template         <DataColHead {...this.setheadproperties({title:"{{fieldLabelAsWord}}", sublist:"{{currentTablePublicNameFirstCharLower}}List"
+////////#property_TableSortField
+////////#Template               ,coltype: "sort"
+////////#endproperty_TableSortField
+////////#property_TableFilterField
+////////#Template     ,coltype: "filter", filterapi: "{{foreignLocalNameAsWordHyphenizeLower}}", sublistfilterfield: "{{foreignLocalName}}",
+////////#endproperty_TableFilterField
+////////#property_TableSearchField
+////////#Template     ,enablesearch: true, className: "app-l-search-column"
+////////#endproperty_TableSearchField
+////////#Template  ,sublist: "{{currentTablePublicName}}"})}/>
+#endproperty_DataColHead
+////////#property_DefaultColHead
+////////#Template <ThCol> {{parentFieldLabelAsWord}} </ThCol>
+////////#endproperty_DefaultColHead
+////////        #endregion {{modulePageName}}_string_selected_ReverseForeignField#Template
+
+              #region {{modulePageName}}_Default_ApplicationId_selected_base#Template
+#property_DataColHead
+////////#Template         <DataColHead {...this.setheadproperties({title:"ID", sortfield:"{{fieldLabel}}", coltype: "sort", enablesearch:true, className: "app-l-search-column" })}/>
+#endproperty_DataColHead
+              #endregion {{modulePageName}}_Default_ApplicationId_selected_base#Template
+
+
+              #region {{modulePageName}}_Default_selected_base#Template
+#property_DataColHead
+////////#Template         <DataColHead {...this.setheadproperties({title:"{{fieldLabelAsWord}}",
+////////#property_TableSortField
+////////#Template               coltype: "sort",
+////////#endproperty_TableSortField
+////////#property_TableFilterField
+////////#Template         coltype: "filter", filterapi="{{fieldLabelAsWordHyphenizeLower}}",
+////////#endproperty_TableFilterField
+////////#property_TableSearchField
+////////#Template         enablesearch:true, className: "app-l-search-column",
+////////#endproperty_TableSearchField
+})}/>
+#endproperty_DataColHead
+
+////////#property_DefaultColHead
+////////#Template <ThCol> {{fieldLabelAsWord}} </ThCol>
+////////#endproperty_DefaultColHead
+
+              #endregion {{modulePageName}}_Default_selected_base#Template
+
+////////        #region {{modulePageName}}_allparams#Template#hook_ColGroup1
+////////        #endregion {{modulePageName}}_allparams#Template#hook_ColGroup1
+////////        #region {{modulePageName}}_allparams#Template#hook_ColGroup2
+////////        #endregion {{modulePageName}}_allparams#Template#hook_ColGroup2
+////////        #region {{modulePageName}}_allparams#Template#hook_ColGroup3
+////////        #endregion {{modulePageName}}_allparams#Template#hook_ColGroup3
+////////        #region {{modulePageName}}_allparams#Template#hook_ColGroup4
+////////        #endregion {{modulePageName}}_allparams#Template#hook_ColGroup4
+////////        #region {{modulePageName}}_allparams#Template#hook_ColGroup5
+////////        #endregion {{modulePageName}}_allparams#Template#hook_ColGroup5
+              </TRow>
+            </THead>
+            <TBody>  
+              { apiResponse.data ? apiResponse.data.map((row, i) => (
+                
+                 <TRow
+                      key={i}
+                      onRowClick={(e) => this.onRowClick(e, row.id)}
+                    >
+                      <TCol scope="col" className="text-center">
+                        <CheckBoxElement
+                          {...this.setproperties({
+                            row: row,
+                          })}
+                        />
+                      </TCol>
+                            #region {{modulePageName}}_int_Primary2#Template
+             #endregion {{modulePageName}}_int_Primary2#Template
+              #region {{modulePageName}}_int_selected_Foreign2#Template
+
+
+#Template                  <TCol>{row.{{fieldLabelFirstCharLower}}{{foreignTitleLabel}}}</TCol>
+
+
+              #endregion {{modulePageName}}_int_selected_Foreign2#Template
+              #region {{modulePageName}}_bool_selected_base2#Template
+#Template                  <TCol>{row.{{fieldLabelFirstCharLower}}? "Yes": "No"}</TCol>
+              #endregion {{modulePageName}}_bool_selected_base2#Template
+                                  #region {{modulePageName}}_int_ContentStatus_selected_ReverseForeignField2#Template
+#Template                  <TColBadge 
+#Template                       field = {"{{fieldLabel}}"} value={row.{{currentTablePublicNameFirstCharLower}}{{fieldLabel}}{{foreignTitleLabel}}} 
+#Template                       id ={row.{{currentTablePublicNameFirstCharLower}}{{fieldLabel}}Id}/>
+                    #endregion {{modulePageName}}_int_ContentStatus_selected_ReverseForeignField2#Template
+
+                    #region {{modulePageName}}_int_ApprovalStatus_selected_ReverseForeignField2#Template
+#Template                  <TColBadge 
+#Template                         field = {"{{fieldLabel}}"} 
+#Template                         value={row.{{currentTablePublicNameFirstCharLower}}{{fieldLabel}}{{foreignTitleLabel}}} 
+#Template                         id ={row.{{currentTablePublicNameFirstCharLower}}{{fieldLabel}}Id}/>
+
+                    #endregion {{modulePageName}}_int_ApprovalStatus_selected_ReverseForeignField2#Template
+
+                #region {{modulePageName}}_int_PublishedBy_selected_ReverseForeignField2#Template
+#Template                  <TColPublishedBy value={row.{{currentTablePublicNameFirstCharLower}}List}/>
+////////        #endregion {{modulePageName}}_int_PublishedBy_selected_ReverseForeignField2#Template
+        
+////////        #region {{modulePageName}}_DateTime_ActionDate_selected_Reverse2#Template
+#Template                  <TColActionDate value={row.{{currentTablePublicNameFirstCharLower}}List}/>
+////////        #endregion {{modulePageName}}_DateTime_ActionDate_selected_Reverse2#Template
+
+              #region {{modulePageName}}_DateTime_selected_base2#Template
+#Template                 <TCol><ViewDate isTableView={true} dateValue = {row.{{fieldLabelFirstCharLower}}}/></TCol>
+              #endregion {{modulePageName}}_DateTime_selected_base2#Template  
+                #region {{modulePageName}}_Default_selected_base2#Template
+#Template                  <TCol>{row.{{fieldLabelFirstCharLower}}}</TCol>            
+              #endregion {{modulePageName}}_Default_selected_base2#Template  
+              #region {{modulePageName}}_DateTime_selected_Reverse2#Template
+#Template                 <TCol><ViewDate isTableView={true} dateValue = {row.{{currentTablePublicNameFirstCharLower}}{{fieldLabel}}}/></TCol>
+              #endregion {{modulePageName}}_DateTime_selected_Reverse2#Template    
+              #region {{modulePageName}}_Default_selected_Reverse2#Template
+#Template                  <TCol>{row.{{currentTablePublicNameFirstCharLower}}{{fieldLabel}}}</TCol>
+              #endregion {{modulePageName}}_Default_selected_Reverse2#Template
+              #region {{modulePageName}}_bool_selected_Reverse2#Template
+#Template                  <TCol>{row.{{currentTablePublicNameFirstCharLower}}{{fieldLabel}}? "Yes": "No"}</TCol>
+              #endregion {{modulePageName}}_bool_selected_Reverse2#Template
+              #region {{modulePageName}}_string_selected_ReverseForeignField2#Template
+#Template                  <TCol>{row.{{parentTablePublicNameFirstCharLower}}{{parentFieldLabel}}{{fieldLabel}}}</TCol>
+////////        #endregion {{modulePageName}}_string_selected_ReverseForeignField2#Template
+              #region {{modulePageName}}_int_selected_ReverseForeignField2#Template
+#Template                  <TCol>{row.{{parentFieldLabelFirstCharLower}}{{fieldLabel}}{{foreignTitleLabel}}}</TCol>
+////////        #endregion {{modulePageName}}_int_selected_ReverseForeignField2#Template
+
+
+////////        #region {{modulePageName}}_allparams2#Template#hook_ColGroup1
+////////        #endregion {{modulePageName}}_allparams2#Template#hook_ColGroup1
+////////        #region {{modulePageName}}_allparams2#Template#hook_ColGroup2
+////////        #endregion {{modulePageName}}_allparams2#Template#hook_ColGroup2
+////////        #region {{modulePageName}}_allparams2#Template#hook_ColGroup3
+////////        #endregion {{modulePageName}}_allparams2#Template#hook_ColGroup3
+////////        #region {{modulePageName}}_allparams2#Template#hook_ColGroup4
+////////        #endregion {{modulePageName}}_allparams2#Template#hook_ColGroup4
+////////        #region {{modulePageName}}_allparams2#Template#hook_ColGroup5
+////////        #endregion {{modulePageName}}_allparams2#Template#hook_ColGroup5
+                </TRow>
+              )): null} 
+            </TBody>
+          </DataTable>
+            { apiResponse.data && apiResponse.data.length === 0 && (
+             <div class="text-center no-content-block">No results found</div>
+           )}
+        </DataTableHolder>
+      </>
+    );
+  }
+}
+
+export default List{{modulePageName}}Container;
+
+#endmodule_ContainersList

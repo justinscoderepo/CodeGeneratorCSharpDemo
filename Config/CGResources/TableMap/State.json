@@ -52,50 +52,6 @@
         "MinLimit": 0
       }
     },
-    "Pages": {
-      "State": {
-        "PageName": "State",
-        "Modules": [
-          "Entity",
-          "Model",
-          "ManualService",
-          "GetService",
-          "Controller",
-          "Get",
-          "GetById",
-          "FunctionalComponentManage",
-          "DuxManage",
-          "FunctionalComponentList",
-          "DuxList",
-          "ModelGenericList",
-          "ApiModel",
-          "EntityICollection",
-          "SetService",
-          "RemoveService",
-          "RangeService",
-          "CreateRange",
-          "UpdateRange",
-          "DeleteRange",
-          "Create",
-          "Set",
-          "Remove",
-          "ApiController",
-          "ApiSyncService",
-          "Lists"
-        ],
-        "FieldsList": {
-          "sta_id": {
-            "ServerName": "sta_id"
-          },
-          "sta_title": {
-            "ServerName": "sta_title",
-            "Properties": ["Generating", "ContainsFilter"]
-          },
-          "sta_recid": {
-            "ServerName": "sta_recid"
-          }
-        }
-      }
-    }
+    "Pages": {}
   }
 }

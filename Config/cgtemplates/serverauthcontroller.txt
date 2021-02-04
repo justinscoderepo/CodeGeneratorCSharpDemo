@@ -1,0 +1,91 @@
+////////#module_AuthController
+using System;
+using System.Linq;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
+using Microsoft.Extensions.Options;
+using {{configProjectName}}.Models;
+using {{configProjectName}}.Models.Common;
+using {{configProjectName}}.Utilities;
+using {{configProjectName}}.WebApi.Handlers;
+using {{configProjectName}}.Business.Contracts;
+using Microsoft.AspNetCore.Authorization;
+namespace {{configProjectName}}.WebApi.Controllers
+{
+    [ApiController]
+    [Route("{{modulePageNameAsWordHyphenizeLower}}")]
+    public class {{modulePageName}}Controller : ApiBaseController 
+    {
+        private const string groupName = "{{modulePageNameLabelShort}}";
+        private I{{modulePageName}}Service _logic;
+        private IAuthenticationHandler _authenticationHandler;
+        ////////#module_EnableUploadFile
+        private IFileUploadService _file;
+        ////////#endmodule_EnableUploadFile
+        
+        ////region CustomCodeBlockPrivateVariables#
+        ////endregion CustomCodeBlockPrivateVariables#
+
+        ///<summary> The {{modulePageNameAsWordLower}} constructor. </summary>
+        public {{modulePageName}}Controller(I{{modulePageName}}Service logic,
+        IAuthenticationHandler authenticationHandler 
+        ////region CustomCodeBlockInjection#
+        ////endregion CustomCodeBlockInjection#
+
+        ){
+            _logic = logic;
+            _authenticationHandler = authenticationHandler;
+        ////region CustomCodeBlockCBody#
+        ////endregion CustomCodeBlockCBody#       
+        }
+
+////////#module_AuthLogin
+      /// <summary>Get the user credentials.</summary>
+        /// <param name = "model">The user credential model.</param>
+        /// <returns>The <see cref = "IActionResult"/>.</returns>
+        [AllowAnonymous]
+        [HttpPost("login")]
+        [SwaggerOperation(Tags = new[] { groupName })]      
+        public IActionResult Authenticate([FromForm] {{modulePageName}}Model model)
+        {        
+            if (model == null)
+            {
+                return this.Ok(new RawResponseModel<string>("Password", "Email or password is incorrect", false));
+            }  
+////////        #region {{modulePageName}}_string_selected#Template
+////////#property_Required
+#Template           if(string.IsNullOrEmpty(model.{{fieldName}})){
+#Template                         return this.Ok(new RawResponseModel<string>("{{fieldName}}", "Email or password is incorrect", false));
+#Template           }
+////////#endproperty_Required
+
+////////        #endregion {{modulePageName}}_string_selected#Template
+
+////////        #region {{modulePageName}}_int_selected#Template
+////////#property_Required
+#Template           if(model.{{fieldLabel}}Id==0){
+#Template                         return this.Ok(new RawResponseModel<string>("{{fieldName}}", "Email or password is incorrect", false));
+#Template           }
+////////#endproperty_Required
+////////        #endregion {{modulePageName}}_int_selected#Template
+
+////////        #region {{modulePageName}}_allparams#Template
+////////        #endregion {{modulePageName}}_allparams#Template  
+
+                var results = _logic.Get(model);
+            if(results.Data.Any()){
+                var user = results.Data.First();
+                var userData = _authenticationHandler.CreateNewSession(user, this.IpAddress);               
+                this.CurrentUser = user;           
+                return this.Ok(userData);
+            }else{
+                return this.Ok(new RawResponseModel<string>("Password", "Email or password is incorrect", false));
+            }
+        }
+
+////////#endmodule_AuthLogin
+
+    }
+}
+////////#endmodule_AuthController

@@ -1,6 +1,6 @@
 #module_Model
 ////////// --------------------------------------------------------------------------------------------------------------------
-////////// <copyright file="{{modulePageName}}Model.cs" company="Example">
+////////// <copyright file="{{modulePageName}}Model.cs" company="{{configProjectName}}">
 //////////   The {{modulePublicNameAsWordLower}} Model
 ////////// </copyright>
 ////////// <summary>
@@ -14,7 +14,10 @@ using System.Text.Json.Serialization;
 ////////#module_ModelGenericList
 using System.Collections.Generic;
 ////////#endmodule_ModelGenericList
-namespace Example.Models
+////////#module_EnableEnums
+using {{configProjectName}}.Models.Enums;
+////////#endmodule_EnableEnums
+namespace {{configProjectName}}.Models
 {
     public class {{modulePageName}}Model
     {
@@ -53,7 +56,9 @@ namespace Example.Models
 ////////#endproperty_JsonIgnore
 ////////#Template         [Display(Name ="{{fieldLabelAsWord}}"), Range(int.MinValue, int.MaxValue)]
 ////////#Template         public int? {{fieldName}}Id { get; set; }
-
+////////#property_EnumToForeignString
+////////#Template         public {{foreignLocalName}}Enum {{fieldName}}Title { get; set; }
+////////#endproperty_EnumToForeignString
 ////////        #endregion {{modulePageName}}_int_NULL_selected_Foreign#Template
 
 ////////        #region {{modulePageName}}_int_NULL_selected_Foreign2#Template
@@ -62,9 +67,7 @@ namespace Example.Models
 ////////#Template         /// <summary>
 ////////#Template         /// Gets or sets the {{fieldLabelAsWordLower}}.
 ////////#Template         /// </summary>
-////////#property_JsonIgnore
 ////////#Template         [JsonIgnore]
-////////#endproperty_JsonIgnore
 ////////#Template         [Display(Name ="{{fieldLabelAsWord}}")]
 ////////#Template         public List<int?> {{fieldName}}IdList { get; set; }
 ////////#endproperty_ListFilter
@@ -101,9 +104,7 @@ namespace Example.Models
 ////////#Template         /// <summary>
 ////////#Template         /// Gets or sets the {{fieldLabelAsWordLower}}.
 ////////#Template         /// </summary>
-////////#property_JsonIgnore
 ////////#Template         [JsonIgnore]
-////////#endproperty_JsonIgnore
 ////////#Template         [Display(Name ="{{fieldLabelAsWord}}")]
 ////////#Template         public List<int?> {{fieldLabel}}IdList { get; set; }
 ////////#endproperty_ListFilter
@@ -118,7 +119,9 @@ namespace Example.Models
 ////////#endproperty_JsonIgnore
 ////////#Template         [Display(Name ="{{fieldLabelAsWord}}"), Range(int.MinValue, int.MaxValue)]
 ////////#Template         public int {{fieldName}}Id { get; set; }
-
+////////#property_EnumToForeignString
+////////#Template         public {{foreignLocalName}}Enum {{fieldName}}Title { get; set; }
+////////#endproperty_EnumToForeignString
 ////////        #endregion {{modulePageName}}_int_NOT_NULL_selected_Foreign#Template
 
 ////////        #region {{modulePageName}}_int_NULL_selected#Template

@@ -35,30 +35,7 @@
         "MinLimit": 0
       }
     },
-    "Pages": {
-      "Status": {
-        "PageName": "Status",
-        "Modules": [
-          "Controller",
-          "Entity",
-          "Get",
-          "GetById",
-          "GetService",
-          "ManualService",
-          "Model"
-        ],
-        "FieldsList": {
-          "stus_title": {
-            "ServerName": "stus_title",
-            "Properties": []
-          },
-          "stus_id": {
-            "ServerName": "stus_id",
-            "Properties": []
-          }
-        }
-      }
-    },
+    "Pages": {},
     "ModelBuilder": true,
     "ModelData": [
       {

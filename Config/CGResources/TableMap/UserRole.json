@@ -49,33 +49,7 @@
         "MinLimit": 0
       }
     },
-    "Pages": {
-      "UserRole": {
-        "PageName": "UserRole",
-        "Modules": [
-          "Entity",
-          "Model",
-          "ManualService",
-          "GetService",
-          "GetById",
-          "Get",
-          "Controller",
-          "FunctionalComponentManage",
-          "DuxManage",
-          "FunctionalComponentList",
-          "DuxList"
-        ],
-        "FieldsList": {
-          "ur_title": {
-            "ServerName": "ur_title",
-            "Properties": ["Generating", "ContainsFilter"]
-          },
-          "ur_id": {
-            "ServerName": "ur_id"
-          }
-        }
-      }
-    },
+    "Pages": {},
     "ModelBuilder": true,
     "ModelData": [
       {

@@ -1,74 +1,51 @@
 {
-    "Key": "ml_orbituary_status",
-    "Value": {
-      "isGlobalTable": false,
-      "LocalName": "OrbituaryStatus",
-      "PublicName": "OrbituaryStatus",
-      "ServerName": "ml_orbituary_status",
-      "FieldsList": {
-        "obs_id": {
-          "Label": "Id",
-          "LocalName": "Id",
-          "Order": 0,
-          "ServerName": "obs_id",
-          "ServerDataType": "int",
-          "SqlDataType": "Int",
-          "TSDataType": "number",
-          "Limit": 10,
-          "IsNullable": "NOT NULL",
-          "IsPrimaryKey": true,
-          "IsForeignKey": false,
-          "MinLimit": 0
-        },
-        "obs_title": {
-          "Label": "Title",
-          "LocalName": "Title",
-          "Order": 0,
-          "ServerName": "obs_title",
-          "ServerDataType": "string",
-          "SqlDataType": "nvarchar",
-          "TSDataType": "string",
-          "Limit": 200,
-          "IsNullable": "NOT NULL",
-          "IsPrimaryKey": false,
-          "IsForeignKey": false,
-          "MinLimit": 0
-        }
+  "Key": "ml_orbituary_status",
+  "Value": {
+    "isGlobalTable": false,
+    "LocalName": "OrbituaryStatus",
+    "PublicName": "OrbituaryStatus",
+    "ServerName": "ml_orbituary_status",
+    "FieldsList": {
+      "obs_id": {
+        "Label": "Id",
+        "LocalName": "Id",
+        "Order": 0,
+        "ServerName": "obs_id",
+        "ServerDataType": "int",
+        "SqlDataType": "Int",
+        "TSDataType": "number",
+        "Limit": 10,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": true,
+        "IsForeignKey": false,
+        "MinLimit": 0
       },
-      "Pages": {
-        "Status": {
-          "PageName": "Status",
-          "Modules": [
-            "Controller",
-            "Entity",
-            "Get",
-            "GetById",
-            "GetService",
-            "ManualService",
-            "Model"
-          ],
-          "FieldsList": {
-            "obs_title": {
-              "ServerName": "obs_title",
-              "Properties": []
-            },
-            "obs_id": {
-              "ServerName": "obs_id",
-              "Properties": []
-            }
-          }
-        }
+      "obs_title": {
+        "Label": "Title",
+        "LocalName": "Title",
+        "Order": 0,
+        "ServerName": "obs_title",
+        "ServerDataType": "string",
+        "SqlDataType": "nvarchar",
+        "TSDataType": "string",
+        "Limit": 200,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      }
+    },
+    "Pages": {},
+    "ModelBuilder": true,
+    "ModelData": [
+      {
+        "obs_id": "1",
+        "obs_title": "Published"
       },
-      "ModelBuilder": true,
-      "ModelData": [
-        {
-          "obs_id": "1",
-          "obs_title": "Published"
-        },
-        {
-          "obs_id": "2",
-          "obs_title": "Not Published"
-        }
-      ]
-    }
+      {
+        "obs_id": "2",
+        "obs_title": "Not Published"
+      }
+    ]
   }
+}

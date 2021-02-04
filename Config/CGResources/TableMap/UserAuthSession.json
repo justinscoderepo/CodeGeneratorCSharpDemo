@@ -129,55 +129,6 @@
         "MinLimit": 0
       }
     },
-    "Pages": {
-      "UserAuthSession": {
-        "PageName": "UserAuthSession",
-        "Modules": [
-          "Model",
-          "Entity",
-          "GetService",
-          "SetService",
-          "ManualService",
-          "ModelAssociate"
-        ],
-        "FieldsList": {
-          "uas_id": {
-            "Order": 0,
-            "ServerName": "uas_id"
-          },
-          "uas_user": {
-            "Order": 0,
-            "ServerName": "uas_user"
-          },
-          "uas_jwt_token": {
-            "Order": 0,
-            "ServerName": "uas_jwt_token",
-            "Properties": ["EqualFilter"]
-          },
-          "uas_reftresh_token": {
-            "Order": 0,
-            "ServerName": "uas_reftresh_token",
-            "Properties": ["EqualFilter"]
-          },
-          "uas_ip_address": {
-            "Order": 0,
-            "ServerName": "uas_ip_address",
-            "Properties": ["EqualFilter"]
-          },
-          "uas_expiry": {
-            "Order": 0,
-            "ServerName": "uas_expiry"
-          },
-          "uas_createddate": {
-            "Order": 0,
-            "ServerName": "uas_createddate"
-          },
-          "uas_modifieddate": {
-            "Order": 0,
-            "ServerName": "uas_modifieddate"
-          }
-        }
-      }
-    }
+    "Pages": {}
   }
 }

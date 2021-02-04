@@ -1,7 +1,7 @@
 {
   "ProjectName": "Example",
   "Version": "v1",
-  "ConnectionString": null,
+  "ConnectionString": "Data Source = JUSTINEJOSE;Initial Catalog = example; Password=mango123;User ID=superadmin",
   "TablePrefix": "tr",
   "DataBaseType": null,
   "EntityFolder": null,
@@ -65,6 +65,41 @@
       "DestinationFolder": "Example.WebApi/Controllers/{{modulePageNameLabelShort}}/",
       "DestinationFile": "{{modulePageName}}Controller.cs",
       "TemplateSourceFile": "servercontroller.txt",
+      "Code": null,
+      "GeneratedCode": null
+    },
+    {
+      "DestinationFolder": "{{configProjectName}}.Entities/Seed/",
+      "DestinationFile": "{{modulePageName}}Seed.cs",
+      "TemplateSourceFile": "servermodelbuilderseed.txt",
+      "Code": null,
+      "GeneratedCode": null
+    },
+    {
+      "DestinationFolder": "{{configProjectName}}.Models/Enums/",
+      "DestinationFile": "{{modulePageName}}Enum.cs",
+      "TemplateSourceFile": "serverenum.txt",
+      "Code": null,
+      "GeneratedCode": null
+    },
+    {
+      "DestinationFolder": "{{configProjectName}}.WebApi/Controllers/{{modulePageNameLabelShort}}/",
+      "DestinationFile": "{{modulePageName}}Controller.cs",
+      "TemplateSourceFile": "serverauthcontroller.txt",
+      "Code": null,
+      "GeneratedCode": null
+    },
+    {
+      "DestinationFolder": "{{configProjectName}}.WebApi/Handler/{{modulePageNameLabelShort}}/",
+      "DestinationFile": "IAuthenticationHandler.cs",
+      "TemplateSourceFile": "serverijwthandler.txt",
+      "Code": null,
+      "GeneratedCode": null
+    },
+    {
+      "DestinationFolder": "{{configProjectName}}.WebApi/Handler/{{modulePageNameLabelShort}}/",
+      "DestinationFile": "AuthenticationHandler.cs",
+      "TemplateSourceFile": "serverjwthandler.txt",
       "Code": null,
       "GeneratedCode": null
     }

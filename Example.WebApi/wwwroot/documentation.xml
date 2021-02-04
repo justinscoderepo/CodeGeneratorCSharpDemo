@@ -4,137 +4,36 @@
         <name>Example.WebApi</name>
     </assembly>
     <members>
-        <member name="T:Example.WebApi.Controllers.ComplaintTypeController">
-            <summary> The complaint type controller. </summary>
+        <member name="T:Example.WebApi.Controllers.CategoryController">
+            <summary> The category controller. </summary>
         </member>
-        <member name="M:Example.WebApi.Controllers.ComplaintTypeController.#ctor(Example.Business.Contracts.IComplaintTypeService)">
-            <summary> The complaint type constructor. </summary>
+        <member name="M:Example.WebApi.Controllers.CategoryController.#ctor(Example.Business.Contracts.ICategoryService)">
+            <summary> The category constructor. </summary>
         </member>
-        <member name="M:Example.WebApi.Controllers.ComplaintTypeController.Get(Example.Models.ComplaintTypeModel)">
-            <summary>Get the complaint type list.</summary>
-            <param name = "model">The complaint type model.</param>
+        <member name="M:Example.WebApi.Controllers.CategoryController.Get(Example.Models.CategoryModel)">
+            <summary>Get the category list.</summary>
+            <param name = "model">The category model.</param>
             <returns>The <see cref = "T:Microsoft.AspNetCore.Mvc.IActionResult"/>.</returns>
         </member>
-        <member name="T:Example.WebApi.Controllers.TicketLogController">
-            <summary> The ticket log controller. </summary>
-        </member>
-        <member name="M:Example.WebApi.Controllers.TicketLogController.#ctor(Example.Business.Contracts.ITicketLogService)">
-            <summary> The ticket log constructor. </summary>
-        </member>
-        <member name="M:Example.WebApi.Controllers.TicketLogController.GetById(System.Int32)">
-            <summary>Get the ticket log filtered by Ticketlogid.</summary>
-            <param name = "model">The ticket log model.</param>
+        <member name="M:Example.WebApi.Controllers.CategoryController.Create(Example.Models.CategoryModel)">
+            <summary>Create the category.</summary>
+            <param name = "model">category model.</param>
             <returns>The <see cref = "T:Microsoft.AspNetCore.Mvc.IActionResult"/>.</returns>
         </member>
-        <member name="M:Example.WebApi.Controllers.TicketLogController.Get(Example.Models.TicketLogModel)">
-            <summary>Get the ticket log list.</summary>
-            <param name = "model">The ticket log model.</param>
+        <member name="M:Example.WebApi.Controllers.CategoryController.Save(Example.Models.CategoryModel)">
+            <summary>Update the category.</summary>
+            <param name = "model">category model.</param>
             <returns>The <see cref = "T:Microsoft.AspNetCore.Mvc.IActionResult"/>.</returns>
         </member>
-        <member name="M:Example.WebApi.Controllers.TicketLogController.Save(Example.Models.TicketLogModel)">
-            <summary>Update the ticket log.</summary>
-            <param name = "model">ticket log model.</param>
+        <member name="M:Example.WebApi.Controllers.CategoryController.Remove(Example.Models.CategoryModel)">
+            <summary>Remove category.</summary>
+            <param name = "model">category model.</param>
             <returns>The <see cref = "T:Microsoft.AspNetCore.Mvc.IActionResult"/>.</returns>
         </member>
-        <member name="M:Example.WebApi.Controllers.TicketLogController.SaveRow(Example.Models.TicketLogModel)">
-            <summary>Save ticket log.</summary>
-            <param name = "model">ticket log model.</param>
-            <returns>The <see cref = "T:Example.Models.TicketLogModel"/>.</returns>
-        </member>
-        <member name="T:Example.WebApi.Controllers.TicketMasterController">
-            <summary> The ticket master controller. </summary>
-        </member>
-        <member name="M:Example.WebApi.Controllers.TicketMasterController.#ctor(Example.Business.Contracts.ITicketMasterService,Example.Business.Contracts.ITicketLogHelperService)">
-            <summary> The ticket master constructor. </summary>
-        </member>
-        <member name="M:Example.WebApi.Controllers.TicketMasterController.GetById(System.Int32)">
-            <summary>Get the ticket master filtered by TicktId.</summary>
-            <param name = "model">The ticket master model.</param>
-            <returns>The <see cref = "T:Microsoft.AspNetCore.Mvc.IActionResult"/>.</returns>
-        </member>
-        <member name="M:Example.WebApi.Controllers.TicketMasterController.Save(Example.Models.TicketMasterModel)">
-            <summary>Update the ticket master.</summary>
-            <param name = "model">ticket master model.</param>
-            <returns>The <see cref = "T:Microsoft.AspNetCore.Mvc.IActionResult"/>.</returns>
-        </member>
-        <member name="M:Example.WebApi.Controllers.TicketMasterController.SaveRow(Example.Models.TicketMasterModel)">
-            <summary>Save ticket master.</summary>
-            <param name = "model">ticket master model.</param>
-            <returns>The <see cref = "T:Example.Models.TicketMasterModel"/>.</returns>
-        </member>
-        <member name="T:Example.WebApi.Controllers.TicketMasterListController">
-            <summary> The ticket master list controller. </summary>
-        </member>
-        <member name="M:Example.WebApi.Controllers.TicketMasterListController.#ctor(Example.Business.Contracts.ITicketMasterListService)">
-            <summary> The ticket master list constructor. </summary>
-        </member>
-        <member name="M:Example.WebApi.Controllers.TicketMasterListController.Get(Example.Models.TicketMasterListModel,Example.Models.Common.PaginationModel,Example.Models.Common.SortModel)">
-            <summary>Get the ticket master list.</summary>
-            <param name = "model">The ticket master list model.</param>
-            <returns>The <see cref = "T:Microsoft.AspNetCore.Mvc.IActionResult"/>.</returns>
-        </member>
-        <member name="T:Example.WebApi.Controllers.TicketStatusController">
-            <summary> The ticket status controller. </summary>
-        </member>
-        <member name="M:Example.WebApi.Controllers.TicketStatusController.#ctor(Example.Business.Contracts.ITicketStatusService)">
-            <summary> The ticket status constructor. </summary>
-        </member>
-        <member name="M:Example.WebApi.Controllers.TicketStatusController.Get(Example.Models.TicketStatusModel)">
-            <summary>Get the ticket status list.</summary>
-            <param name = "model">The ticket status model.</param>
-            <returns>The <see cref = "T:Microsoft.AspNetCore.Mvc.IActionResult"/>.</returns>
-        </member>
-        <member name="M:Example.WebApi.Controllers.TicketStatusController.Save(Example.Models.TicketStatusModel)">
-            <summary>Update the ticket status.</summary>
-            <param name="model">ticket status model.</param>
-            <returns>The <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/>.</returns>
-        </member>
-        <member name="M:Example.WebApi.Controllers.TicketStatusController.SaveRow(Example.Models.TicketStatusModel)">
-            <summary>Save ticket status.</summary>
-            <param name="model">ticket status model.</param>
-            <returns>The <see cref="T:Example.Models.TicketStatusModel"/>.</returns>
-        </member>
-        <member name="T:Example.WebApi.Controllers.UserDetailsController">
-            <summary> The user details controller. </summary>
-        </member>
-        <member name="M:Example.WebApi.Controllers.UserDetailsController.#ctor(Example.Business.Contracts.IUserDetailsService)">
-            <summary> The user details constructor. </summary>
-        </member>
-        <member name="M:Example.WebApi.Controllers.UserDetailsController.Get(Example.Models.UserDetailsModel)">
-            <summary>Get the user details list.</summary>
-            <param name = "model">The user details model.</param>
-            <returns>The <see cref = "T:Microsoft.AspNetCore.Mvc.IActionResult"/>.</returns>
-        </member>
-        <member name="M:Example.WebApi.Controllers.UserDetailsController.Save(Example.Models.UserDetailsModel)">
-            <summary>Update the user details.</summary>
-            <param name = "model">user details model.</param>
-            <returns>The <see cref = "T:Microsoft.AspNetCore.Mvc.IActionResult"/>.</returns>
-        </member>
-        <member name="M:Example.WebApi.Controllers.UserDetailsController.SaveRow(Example.Models.UserDetailsModel)">
-            <summary>Save user details.</summary>
-            <param name = "model">user details model.</param>
-            <returns>The <see cref = "T:Example.Models.UserDetailsModel"/>.</returns>
-        </member>
-        <member name="T:Example.WebApi.Controllers.UserRoleController">
-            <summary> The user role controller. </summary>
-        </member>
-        <member name="M:Example.WebApi.Controllers.UserRoleController.#ctor(Example.Business.Contracts.IUserRoleService)">
-            <summary> The user role constructor. </summary>
-        </member>
-        <member name="M:Example.WebApi.Controllers.UserRoleController.Get(Example.Models.UserRoleModel)">
-            <summary>Get the user role list.</summary>
-            <param name = "model">The user role model.</param>
-            <returns>The <see cref = "T:Microsoft.AspNetCore.Mvc.IActionResult"/>.</returns>
-        </member>
-        <member name="M:Example.WebApi.Controllers.UserRoleController.Save(Example.Models.UserRoleModel)">
-            <summary>Update the user role.</summary>
-            <param name="model">user role model.</param>
-            <returns>The <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/>.</returns>
-        </member>
-        <member name="M:Example.WebApi.Controllers.UserRoleController.SaveRow(Example.Models.UserRoleModel)">
-            <summary>Save user role.</summary>
-            <param name="model">user role model.</param>
-            <returns>The <see cref="T:Example.Models.UserRoleModel"/>.</returns>
+        <member name="M:Example.WebApi.Controllers.CategoryController.SaveRow(Example.Models.CategoryModel)">
+            <summary>Save category.</summary>
+            <param name = "model">category model.</param>
+            <returns>The <see cref = "T:Example.Models.CategoryModel"/>.</returns>
         </member>
     </members>
 </doc>

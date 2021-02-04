@@ -37,49 +37,6 @@
         "MinLimit": 0
       }
     },
-    "Pages": {
-      "Relationship": {
-        "PageName": "Relationship",
-        "Modules": [
-          "Entity",
-          "ManualService",
-          "Model",
-          "GetService",
-          "Controller",
-          "Get",
-          "GetById",
-          "DuxManage",
-          "DuxList",
-          "FunctionalComponentList",
-          "FunctionalComponentManage",
-          "Sort",
-          "Pagination",
-          "ModelGenericList",
-          "ApiModel",
-          "EntityICollection",
-          "SetService",
-          "RemoveService",
-          "RangeService",
-          "CreateRange",
-          "UpdateRange",
-          "DeleteRange",
-          "Create",
-          "Set",
-          "Remove",
-          "ApiController",
-          "ApiSyncService",
-          "Lists"
-        ],
-        "FieldsList": {
-          "rp_id": {
-            "ServerName": "rp_id"
-          },
-          "rp_title": {
-            "ServerName": "rp_title",
-            "Properties": ["SortableField", "ContainsFilter"]
-          }
-        }
-      }
-    }
+    "Pages": {}
   }
 }

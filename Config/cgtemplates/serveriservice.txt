@@ -1,9 +1,9 @@
 ////////#module_ManualService
 using System.Collections.Generic;
-using Example.Models;
-using Example.Models.Common;
+using {{configProjectName}}.Models;
+using {{configProjectName}}.Models.Common;
 
-namespace Example.Business.Contracts
+namespace {{configProjectName}}.Business.Contracts
 {
     public interface I{{modulePageName}}Service
     {

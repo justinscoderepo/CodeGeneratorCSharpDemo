@@ -1,0 +1,265 @@
+////////#module_AuthController
+using System;
+using System.Text;
+using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Authorization;
+
+using System.Security.Cryptography;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Logging;
+using System.Security.Claims;
+using {{configProjectName}}.Models;
+using {{configProjectName}}.Business.Contracts;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+namespace {{configProjectName}}.WebApi.Handlers
+{
+    /// <summary>
+    /// The system relation.
+    /// </summary>
+    public class AuthenticationHandler : IAuthenticationHandler
+    {
+        private static IConfiguration _config;
+        private readonly IUserAuthTokenService _userAuthToken;
+        private I{{modulePageName}}Service _logic;
+
+        public AuthenticationHandler(I{{modulePageName}}Service logic, IConfiguration config, IUserAuthTokenService userAuthToken)
+        {
+            _userAuthToken = userAuthToken;
+            _logic = logic;
+            _config = config;          
+        }
+        // public AuthenticationHandler(){}
+        private static SymmetricSecurityKey SecurityKey
+        {
+            get
+            {
+                return new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_config["Jwt:Key"]));
+            }
+        }
+        public static string GenerateJwtToken({{modulePageName}}Model model)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            // var securityKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_config["Jwt:Key"]));
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+////////        #region {{modulePageName}}_string_selected#Template
+////////#property_ClaimField
+#Template           new Claim("{{fieldName}}", !string.IsNullOrEmpty(model.{{fieldName}})?model.{{fieldName}}:""),
+////////#endproperty_ClaimField
+
+////////        #endregion {{modulePageName}}_string_selected#Template
+////////        #region {{modulePageName}}_int_selected_Foreign#Template
+////////#property_ClaimField
+#Template           new Claim("{{fieldName}}", model.{{fieldName}}Id!=null&&model.{{fieldName}}Id.ToString()!=""?model.{{fieldName}}Id.ToString():""),
+////////#endproperty_ClaimField
+////////        #endregion {{modulePageName}}_int_selected_Foreign#Template
+////////        #region {{modulePageName}}_Default_selected#Template
+////////#property_ClaimField
+#Template           new Claim("{{fieldName}}", model.{{fieldName}}!=null&&model.{{fieldName}}.ToString()!=""?model.{{fieldName}}.ToString():""),
+////////#endproperty_ClaimField
+////////        #endregion {{modulePageName}}_Default_selected#Template
+
+////////        #region {{modulePageName}}_allparams#Template
+////////        #endregion {{modulePageName}}_allparams#Template  
+                  
+                }),
+                Expires = DateTime.UtcNow.AddMinutes(int.Parse(_config["Jwt:ExpireInMinutes"])),
+                SigningCredentials = new SigningCredentials(SecurityKey, SecurityAlgorithms.HmacSha256Signature)
+            };
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
+        }
+
+        public static UserAuthTokenModel generateRefreshToken(string ipAddress, int userId)
+        {
+            using (var rngCryptoServiceProvider = new RNGCryptoServiceProvider())
+            {
+                var randomBytes = new byte[64];
+                rngCryptoServiceProvider.GetBytes(randomBytes);
+                return new UserAuthTokenModel
+                {
+                    RefreshToken = Convert.ToBase64String(randomBytes),
+                    UserId = userId,
+                    CreatedDate = DateTime.UtcNow,
+                    IPAddress = ipAddress
+                };
+            }
+        }
+
+        public static void ValidateToken(string token, out SecurityToken securityToken)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            tokenHandler.ValidateToken(token, new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = SecurityKey,
+                ValidateIssuer = false,
+                ValidateAudience = false,
+                ClockSkew = TimeSpan.FromMinutes(5)
+            }, out securityToken);
+        }
+        public Tuple<string, string> CreateToken({{modulePageName}}Model userData, string ipAddress)
+        {
+            var userSession = new UserAuthTokenModel();
+            userSession.UserId = userData.UId;
+            var newJwtToken = AuthenticationHandler.GenerateJwtToken(userData);
+            userSession.IPAddress = ipAddress;
+            var newRefreshToken = AuthenticationHandler.generateRefreshToken(ipAddress, userData.UId);
+            userSession.JWTToken = newJwtToken;
+            userSession.RefreshToken = newRefreshToken.RefreshToken;
+            userSession.CreatedDate = DateTime.UtcNow;
+            userSession.Expiry = DateTime.UtcNow.AddMinutes(int.Parse(_config["Jwt:ExpireInMinutes"]));
+            _userAuthToken.Save(userSession);
+            return new Tuple<string, string>(newJwtToken, newRefreshToken.RefreshToken);
+        }
+        public Tuple<string, string> GenerateNewToken(string refreshToken, string ipaddress, string jwtToken)
+        {
+            if (!string.IsNullOrEmpty(refreshToken))
+            {
+
+                var tokenDetails = _userAuthToken.Get(new UserAuthTokenModel()
+                {
+                    RefreshToken = refreshToken,
+                    IPAddress = ipaddress,
+                    JWTToken = jwtToken
+                });
+
+                if (tokenDetails.Data.Any())
+                {
+                    // var users = new UserModel();
+                    var requestUser = new {{modulePageName}}Model() { UId = (int)tokenDetails.Data.FirstOrDefault().UserId };
+                    var validUsers = _logic.Get(requestUser);
+                    if (validUsers.Data.Any())
+                    {
+                        var tokenHandler = new JwtSecurityTokenHandler();
+                        var previousClaims = tokenHandler.ReadJwtToken(jwtToken);
+                        var deviceId = previousClaims.Claims.Any(x => x.Type == "DeviceId") ? previousClaims.Claims.First(x => x.Type == "DeviceId").Value : "";
+
+                        var userData = validUsers.Data.FirstOrDefault();
+                        // var model = new {{modulePageName}}Model() { };
+                        var user = new {{modulePageName}}Model()
+                        {
+////////        #region {{modulePageName}}_Default_selected2#Template
+#Template                {{fieldName}} = userData.{{fieldName}},
+////////        #endregion {{modulePageName}}_Default_selected2#Template
+
+////////        #region {{modulePageName}}_int_selected_Foreign2#Template
+#Template               {{fieldName}}Id = userData.{{fieldName}}Id,
+////////        #endregion {{modulePageName}}_int_selected_Foreign2#Template
+////////        #region {{modulePageName}}_allparams2#Template
+////////        #endregion {{modulePageName}}_allparams2#Template  
+                        };
+                       
+                      
+                        return CreateToken(user, ipaddress);
+                    }
+                }
+            }
+            return null;
+        }
+        public static {{modulePageName}}Model ParseJwtSecurityToken(JwtSecurityToken jwtToken, string token, string refreshToken)
+        {
+////////        #region {{modulePageName}}_int_selected3#Template
+////////#property_ClaimField
+#Template             var {{fieldName}} = jwtToken.Claims.Any(x => x.Type == "{{fieldName}}" && x.Value != null && x.Value != "") ? int.Parse(jwtToken.Claims.First(x => x.Type ==  "{{fieldName}}").Value):0;
+////////#endproperty_ClaimField
+////////        #endregion {{modulePageName}}_int_selected3#Template
+////////        #region {{modulePageName}}_string_selected3#Template
+////////#property_ClaimField
+#Template             var {{fieldName}} = jwtToken.Claims.Any(x => x.Type == "{{fieldName}}" && x.Value != null && x.Value != "") ? jwtToken.Claims.First(x => x.Type ==  "{{fieldName}}").Value : "";
+////////#endproperty_ClaimField
+////////        #endregion {{modulePageName}}_string_selected3#Template
+////////        #region {{modulePageName}}_DateTime_selected3#Template
+////////#property_ClaimField
+#Template             var {{fieldName}} = jwtToken.Claims.Any(x => x.Type == "{{fieldName}}" && x.Value != null && x.Value != "") ? DateTime.Parse(jwtToken.Claims.First(x => x.Type ==  "{{fieldName}}").Value):(DateTime?)null;
+////////#endproperty_ClaimField
+////////        #endregion {{modulePageName}}_DateTime_selected3#Template
+////////        #region {{modulePageName}}_allparams3#Template
+////////        #endregion {{modulePageName}}_allparams3#Template  
+           
+            var user = new {{modulePageName}}Model()
+            {
+                Token = token,
+                RefreshToken = refreshToken,                
+                ExpiresIn = DateTime.UtcNow.AddMinutes(int.Parse(_config["Jwt:ExpireInMinutes"])).ToString(),
+////////        #region {{modulePageName}}_Default_selected4#Template
+////////#property_ClaimField
+#Template                {{fieldName}} = {{fieldName}},
+////////#endproperty_ClaimField
+////////        #endregion {{modulePageName}}_Default_selected4#Template
+////////        #region {{modulePageName}}_int_selected_Foreign4#Template
+////////#property_ClaimField
+#Template               {{fieldName}}Id = {{fieldName}},
+////////#endproperty_ClaimField
+////////        #endregion {{modulePageName}}_int_selected_Foreign4#Template
+////////        #region {{modulePageName}}_allparams4#Template
+////////        #endregion {{modulePageName}}_allparams4#Template  
+            };
+            return user;
+        }
+        public {{modulePageName}}Model CreateNewSession({{modulePageName}}Model userData, string ipaddress)
+        {
+            var newTokens = CreateToken(userData, ipaddress);
+            var token = newTokens.Item1;
+            var refreshToken = newTokens.Item2;
+            ValidateToken(token, out SecurityToken validatedToken);
+
+            var jwtToken = (JwtSecurityToken)validatedToken;
+
+            var user = ParseJwtSecurityToken(jwtToken, token, refreshToken);
+            return user;
+        }
+        public {{modulePageName}}Model ParseUserData(string token, string refreshToken, string ipaddress)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            SecurityToken validatedToken = null;
+
+            try
+            {
+                ValidateToken(token, out validatedToken);
+            }
+            catch (SecurityTokenException ex)
+            {
+                if (!string.IsNullOrEmpty(refreshToken))
+                {
+                    var newTokens = GenerateNewToken(refreshToken, ipaddress, token);
+                    if (newTokens != null)
+                    {
+                        token = newTokens.Item1;
+                        refreshToken = newTokens.Item2;
+                        ValidateToken(token, out validatedToken);
+                    }
+                    else
+                        return null;
+                }
+                else
+                    return null;
+            }
+            catch (Exception e)
+            {
+                //something went wrong
+                return null;
+            }
+            if (validatedToken != null)
+            {
+                var jwtToken = (JwtSecurityToken)validatedToken;
+
+                if (jwtToken != null)
+                {
+                    var user = ParseJwtSecurityToken(jwtToken, token, refreshToken);
+                    return user;
+                }
+            }
+            return null;
+        }
+     
+    }
+}
+////////#endmodule_AuthController

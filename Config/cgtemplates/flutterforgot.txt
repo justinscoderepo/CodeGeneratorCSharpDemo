@@ -1,0 +1,90 @@
+import 'package:{{configProjectName}}/utilities/elementmanager.dart';
+import 'package:{{configProjectName}}/elements/BoxManager.dart';
+import 'package:{{configProjectName}}/elements/BoxProperties.dart';
+import 'package:flutter/material.dart';
+import 'package:{{configProjectName}}/models/{{parentDirectoryLower}}/{{modelNameLower}}.dart';
+#region importElement1#Template
+#Templateimport 'package:{{configProjectName}}/elements/{{importElement}}.dart';
+#endregion importElement1#Template
+#region allparamsimportElement1#Template
+#endregion allparamsimportElement1#Template
+// ignore: must_be_immutable
+class {{moduleName}}View extends ElementManager {
+      
+  @override
+  _{{moduleName}}ChildView createState() {
+    return _{{moduleName}}ChildView();
+  }
+}
+
+class _{{moduleName}}ChildView extends  State<{{moduleName}}View>  {
+  _{{moduleName}}ChildView({Key key});
+    Map<String,InputProperties> state = {
+#region statevalue1#Template
+#Template              "{{statevalue}}": new InputProperties([]),
+#endregion statevalue1#Template
+#region allparamsstatevalue1#Template
+#endregion allparamsstatevalue1#Template
+    };
+    Set<String> dataTargets = {
+#region datatarget1#Template
+#Template              "{{datatarget}}",
+#endregion datatarget1#Template
+#region allparamsdatatarget1#Template
+#endregion allparamsdatatarget1#Template
+    };
+    Set<String> requiredFilters = {
+#region requiredFilter1#Template
+#Template              "{{requiredFilter}}",
+#endregion requiredFilter1#Template
+#region allparamsrequiredFilter1#Template
+#endregion allparamsrequiredFilter1#Template
+    };
+    Set<String> filters = {
+#region filter1#Template
+#Template              "{{filter}}",
+#endregion filter1#Template
+#region allparamsfilter1#Template
+#endregion allparamsfilter1#Template
+    };
+
+    Set<String> initializers = {
+#region initializer1#Template
+#Template              "{{initializer}}",
+#endregion initializer1#Template
+#region allparamsinitializer1#Template
+#endregion allparamsinitializer1#Template
+    };
+
+
+
+    Map<String, FormProperties> formState = new Map<String, FormProperties>();
+    @override
+    Widget build(BuildContext context) {
+      Map<String, String> routeParams = ModalRoute.of(context).settings.arguments;
+      if (routeParams == null) {
+        routeParams = new Map<String, String>();
+      }
+      var formController = new FormController();
+      formController.context = context;
+      formState["form"] = new FormProperties(state,service:widget.service,controller:formController,modelProperties:{{modelNameFirstCharLower}});
+      return Container(
+        padding: EdgeInsets.only(
+          top: 30,
+          bottom: 40,
+        ),
+        child: BoxManager(
+          widgetInstance:widget,
+          dataTargets:dataTargets,
+          initializers:initializers,
+          filters:filters,
+          requiredFilters:requiredFilters,
+          state:state,
+          formState:formState,
+          children: <Widget>[
+            {{moduleBody}}
+          ],////Column Widgets Ends
+        ),////Column Ends
+    );////Container Ends
+  }
+}

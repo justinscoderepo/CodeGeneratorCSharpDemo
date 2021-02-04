@@ -1,0 +1,4 @@
+////////#module_AuthLogin
+import 'package:example/utilities/elementmanager.dart';
+class LoginService extends ServiceManager {}
+////////#endmodule_AuthLogin

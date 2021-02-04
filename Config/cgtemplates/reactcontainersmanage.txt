@@ -1,0 +1,554 @@
+#module_ContainersManage
+/* eslint-disable react/destructuring-assignment */
+import React from "react";
+import { Row, Col, Button, Container, Form } from "react-bootstrap";
+import FormInput from "../../../SharedComponents/FormHelpers/Controls/FormInput";
+import SubmitForm from "../../../SharedComponents/FormHelpers/Form/SubmitForm";
+import FormComponent from "../../../SharedComponents/FormHelpers/Form/FormComponent";
+import { get, post, put } from "../../../Libraries/Ajax/HttpService";
+import DragAndDrop from "../../../SharedComponents/FormHelpers/Controls/DragAndDrop";
+import Loader from "../../../SharedComponents/Loader";
+import PublishButton from "../../../SharedComponents/FormHelpers/Controls/PublishButton";
+import TextEditorInput from "../../../SharedComponents/FormHelpers/Controls/TextEditorInput";
+import DropDown from "../../../SharedComponents/FormHelpers/Controls/DropDown";
+import OptionGroup from "../../../SharedComponents/FormHelpers/Controls/OptionGroup";
+import CustomDateRangePicker from "../../../SharedComponents/FormHelpers/Controls/CustomDateRangePicker";
+import CustomDatePicker from "../../../SharedComponents/FormHelpers/Controls/CustomDatePicker";
+import { CancelComponent, BackButtonComponent } from "../../../SharedComponents/ListComponents/Components";
+import SearchableDropdown from "../../../SharedComponents/FormHelpers/Controls/SearchableDropdown";
+
+class Manage{{modulePageNamePlural}}Container extends FormComponent {
+  constructor(props) {
+    super(props);
+    this.setProperties = this.setProperties.bind(this);
+    this.setFormProperties = this.setFormProperties.bind(this);
+    this.state = {
+    isSubmitted: true,
+    singleRow : {},
+////////        #region {{modulePageName}}_int_Primary#Template
+#Template {{fieldLabelFirstCharLower}}: {
+#Template      label: "{{fieldLabelAsWord}}",
+#Template      type: "hidden"
+ #Template   },
+////////        #endregion {{modulePageName}}_int_Primary#Template
+////////        #region {{modulePageName}}_string_selected_base#Template
+
+#Template {{fieldLabelFirstCharLower}}: {
+#Template      label: "{{fieldLabelAsWord}}",
+#Template      type: "text",
+#Template      placeholder: "Enter {{fieldLabelAsWordLower}}",
+#Template      rules: { 
+#property_RequiredField  
+#Template   required: true
+#endproperty_RequiredField
+  #Template },
+  #property_ReadOnly
+#Template       isReadOnly:true,
+#endproperty_ReadOnly
+ #Template   },
+
+
+////////        #endregion {{modulePageName}}_string_selected_base#Template
+////////        #region {{modulePageName}}_string_ApplicationId_selected_base#Template
+#module_ContentRenderApi
+#Template applicationId: {
+#Template        label: "ID",
+#Template        name:"applicationID",
+#Template        type: "text",
+#Template        placeholder: "application id",
+ #Template     },
+#endmodule_ContentRenderApi
+////////        #endregion {{modulePageName}}_string_ApplicationId_selected_base#Template
+////////        #region {{modulePageName}}_bool_selected_base#Template
+
+#Template {{fieldLabelFirstCharLower}}: {
+#Template      label: "{{fieldLabelAsWord}}",
+ #Template     type: "checkbox",
+#Template      placeholder: "Enter {{fieldLabelAsWordLower}}",
+
+ #Template     rules: {  },
+ #Template   },
+
+////////        #endregion {{modulePageName}}_bool_selected_base#Template
+////////        #region {{modulePageName}}_int_selected_base#Template
+
+#Template {{fieldLabelFirstCharLower}}: {
+#Template      label: "{{fieldLabelAsWord}}",
+ #Template     type: "text",
+#Template      placeholder: "Enter {{fieldLabelAsWordLower}}",
+#Template      rules: { 
+ #property_RequiredField  
+#Template   required: true
+#endproperty_RequiredField
+  #Template  },
+ #Template   },
+
+////////        #endregion {{modulePageName}}_int_selected_base#Template
+////////        #region {{modulePageName}}_int_selected_Foreign#Template
+
+#Template {{fieldLabelFirstCharLower}}Id: {
+#Template      label: "{{fieldLabelAsWord}}",
+#Template      renderapi: "{{fieldLabelAsWordHyphenizeLower}}",
+#Template      placeholder: "Enter {{fieldLabelAsWordLower}}",
+#Template      className: "mb-0",
+#Template      controlId: "exampleForm.ControlSelect1",
+#Template      name: "{{fieldLabelFirstCharLower}}Id",
+#property_SetDefaultValue
+#Template      value: 1,                
+#endproperty_SetDefaultValue
+#Template      optionvalue: "id",
+#Template      optiontext: "title",
+#Template      rules: { 
+#property_RequiredField  
+#Template   required: true
+#endproperty_RequiredField
+#Template },
+ #property_DisablePlaceholder 
+#Template   disableplaceholder: true
+#endproperty_DisablePlaceholder 
+#Template   },
+
+////////        #endregion {{modulePageName}}_int_selected_Foreign#Template
+
+////////        #region {{modulePageName}}_DateTime_selected_base#Template
+
+#Template {{fieldLabelFirstCharLower}}: {
+#Template      label: "{{fieldLabelAsWord}}",
+ #Template     type: "date",
+#Template      placeholder: "Enter {{fieldLabelAsWordLower}}",
+ #Template     rules: {
+#property_RequiredField  
+#Template  required: true
+#endproperty_RequiredField
+  #Template },
+    #property_ReadOnly
+#Template       isReadOnly:true,
+#endproperty_ReadOnly
+ #Template   },
+
+////////        #endregion {{modulePageName}}_DateTime_selected_base#Template
+////////        #region {{modulePageName}}_int_selected_ReverseForeign#Template
+
+#Template {{currentTablePublicNameFirstCharLower}}{{fieldLabel}}Id: {
+#Template      name: "{{currentTablePublicNameFirstCharLower}}{{fieldLabel}}Id",
+#Template      subList: "{{currentTablePublicNameFirstCharLower}}",
+#Template      label: "{{fieldLabelAsWord}}",
+#Template      renderapi: "{{foreignLocalNameAsWordHyphenizeLower}}",
+#Template      className: "mb-0",
+#Template      controlId: "exampleForm.ControlSelect1",
+#Template      placeholder: "Select {{fieldLabelAsWordLower}}",
+#Template      optionvalue: "id",
+#Template      optiontext: "title",
+#Template      as: "select",
+#property_SetDefaultValue
+#Template               value: 1,                
+#endproperty_SetDefaultValue
+#Template      rules: {
+#property_RequiredField
+#Template  required: true
+#endproperty_RequiredField 
+ #Template },
+ #property_DisablePlaceholder 
+#Template   disableplaceholder: true
+#endproperty_DisablePlaceholder
+#Template   },
+
+#property_StaffSearch
+#Template  {{currentTablePublicNameFirstCharLower}}List: {
+#Template        label: "Users",
+#Template        rules: {},
+#Template        name: "{{currentTablePublicNameFirstCharLower}}List",
+#Template        renderapi: "employee-details",
+#Template        dbField: "staffId",
+#Template        fieldValue: "id",
+#Template        fieldLabel: "userName",
+#Template        isCollection: true,
+#Template   },
+#endproperty_StaffSearch
+
+////////        #endregion {{modulePageName}}_int_selected_ReverseForeign#Template
+////////        #region {{modulePageName}}_string_selected_Reverse#Template
+
+#Template {{currentTablePublicNameFirstCharLower}}{{fieldLabel}}: {
+#Template      name: "{{currentTablePublicNameFirstCharLower}}{{fieldLabel}}",
+#Template      subList: "{{currentTablePublicNameFirstCharLower}}",
+#Template      label: "{{fieldLabelAsWord}}",
+ #Template     type: "text",
+#Template      placeholder: "Enter {{fieldLabelAsWordLower}}",
+ #Template     rules: { 
+  #property_RequiredField  
+ #Template  required: true
+#endproperty_RequiredField
+  #Template },
+ #Template   },
+ #property_AttachmentControl
+#Template  {{currentTablePublicNameFirstCharLower}}List: {
+#Template        label: "Attachments",
+#Template        rules: {},
+#Template        name: "{{currentTablePublicNameFirstCharLower}}List",
+#Template        attachmentValue: "id",
+#Template        attachmentName: "{{fieldLabelFirstCharLower}}",
+#Template        fileUploadUrl: "content-document-url"
+#Template   },
+#endproperty_AttachmentControl
+
+
+////////        #endregion {{modulePageName}}_string_selected_Reverse#Template
+////////        #region {{modulePageName}}_bool_selected_Reverse#Template
+
+#Template {{currentTablePublicNameFirstCharLower}}{{fieldLabel}}: {
+#Template      name: "{{currentTablePublicNameFirstCharLower}}{{fieldLabel}}",
+#Template      subList: "{{currentTablePublicNameFirstCharLower}}",
+#Template      label: "{{fieldLabelAsWord}}",
+ #Template     type: "checkbox",
+#Template      placeholder: "Enter {{fieldLabelAsWordLower}}",
+ #Template     rules: { },
+ #Template   },
+
+////////        #endregion {{modulePageName}}_bool_selected_Reverse#Template
+
+////////        #region {{modulePageName}}_int_selected_Reverse#Template
+
+#Template {{currentTablePublicNameFirstCharLower}}{{fieldLabel}}: {
+#Template      name: "{{currentTablePublicNameFirstCharLower}}{{fieldLabel}}",
+#Template      subList: "{{currentTablePublicNameFirstCharLower}}",
+#Template      label: "{{fieldLabelAsWord}}",
+ #Template     type: "text",
+#Template      placeholder: "Enter {{fieldLabelAsWordLower}}",
+ #Template     rules: {
+#property_RequiredField  
+#Template   required: true
+#endproperty_RequiredField
+  #Template  },
+ #Template   },
+
+////////        #endregion {{modulePageName}}_int_selected_Reverse#Template
+////////        #region {{modulePageName}}_int_selected_Foreign_Reverse#Template
+
+#Template {{currentTablePublicNameFirstCharLower}}{{fieldLabel}}Id: {
+#Template      name: "{{currentTablePublicNameFirstCharLower}}{{fieldLabel}}",
+#Template      subList: "{{currentTablePublicNameFirstCharLower}}",
+#Template      label: "{{fieldLabelAsWord}}",
+#Template      as: "select",
+#Template      className: "mb-0",
+#Template      controlId: "exampleForm.ControlSelect1",
+#Template      placeholder: "Enter {{fieldLabelAsWordLower}}",
+#Template      name: "{{fieldLabelFirstCharLower}}Id",
+#Template      optionvalue: "id",
+#Template      optiontext: "title",
+#Template      rules: {
+#property_RequiredField  
+#Template   required: true
+#endproperty_RequiredField
+ #Template   },
+#Template   },
+
+////////        #endregion {{modulePageName}}_int_selected_Foreign_Reverse#Template
+////////        #region {{modulePageName}}_DateTime_selected_Reverse#Template
+
+#Template {{currentTablePublicNameFirstCharLower}}{{fieldLabel}}: {
+#Template      name: "{{currentTablePublicNameFirstCharLower}}{{fieldLabel}}",
+#Template      subList: "{{currentTablePublicNameFirstCharLower}}",
+#Template      label: "{{fieldLabelAsWord}}",
+ #Template     type: "date",
+#Template      placeholder: "Enter {{fieldLabelAsWordLower}}",
+ #Template     rules: {
+ #property_RequiredField  
+ #Template   required: true
+#endproperty_RequiredField
+ #Template },
+ #Template   },
+
+////////        #endregion {{modulePageName}}_DateTime_selected_Reverse#Template
+////////        #region {{modulePageName}}_allparams#Template
+////////        #endregion {{modulePageName}}_allparams#Template
+////region CustomCodeBlockStateValues#
+////endregion CustomCodeBlockStateValues#
+  };
+  ////region CustomCodeBlockConstructor#
+////endregion CustomCodeBlockConstructor#
+  }
+  componentDidMount(){
+    if (this.props.match.params.{{modulePrimaryLabelFirstCharLower}}) {
+      this.setState({editFlag : true});
+#module_DefaultRenderApi
+      get("{{modulePageNameAsWordHyphenizeLower}}/" + this.props.match.params.{{modulePrimaryLabelFirstCharLower}}).then((response) => {
+        this.setState({  singleRow : response.data.data});
+    } );
+#endmodule_DefaultRenderApi
+#module_ContentRenderApi
+      get("content/" + this.props.match.params.{{modulePrimaryLabelFirstCharLower}}).then((response) => {
+        this.setState({  singleRow : response.data.data});
+    } );
+#endmodule_ContentRenderApi
+    }
+////region CustomCodeBlockDidMount#
+////endregion CustomCodeBlockDidMount#
+  }
+  componentDidUpdate() {
+    if (this.state.singleRow) {
+      this.mapJsonToState(this.state.singleRow);
+    }
+////region CustomCodeBlockDidUpdate#
+////endregion CustomCodeBlockDidUpdate#
+  }
+   ////region CustomCodeBlockMethods#
+////endregion CustomCodeBlockMethods#
+  onSaveButtonClick = (model) => {
+    const { history } = this.props;
+    this.setState({ isLoaderActive: true });
+#module_ContentRenderApi
+      model["TypeTitle"] = "{{modulePageName}}";
+       this.setState({ isLoaderActive: true });
+      if (this.props.match.params.{{modulePrimaryLabelFirstCharLower}}) {
+      put("content", model).then((response => {
+        this.setState({ isLoaderActive: false });
+        history.push("/admin/{{modulePageNameAsWordHyphenizeLower}}/list");
+      }));
+    }
+    else {
+      post("content", model).then((response => {
+        this.setState({ isLoaderActive: false });
+        history.push("/admin/{{modulePageNameAsWordHyphenizeLower}}/list");
+      }));
+    }
+#endmodule_ContentRenderApi
+
+#module_DefaultRenderApi
+    if (this.props.match.params.{{modulePrimaryLabelFirstCharLower}}) {
+
+      put("master-{{modulePageNameAsWordHyphenizeLower}}", model).then((response => {
+        this.setState({ isLoaderActive: false });
+        history.push("/admin/{{modulePageNameAsWordHyphenizeLower}}/list");
+      }));
+    }
+    else {
+      post("master-{{modulePageNameAsWordHyphenizeLower}}", model).then((response => {
+        this.setState({ isLoaderActive: false });
+        history.push("/admin/{{modulePageNameAsWordHyphenizeLower}}/list");
+      }));
+    }
+#endmodule_DefaultRenderApi
+
+  };
+ render() {
+    const { editFlag, isLoaderActive } = this.state;
+#module_ContentRenderApi
+  
+#endmodule_ContentRenderApi
+////region CustomCodeBlockRender#
+////endregion CustomCodeBlockRender#
+    return (
+      <>
+      {isLoaderActive === true ? <Loader /> : ""}
+       <SubmitForm
+          onSubmit={this.onSaveButtonClick}
+          {...this.setFormProperties({ disableReactiveForm: true })}
+        >
+      <div className="app-l-heading-block">
+          <div className="app-l-left-block">
+            <h1>
+              <BackButtonComponent history = {this.props.history}/>
+#module_ContentRenderApi
+               {editFlag && (
+              <>ID: {this.state.applicationId.value}</>)}
+#endmodule_ContentRenderApi
+              {!editFlag && (
+                <>Add {{modulePageName}}</>)}
+            </h1>
+            <div className="app-c-breadcrumb app-c-page__breadcrumb">
+              <span className="app-c-breadcrumb__prev">
+                <a href="/admin/dashboard"> Home </a>
+              </span>
+              <span className="app-c-breadcrumb__prev">
+                <a href="/admin/{{modulePageNameAsWordHyphenizeLower}}/list"> {{modulePageName}}</a>
+              </span>
+#module_ContentRenderApi
+              <span className="app-c-breadcrumb__active">
+                <div>
+                    {editFlag && <>ID: {this.state.applicationId.value}</>}
+                    {!editFlag && <>New</>}
+                  </div>
+              </span>
+#endmodule_ContentRenderApi
+            </div>
+          </div>
+          <div>
+            <CancelComponent history = {this.props.history}/>
+            <Button className="btn-secondary" variant="primary" type="submit">
+              <i className="icon-save"> </i> <span> Save </span>
+            </Button>
+#module_ContentRenderApi
+   <PublishButton  approval={this.setProperties(
+        this.state.contentApprovalApprovalStatusId
+        )}  status={this.setProperties(
+        this.state.contentTrackContentStatusId
+   )}/>
+#endmodule_ContentRenderApi
+          </div>
+        </div>
+        <Container fluid className="px-0">
+          <div className="card">
+           #region {{modulePageName}}_int_Primary2#Template
+           #endregion {{modulePageName}}_int_Primary2#Template
+          ////////        #region {{modulePageName}}_Default_selected_base2#Template
+#property_ClearFix
+#Template <Row></Row>
+#endproperty_ClearFix
+
+#property_GridRowStart          
+#Template           <Row>
+#endproperty_GridRowStart
+#property_GridFourCol
+#Template <Col xs={12} md={6} lg={4} xl={3}>
+#endproperty_GridFourCol
+#property_GridSixCol
+#Template <Col xs={12} md={6} lg={3} xl={2}>
+#endproperty_GridSixCol
+#property_GridHalfCol
+#Template <Col xs={12} md={6}>
+#endproperty_GridHalfCol
+#property_GridFullCol
+#Template <Col xl={12}>
+#endproperty_GridFullCol
+#Template      
+#property_ReadOnly
+#Template          <FormInput {...this.setProperties(this.state.{{fieldLabelFirstCharLower}})} disabled={true}/>
+#endproperty_ReadOnly
+////////#property_TinyMCETextArea
+#Template          <TextEditorInput {...this.setProperties(this.state.{{fieldLabelFirstCharLower}})}/>
+////////#endproperty_TinyMCETextArea
+////////#property_Textbox
+#Template          <FormInput {...this.setProperties(this.state.{{fieldLabelFirstCharLower}})} />
+////////#endproperty_Textbox
+////////#property_DateRangePicker
+#Template          /// Not implemented
+////////#endproperty_DateRangePicker
+////////#property_DatePicker
+#Template          <CustomDatePicker {...this.setProperties(this.state.{{fieldLabelFirstCharLower}})} />
+////////#endproperty_DatePicker
+////////#property_DropDown
+#Template          <DropDown  {...this.setProperties(this.state.{{fieldLabelFirstCharLower}}Id)} />
+////////#endproperty_DropDown
+////////#property_CheckBox
+#Template          <CheckBox {...this.setProperties(this.state.{{fieldLabelFirstCharLower}})} />
+////////#endproperty_CheckBox
+#property_GridColEnd
+#Template </Col>
+#endproperty_GridColEnd
+
+#property_GridRowEnd         
+#Template           </Row>
+#endproperty_GridRowEnd
+
+
+////////        #endregion {{modulePageName}}_Default_selected_base2#Template
+////////        #region {{modulePageName}}_DeliverTo_selected_ReverseForeign2#Template
+////////        #endregion {{modulePageName}}_DeliverTo_selected_ReverseForeign2#Template
+
+////////        #region {{modulePageName}}_Default_selected_Reverse2#Template
+#property_ClearFix
+#Template <Row></Row>
+#endproperty_ClearFix
+#property_GridRowStart          
+#Template           <Row>
+#endproperty_GridRowStart
+#property_GridFourCol
+#Template <Col xs={12} md={6} lg={4} xl={3}>
+#endproperty_GridFourCol
+#property_GridSixCol
+#Template <Col xs={12} md={6} lg={3} xl={2}>
+#endproperty_GridSixCol
+#property_GridHalfCol
+#Template <Col xs={12} md={6}>
+#endproperty_GridHalfCol
+#property_GridFullCol
+#Template <Col xl={12}>
+#endproperty_GridFullCol
+#Template      
+#property_ReadOnly
+                  #Template          <FormInput {...this.setProperties(this.state.{{currentTablePublicNameFirstCharLower}}{{fieldLabel}})} disabled={true}/>
+#endproperty_ReadOnly
+////////#property_TinyMCETextArea
+#Template           <TextEditorInput {...this.setProperties(this.state.{{currentTablePublicNameFirstCharLower}}{{fieldLabel}})} enableTinyMCE ={true} />
+////////#endproperty_TinyMCETextArea
+////////#property_AttachmentControl
+#Template                  <DragAndDrop validExtensions={this.validExtensions}
+#Template                    {...this.setProperties(this.state.{{currentTablePublicNameFirstCharLower}}List)}
+#Template                  />
+////////#endproperty_AttachmentControl
+////////#property_Textbox
+#Template          <FormInput {...this.setProperties(this.state.{{currentTablePublicNameFirstCharLower}}{{fieldLabel}})} />
+////////#endproperty_Textbox
+////////#property_DateRangePicker
+#Template          <CustomDateRangePicker startDate = {this.setProperties(this.state.{{currentTablePublicNameFirstCharLower}}StartDate)} endDate = {this.setProperties(this.state.{{currentTablePublicNameFirstCharLower}}EndDate)}/>
+////////#endproperty_DateRangePicker
+////////#property_DatePicker
+#Template          <CustomDatePicker {...this.setProperties(this.state.{{currentTablePublicNameFirstCharLower}}{{fieldLabel}})}  />
+////////#endproperty_DatePicker
+////////#property_DropDown
+#Template          <DropDown {...this.setProperties(this.state.{{currentTablePublicNameFirstCharLower}}{{fieldLabel}}Id)} />
+////////#endproperty_DropDown
+////////#property_OptionGroup
+#Template          <OptionGroup {...this.setProperties(this.state.{{currentTablePublicNameFirstCharLower}}{{fieldLabel}}Id)} />
+////////#endproperty_OptionGroup
+////////#property_SearchableDropdown
+#Template          <SearchableDropdown {...this.setProperties(this.state.{{currentTablePublicNameFirstCharLower}}{{fieldLabel}}Id)} />
+////////#endproperty_SearchableDropdown
+////////#property_StaffSearch
+#Template          <SearchableDropdown {...this.setProperties(this.state.{{currentTablePublicNameFirstCharLower}}List)} />
+////////#endproperty_StaffSearch
+////////#property_CheckBox
+#Template          <CheckBox {...this.setProperties(this.state.{{currentTablePublicNameFirstCharLower}}{{fieldLabel}})} />
+////////#endproperty_CheckBox
+#property_GridColEnd
+#Template </Col>
+#endproperty_GridColEnd
+
+
+#property_GridRowEnd        
+#Template           </Row>
+#endproperty_GridRowEnd
+
+
+////////        #endregion {{modulePageName}}_Default_selected_Reverse2#Template
+<Row>
+
+ {editFlag && (
+   <>
+{/*EditOnly*/}
+////////        #region {{modulePageName}}_allparams2#Template#hook_EditOnlySection
+////////        #endregion {{modulePageName}}_allparams2#Template#hook_EditOnlySection
+</>
+ )}
+
+////////        #region {{modulePageName}}_allparams2#Template#hook_WithEditOnlySection
+////////        #endregion {{modulePageName}}_allparams2#Template#hook_WithEditOnlySection
+ </Row>
+
+{/*Section1*/}
+////////        #region {{modulePageName}}_allparams2#Template#hook_Section1
+////////        #endregion {{modulePageName}}_allparams2#Template#hook_Section1
+{/*Section2*/}
+////////        #region {{modulePageName}}_allparams2#Template#hook_Section2
+////////        #endregion {{modulePageName}}_allparams2#Template#hook_Section2
+{/*Section3*/}
+////////        #region {{modulePageName}}_allparams2#Template#hook_Section3
+////////        #endregion {{modulePageName}}_allparams2#Template#hook_Section3
+{/*Section4*/}
+////////        #region {{modulePageName}}_allparams2#Template#hook_Section4
+////////        #endregion {{modulePageName}}_allparams2#Template#hook_Section4
+{/*Section5*/}
+////////        #region {{modulePageName}}_allparams2#Template#hook_Section5
+////////        #endregion {{modulePageName}}_allparams2#Template#hook_Section5
+      
+      </div>
+      </Container>
+       </SubmitForm>
+       </>
+    );
+  }
+}
+
+export default Manage{{modulePageNamePlural}}Container;
+////////  #endmodule_ContainersManage

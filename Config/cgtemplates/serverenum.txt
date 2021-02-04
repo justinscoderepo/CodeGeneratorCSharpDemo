@@ -1,0 +1,26 @@
+////////#module_EnumBuilder
+////////// --------------------------------------------------------------------------------------------------------------------
+////////// <copyright file="{{modulePageName}}.cs" company="{{configProjectName}}">
+//////////   The {{modulePageNameAsWordLower}} Enums
+////////// </copyright>
+////////// <summary>
+//////////   The {{modulePageNameAsWordLower}} Enums.
+////////// </summary>
+////////// --------------------------------------------------------------------------------------------------------------------
+
+using System.ComponentModel;
+namespace {{configProjectName}}.Models.Enums
+{
+    public enum {{moduleLocalName}}Enum
+    {
+////////#modelBuilder_EnumCollection
+////////        #region {{modulePageName}}_string_base#Template
+////////#Template         [Description("{{record_{{fieldServerName}}}}")]
+////////#Template         {{record_{{fieldServerName}}UnderScore}} = {{record_{{currentPrimaryServerName}}}},
+////////        #endregion {{modulePageName}}_string_base#Template
+////////        #region {{modulePageName}}_allparams#Template
+////////        #endregion {{modulePageName}}_allparams#Template
+////////#endmodelBuilder_EnumCollection
+    }
+}
+////////#endmodule_EnumBuilder

@@ -1,0 +1,122 @@
+import 'package:example/utilities/elementmanager.dart';
+// import 'package:example/views/public/forgotpassword.dart';
+import 'package:example/views/layout_template/layout_template.dart';
+// import 'package:example/views/setup/events.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:example/views/about/about_view.dart';
+import 'package:example/views/home/home_view.dart';
+
+//// region ModuleListAuthRegister#
+#Templateimport 'package:example/views/{{subModulePageNameLabelShortLower}}/register.dart';
+//// endregion ModuleListAuthRegister#
+//// region ModuleListAuthLogin#
+#Templateimport 'package:example/views/{{subModulePageNameLabelShortLower}}/login.dart';
+//// endregion ModuleListAuthLogin#
+//// region ModuleListCardListing#
+#Templateimport 'package:example/views/{{subModulePageNameLabelShortLower}}/{{subModulePageNameUnderScoreLower}}_cards.dart';
+//// endregion ModuleListCardListing#
+
+//// region ModuleListManageForm#
+#Templateimport 'package:example/views/{{subModulePageNameLabelShortLower}}/{{subModulePageNameUnderScoreLower}}_form.dart';
+//// endregion ModuleListManageForm#
+
+
+
+class RouteProperty {
+  RouteProperty(this.icon, this.label, this.fView, this.name, {this.service});
+  final IconData icon;
+  final String label;
+  final String name;
+  final StatefulWidget fView;
+  final ServiceManager service;
+}
+
+final Map<String, Set<RouteProperty>> sideRoutes = {
+  "Guest": {
+    new RouteProperty(Icons.home, "Home", HomeView(), "home"),
+    new RouteProperty(Icons.description, "About", AboutView(), "about"),
+//// region ModuleListAuthLogin#2
+#Template    new RouteProperty(Icons.account_box, "Login", LoginView(), "{{subModulePageNameLabelShortLower}}/login"),
+//// endregion ModuleListAuthLogin#2
+  },
+  "User": {
+    new RouteProperty(Icons.home, "Home", HomeView(), "home"),   
+//// region ModuleListCardListing#2
+#Template    new RouteProperty(Icons.double_arrow, "{{subModulePageNameAsWord}}", {{subModulePageName}}View(), "{{subModulePageNameLabelShortLower}}/{{subModulePageNameUnderScoreLower}}"),
+//// endregion ModuleListCardListing#2
+  }
+};
+
+final Map<String, Set<RouteProperty>> footerRoutes = {
+  "Guest": {
+    new RouteProperty(Icons.home, "Home", HomeView(), "home"),
+//// region ModuleListAuthLogin#3
+#Template    new RouteProperty(Icons.account_box, "Login", LoginView(), "{{subModulePageNameLabelShortLower}}/login"),
+//// endregion ModuleListAuthLogin#3
+  },
+  "User": {
+    new RouteProperty(Icons.home, "Home", HomeView(), "home"),
+    new RouteProperty(Icons.event, "Events", EventsView(), "events/events"),
+    /// new RouteProperty(Icons.dvr, "Results", ResultsView(), "results")
+  }
+};
+
+final Set<RouteProperty> hiddenRoutes = {
+  new RouteProperty(Icons.home, "", HomeView(), "home"),
+  new RouteProperty(Icons.home, "/", HomeView(), "home"),
+//// region ModuleListAuthRegister#3
+#Template    new RouteProperty(Icons.account_box, "Register", RegisterView(), "{{subModulePageNameLabelShortLower}}/register"),
+//// endregion ModuleListAuthRegister#3
+//// region ModuleListManageForm#3
+#Template    new RouteProperty(Icons.double_arrow, "{{subModulePageNameAsWord}}", {{subModulePageName}}Form(), "{{subModulePageNameLabelShortLower}}/{{subModulePageNameUnderScoreLower}}"),
+//// endregion ModuleListManageForm#3
+
+  // new RouteProperty(Icons.account_box, "forgotpassword", ForgotPasswordView(),
+  //     "public/forgotpassword"),
+};
+
+Map<String, Route> getAllRoutes(RouteSettings settings,dynamic arguments) {
+  var routes = new Map<String, Route>();
+  sideRoutes.forEach((key, sideRoutesPerRole) {
+    for (var route in sideRoutesPerRole) {
+      if (route.fView != null) {
+        routes[route.name] = new MaterialPageRoute(
+            settings: settings,
+            builder: (BuildContext context) {
+              return LayoutTemplate(
+                  view: route.fView,
+                  service: route.service,
+                  arguments: arguments);
+            });
+      }
+    }
+  });
+  footerRoutes.forEach((key, footerRoutesPerRole) {
+    for (var route in footerRoutesPerRole) {
+      if (route.fView != null) {
+        routes[route.name] = new MaterialPageRoute(
+            settings: settings,
+            builder: (BuildContext context) {
+              return LayoutTemplate(
+                  view: route.fView,
+                  service: route.service,
+                  arguments: arguments);
+            });
+      }
+    }
+  });
+  for (var route in hiddenRoutes) {
+    if (route.fView != null) {
+      routes[route.name] = new MaterialPageRoute(
+            settings: settings,
+            builder: (BuildContext context) {
+              return LayoutTemplate(
+                  view: route.fView,
+                  service: route.service,
+                  arguments: arguments);
+            });
+    }
+  }
+  return routes;
+}

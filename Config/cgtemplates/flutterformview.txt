@@ -1,0 +1,141 @@
+////////#module_ManageForm
+import 'package:provider/provider.dart';
+import 'package:example/state/user_session.dart';
+import 'package:example/utilities/elementmanager.dart';
+import 'package:flutter/material.dart';
+import 'package:example/elements/PageTitle.dart';
+import 'package:example/elements/FullColumn.dart';
+import 'package:example/elements/Location.dart';
+import 'package:example/elements/Box.dart';
+import 'package:example/elements/FormControl.dart';
+import 'package:example/elements/ListBinder.dart';
+import 'package:example/elements/UIButton.dart';
+import 'package:example/elements/Link.dart';
+import 'package:example/elements/ListHeading.dart';
+import 'package:example/elements/ListDescription.dart';
+import 'package:example/elements/ListRow.dart';
+import 'package:example/elements/InfoText.dart';
+import 'package:example/elements/SubmitForm.dart';
+
+// ignore: must_be_immutable
+class {{modulePageName}}Form extends ElementManager {
+  @override
+  _{{modulePageName}}ChildForm createState() {
+    return _{{modulePageName}}ChildForm();
+  }
+}
+
+class _{{modulePageName}}ChildForm extends State<{{modulePageName}}Form> {
+  _{{modulePageName}}ChildForm({Key key});
+  Map<String, InputProperties> state = {
+////////        #region {{modulePageName}}_Default_selected#Template
+#Template           "{{fieldName}}": 
+#Template               new InputProperties([
+////////#property_Required
+#Template                   "required"
+////////#endproperty_Required
+#Template                ]),
+////////        #endregion {{modulePageName}}_Default_selected#Template
+////////        #region {{modulePageName}}_int_selected_Foreign#Template
+#Template           "{{fieldName}}Id": 
+#Template               new InputProperties([
+////////#property_Required
+#Template                   "required"
+////////#endproperty_Required
+#Template                ]),
+////////        #endregion {{modulePageName}}_int_selected_Foreign#Template
+////////        #region {{modulePageName}}_allparams#Template
+////////        #endregion {{modulePageName}}_allparams#Template  
+  };
+
+  BuildContext _context;
+
+ Map<String, FormProperties> formState = new Map<String, FormProperties>();
+  onSuccess(data) async {
+    Provider.of<UserSession>(_context,listen:false).save(data);
+    Navigator.pushNamed(context, "/");
+  }
+  @override
+  void initState() {
+
+  }
+  @override
+  Widget build(BuildContext context) {
+    var formController = new FormController();
+    formState["form"] = new FormProperties(state,
+        service: widget.service, controller: formController);
+    return Container(
+      child: Column(
+        children: <Widget>[
+            FullColumn(
+              children: <Widget>[
+                  Box(
+                    children: <Widget>[
+                    ListBinder(
+                        action: "{{modulePageNameHyphenizeLower}}/"+this.widget.arguments["id"],
+                        childrenTemplate: (rowData) {
+                        return SubmitForm(
+                          controller: formController,
+                          method: "Post",
+                          onSuccess: this.onSuccess,
+                          action: "{{modulePageNameAsWordHyphenizeLower}}/login",
+                          children: <Widget>[
+////////        #region {{modulePageName}}_Default_selected2#Template
+#Template                              FormControl(
+////////#property_EmailInput
+#Template                                  type: "email", autocomplete: "email",
+////////#endproperty_EmailInput
+////////#property_CheckBox
+#Template                                  type: "checkbox",
+////////#endproperty_CheckBox
+////////#property_Date
+#Template                                  type: "date",
+////////#endproperty_Date
+////////#property_TextArea
+#Template                                  type: "textarea",
+////////#endproperty_TextArea
+////////#property_File
+#Template                                  type: "file",
+////////#endproperty_File
+////////#property_TextInput
+#Template                                  type: "text",
+////////#endproperty_TextInput
+////////#property_PasswordInput
+#Template                                  type: "password", autocomplete: "current-password",
+////////#endproperty_PasswordInput
+#Template                                  input: this.state["{{fieldName}}"],
+#Template                                  label: "{{fieldLabelAsWord}}", placeholder: "Please enter {{fieldLabelAsWordLower}}",
+#Template                                  value:rowData["{{fieldNameFirstCharLower}}"],
+#Template                                  name: "{{fieldName}}"),
+////////        #endregion {{modulePageName}}_Default_selected2#Template
+////////        #region {{modulePageName}}_int_selected_Foreign2#Template
+#Template                              FormControl(
+////////#property_CheckBox
+#Template                                  type: "checkbox",
+////////#endproperty_CheckBox
+////////#property_AutoComplete
+#Template                                  type: "autocomplete",
+////////#endproperty_AutoComplete
+////////#property_DropDown
+#Template                                  type: "dropdown",
+////////#endproperty_DropDown
+////////#property_ToggleButton
+#Template                                  type: "toggle",
+////////#endproperty_ToggleButton
+#Template                                  input: this.state["{{fieldName}}Id"],
+#Template                                  label: "{{fieldLabelAsWord}}", placeholder: "Please enter {{fieldLabelAsWordLower}}",
+#Template                                  value:rowData["{{fieldNameFirstCharLower}}{{foreignTitleLabel}}"],
+#Template                                  name: "{{fieldName}}Id"),
+////////        #endregion {{modulePageName}}_int_selected_Foreign2#Template
+////////        #region {{modulePageName}}_allparams2#Template
+////////        #endregion {{modulePageName}}_allparams2#Template   
+                          ]);
+                      })
+                ]), 
+            ]), 
+        ], ////Column Widgets Ends
+      ), ////Column Ends
+    ); ////Container Ends
+  }
+}
+////////#endmodule_ManageForm

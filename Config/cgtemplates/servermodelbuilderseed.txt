@@ -1,0 +1,38 @@
+////////#module_ModelBuilderSeed
+////////// --------------------------------------------------------------------------------------------------------------------
+////////// <copyright file="{{modulePageName}}.cs" company="{{configProjectName}}">
+//////////   The {{modulePageNameAsWordLower}} Seed
+////////// </copyright>
+////////// <summary>
+//////////   The {{modulePageNameAsWordLower}} Seed.
+////////// </summary>
+////////// --------------------------------------------------------------------------------------------------------------------
+
+using System.ComponentModel;
+using Microsoft.EntityFrameworkCore;
+using {{configProjectName}}.Data.Entities;
+namespace {{configProjectName}}.Entities.Seed
+{
+    public class {{moduleLocalName}}Builder
+    {
+        public void Seed(ModelBuilder modelBuilder)
+        { 
+            modelBuilder.Entity<{{moduleLocalName}}>().HasData(
+                          
+////////#modelBuilder_ModelSeedData
+                new {{moduleLocalName}} {
+////////        #region {{modulePageName}}_string_base#Template
+////////#Template          {{fieldLocalName}} = "{{record_{{fieldServerName}}}}",
+////////        #endregion {{modulePageName}}_string_base#Template
+////////        #region {{modulePageName}}_int_base#Template
+////////#Template          {{fieldLocalName}} = {{record_{{fieldServerName}}}},
+////////        #endregion {{modulePageName}}_int_base#Template
+////////        #region {{modulePageName}}_allparams#Template
+////////        #endregion {{modulePageName}}_allparams#Template
+                },#RemoveEndComma#Index
+////////#endmodelBuilder_ModelSeedData
+            );
+        }
+    }
+}
+////////#endmodule_ModelBuilderSeed

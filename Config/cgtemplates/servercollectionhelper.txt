@@ -1,8 +1,8 @@
 ////////#module_Helper
-using Example.Data.Entities;
-using Example.Models;
+using {{configProjectName}}.Data.Entities;
+using {{configProjectName}}.Models;
 
-namespace Example.Business.Helpers
+namespace {{configProjectName}}.Business.Helpers
 {
     //// className must ends with Helper
     //// Add pagename with postfix of Helper

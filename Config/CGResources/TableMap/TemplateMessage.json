@@ -79,42 +79,7 @@
         "MinLimit": 0
       }
     },
-    "Pages": {
-      "TemplateMessage": {
-        "PageName": "TemplateMessage",
-        "Modules": [
-          "Controller",
-          "Entity",
-          "Get",
-          "GetById",
-          "GetService",
-          "ManualService",
-          "Model"
-        ],
-        "FieldsList": {
-          "tm_message": {
-            "ServerName": "tm_message",
-            "Properties": []
-          },
-          "tm_gender": {
-            "ServerName": "tm_gender",
-            "Properties": []
-          },
-          "tm_agefrom": {
-            "ServerName": "tm_agefrom",
-            "Properties": []
-          },
-          "tm_ageto": {
-            "ServerName": "tm_ageto",
-            "Properties": []
-          },
-          "tm_id": {
-            "ServerName": "tm_id",
-            "Properties": []
-          }
-        }
-      }
-    },
+    "Pages": {},
     "ModelBuilder": true,
     "ModelData": [
       {

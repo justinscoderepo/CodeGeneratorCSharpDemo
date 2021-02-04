@@ -49,34 +49,7 @@
         "MinLimit": 0
       }
     },
-    "Pages": {
-      "TemplateOrbituary": {
-        "PageName": "TemplateOrbituary",
-        "Modules": [
-          "Controller",
-          "Entity",
-          "Get",
-          "GetById",
-          "GetService",
-          "ManualService",
-          "Model"
-        ],
-        "FieldsList": {
-          "to_message": {
-            "ServerName": "to_message",
-            "Properties": []
-          },
-          "to_id": {
-            "ServerName": "to_id",
-            "Properties": []
-          },
-          "to_content": {
-            "ServerName": "to_content",
-            "Properties": []
-          }
-        }
-      }
-    },
+    "Pages": {},
     "ModelBuilder": true,
     "ModelData": [
       {

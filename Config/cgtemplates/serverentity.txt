@@ -1,6 +1,6 @@
 ////////#module_Entity
 ////////// --------------------------------------------------------------------------------------------------------------------
-////////// <copyright file="{{modulePageName}}.cs" company="Example">
+////////// <copyright file="{{modulePageName}}.cs" company="{{configProjectName}}">
 //////////   The {{modulePageNameAsWordLower}} Entity
 ////////// </copyright>
 ////////// <summary>
@@ -15,7 +15,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 ////////#module_EntityICollection
 using System.Collections.Generic;
 ////////#endmodule_EntityICollection
-namespace Example.Data.Entities
+namespace {{configProjectName}}.Data.Entities
 {
     [Table("{{moduleServerName}}")]
 
@@ -42,7 +42,7 @@ namespace Example.Data.Entities
 
 ////////        #region {{modulePageName}}_int_Foreign_base2#Template
 
-////////#Template         public virtual {{foreignLocalName}} {{fieldLocalName}}Relation { get; set; }
+////////#Template         public virtual {{foreignLocalName}} {{fieldName}}Relation { get; set; }
 
 ////////        #endregion {{modulePageName}}_int_Foreign_base2#Template
 

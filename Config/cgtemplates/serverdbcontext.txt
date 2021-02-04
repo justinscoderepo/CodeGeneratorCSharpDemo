@@ -1,13 +1,14 @@
-using Example.Data.Entities;
+using {{configProjectName}}.Data.Entities;
+using {{configProjectName}}.Entities.Seed;
 using Microsoft.EntityFrameworkCore;
 using System;
 
-namespace Example.Entities
+namespace {{configProjectName}}.Entities
 {
     /// <summary>
-    /// ExampleDbContext class
+    /// {{configProjectName}}DbContext class
     /// </summary>
-    public class ExampleDbContext : DbContext
+    public class {{configProjectName}}DbContext : DbContext
     {
             
 
@@ -18,10 +19,12 @@ namespace Example.Entities
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         { 
-        
+         //// region ModuleListModelBuilderSeed#
+        #Template   new {{subModulePublicName}}Builder().Seed(modelBuilder);
+        //// endregion ModuleListModelBuilderSeed#       
         }
         
-        public ExampleDbContext(DbContextOptions<ExampleDbContext> options)
+        public {{configProjectName}}DbContext(DbContextOptions<{{configProjectName}}DbContext> options)
           : base(options)
         {
 

@@ -35,30 +35,7 @@
         "MinLimit": 0
       }
     },
-    "Pages": {
-      "TributeMessage": {
-        "PageName": "TributeMessage",
-        "Modules": [
-          "Controller",
-          "Entity",
-          "Get",
-          "GetById",
-          "GetService",
-          "ManualService",
-          "Model"
-        ],
-        "FieldsList": {
-          "trm_message": {
-            "ServerName": "trm_message",
-            "Properties": []
-          },
-          "stus_id": {
-            "ServerName": "trm_id",
-            "Properties": []
-          }
-        }
-      }
-    },
+    "Pages": {},
     "ModelBuilder": true,
     "ModelData": [
       {

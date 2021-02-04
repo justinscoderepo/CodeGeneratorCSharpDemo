@@ -1,0 +1,13 @@
+////////#module_AuthController
+using System;
+using {{configProjectName}}.Models;
+
+namespace {{configProjectName}}.WebApi.Handlers
+{
+    public interface IAuthenticationHandler
+    {
+        {{modulePageName}}Model CreateNewSession({{modulePageName}}Model userData, string ipaddress);
+        {{modulePageName}}Model ParseUserData(string token, string refreshToken, string ipaddress);
+    }
+}
+////////#endmodule_AuthController

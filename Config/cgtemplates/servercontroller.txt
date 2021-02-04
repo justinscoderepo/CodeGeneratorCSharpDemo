@@ -2,33 +2,34 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using Example.Models;
-using Example.Models.Common;
-using Example.Business.Contracts;
+using {{configProjectName}}.Models;
+using {{configProjectName}}.Models.Common;
+using {{configProjectName}}.Business.Contracts;
 using Swashbuckle.AspNetCore.Annotations;
+using Microsoft.AspNetCore.Authorization;
 using System.Linq;
 ////////#module_EnableEnums
-using Example.Utilities.Enums;
+using {{configProjectName}}.Models.Enums;
 ////////#endmodule_EnableEnums
 
 ////////#module_EnableUtilities
-using Example.Utilities;
+using {{configProjectName}}.Utilities;
 ////////#endmodule_EnableUtilities
 
 
 ////////#module_EnableUploadFile
 using Microsoft.AspNetCore.Http;
-using Example.WebApi.Controllers.Utilities;
+using {{configProjectName}}.WebApi.Controllers.Utilities;
 
 ////////#endmodule_EnableUploadFile
 ////////#module_IncludeHelper
 ////////    using Microsoft.EntityFrameworkCore;
-////////    using Example.Business.Helpers;
+////////    using {{configProjectName}}.Business.Helpers;
 ////////#endmodule_IncludeHelper
 ////////#module_SetContentApplicationId
-////////    using Example.Utilities.Enums;
+////////    using {{configProjectName}}.Utilities.Enums;
 ////////#endmodule_SetContentApplicationId
-namespace Example.WebApi.Controllers
+namespace {{configProjectName}}.WebApi.Controllers
 {
     ///<summary> The {{modulePageNameAsWordLower}} controller. </summary>
     [ApiController]
@@ -99,7 +100,7 @@ namespace Example.WebApi.Controllers
 
 ////////            var results = _logic.Get(model);
 
-////////            return this.Ok(new RawResponseModel<{{modulePageName}}Model>(results.Data.FirstOrDefault()));
+////////            return this.Ok(new RawResponseModel<List<{{modulePageName}}Model>>(results.Data));
 ////////        }
 ////////#endmodule_GetById
 
@@ -204,7 +205,7 @@ namespace Example.WebApi.Controllers
 ////////        /// <returns>The <see cref="IActionResult"/>.</returns>
 ////////        [HttpPost("")]
 ////////        [SwaggerOperation(Tags = new []{groupName})]
-////////        public IActionResult Create([FromBody]{{modulePageName}}Model model)
+////////        public IActionResult Create([FromForm]{{modulePageName}}Model model)
 ////////        {
 ////////            var row = this.SaveRow(model);
 ////////            return this.Ok(row);
@@ -219,7 +220,7 @@ namespace Example.WebApi.Controllers
 ////////        /// <returns>The <see cref="IActionResult"/>.</returns>
 ////////        [HttpPut("")]
 ////////        [SwaggerOperation(Tags = new []{groupName})]
-////////        public IActionResult Save([FromBody]{{modulePageName}}Model model)
+////////        public IActionResult Save([FromForm]{{modulePageName}}Model model)
 ////////        {
 ////////            var row = this.SaveRow(model);
 ////////            return this.Ok(row);
@@ -233,11 +234,10 @@ namespace Example.WebApi.Controllers
 ////////        /// <summary>Update the {{modulePublicNameAsWordLower}}.</summary>
 ////////        /// <param name="model">{{modulePageNameAsWordLower}} model.</param>
 ////////        /// <returns>The <see cref="IActionResult"/>.</returns>
-////////        [HttpPut("")]
+////////        [HttpPut("upload")]
 ////////        [SwaggerOperation(Tags = new []{groupName})]
-////////        public IActionResult Save(IFormFile file,string uploadFolderName)
+////////        public IActionResult SaveFile(IFormFile file,string uploadFolderName)
 ////////        {
-////////            var userName = this.CurrentUser.Name;
 ////////#module_EnableFileContentName      
                      var uploadFileName = uploadFolderName;
 ////////#endmodule_EnableFileContentName 
@@ -245,7 +245,7 @@ namespace Example.WebApi.Controllers
 ////////#module_EnableFileContentName      
                      uploadFolderName = uploadFolderName+"/"+uploadFileName;
 ////////#endmodule_EnableFileContentName 
-////////            var result = _file.UploadFIle(file, uploadFolderName, userName);
+////////            var result = _file.UploadFIle(file, uploadFolderName);
 ////////            return this.Ok(new FileResponseModel<string>(result.Data,result.Message,result.Success,result.FileSize,result.FileName,result.FileType));
 ////////        }
 ////////#endmodule_UploadFile
@@ -257,7 +257,7 @@ namespace Example.WebApi.Controllers
 ////////        /// <returns>The <see cref="IActionResult"/>.</returns>
 ////////        [HttpDelete("")]
 ////////        [SwaggerOperation(Tags = new []{groupName})]
-////////        public IActionResult Remove([FromBody]{{modulePageName}}Model model = null)
+////////        public IActionResult Remove([FromForm]{{modulePageName}}Model model = null)
 ////////        {
 ////////            if (model == null)
 ////////            {
@@ -286,6 +286,27 @@ namespace Example.WebApi.Controllers
 ////////            {
 ////////                    return new RawResponseModel<{{modulePageName}}Model>(null, "model can't be null!", false);
 ////////            }
+////////        #region {{modulePageName}}_string_selected4#Template
+////////#property_Required
+#Template           if(string.IsNullOrEmpty(model.{{fieldName}})){
+#Template                         return new RawResponseModel<{{modulePageName}}Model>(null, "{{fieldLabel}} is required", false,"{{fieldName}}");
+#Template           }
+////////#endproperty_Required
+
+////////        #endregion {{modulePageName}}_string_selected4#Template
+
+////////        #region {{modulePageName}}_int_selected4#Template
+////////#property_Required
+#Template           if(model.{{fieldLabel}}Id==0){
+#Template                         return new RawResponseModel<{{modulePageName}}Model>(null, "{{fieldLabel}} is required", false,"{{fieldName}}");
+#Template           }
+////////#endproperty_Required
+////////        #endregion {{modulePageName}}_int_selected4#Template
+
+////////        #region {{modulePageName}}_allparams4#Template
+////////        #endregion {{modulePageName}}_allparams4#Template  
+
+
 ////region CustomCodeBlockBeforeSave#
 ////endregion CustomCodeBlockBeforeSave#
 

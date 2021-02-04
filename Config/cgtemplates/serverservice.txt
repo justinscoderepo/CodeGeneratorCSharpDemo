@@ -1,32 +1,32 @@
 ////////#module_ManualService
 ////////// --------------------------------------------------------------------------------------------------------------------
-////////// <copyright file="{{modulePageName}}.cs" company="Example">
+////////// <copyright file="{{modulePageName}}.cs" company="{{configProjectName}}">
 //////////   The {{modulePageNameAsWordLower}} business logic
 ////////// </copyright>
 ////////// <summary>Defines the {{modulePageNameAsWordLower}} type.</summary>
 ////////// --------------------------------------------------------------------------------------------------------------------
 
-////////namespace Example.Business.Service
+////////namespace {{configProjectName}}.Business.Service
 ////////{
 ////////    using System;
 ////////    using System.Collections.Generic;   
 ////////    using System.Linq;
-////////    using Example.Models;
-////////    using Example.Business.Contracts;
-////////    using Example.Entities.Repository;
-////////    using Example.Data.Entities;
-////////    using Example.Models.Common;
-////////    using Example.Utilities;
+////////    using {{configProjectName}}.Models;
+////////    using {{configProjectName}}.Business.Contracts;
+////////    using {{configProjectName}}.Entities.Repository;
+////////    using {{configProjectName}}.Data.Entities;
+////////    using {{configProjectName}}.Models.Common;
+////////    using {{configProjectName}}.Utilities;
 ////////    using LinqKit;
 ////////#module_IncludeHelper
 ////////    using Microsoft.EntityFrameworkCore;
-////////    using Example.Business.Helpers;
+////////    using {{configProjectName}}.Business.Helpers;
 ////////#endmodule_IncludeHelper
 ////region CustomCodeBlockUsing#
 ////endregion CustomCodeBlockUsing#
 
 
-////////    /// <summary>The {{modulePageNameAsWordLower}} business Example.Logic.</summary>
+////////    /// <summary>The {{modulePageNameAsWordLower}} business {{configProjectName}}.Logic.</summary>
 ////////    public class {{modulePageName}}Service : I{{modulePageName}}Service
 ////////    {
 ////////        private readonly IRepository<{{moduleLocalName}}> _repository;
@@ -161,8 +161,6 @@
 ////////#endproperty_EqualFilter
 
 ////////          #property_ListFilter
-////Foreign
-
 #Template if (model.{{fieldLocalName}}IdList != null && model.{{fieldLocalName}}IdList.Count() > 0)
 #Template             {
 #Template                predicate.And(x => model.{{fieldLocalName}}IdList.Contains(x.{{fieldLocalName}}));
@@ -208,8 +206,6 @@
 #Template           }
 ////////            #endproperty_EqualFilter
 ////////          #property_ListFilter
-////ForeignField
-
 #Template if (model.{{fieldLocalName}}IdList != null && model.{{fieldLocalName}}IdList.Count() > 0)
 #Template             {
 #Template                predicate.And(x => model.{{fieldLocalName}}IdList.Contains(x.{{fieldLocalName}}));
@@ -314,7 +310,6 @@
 
                 results = sortData(results, sortModel);
 #endmodule_Sort
-        var totalCount = results.Count(); //defaultValue
             pagination.results(results);
             
 ///--------------------Return----------------------
@@ -350,26 +345,26 @@
 ////////                    return new RawResponseModel<{{modulePageName}}Model>(null, "{{moduleLocalName}} does not exist!", false);
 ////////           }
 
-////////        #region {{modulePageName}}_int_Foreign_base2#Template
+////////        #region {{modulePageName}}_int_selected_Foreign_base2#Template
 #Template           if(model.{{fieldLabel}}Id>0){
 #Template               entity.{{fieldLocalName}} = model.{{fieldLabel}}Id;   
 #Template           }
-////////        #endregion {{modulePageName}}_int_Foreign_base2#Template
+////////        #endregion {{modulePageName}}_int_selected_Foreign_base2#Template
 
-////////            #region {{modulePageName}}_string_NOT_NULL_base2#Template
+////////            #region {{modulePageName}}_string_selected_NOT_NULL_base2#Template
 
 #Template           if(!string.IsNullOrEmpty(model.{{fieldName}})){
 #Template                  entity.{{fieldLocalName}} = (model.{{fieldLabel}});
 #Template           }
 
-////////           #endregion {{modulePageName}}_string_NOT_NULL_base2#Template
+////////           #endregion {{modulePageName}}_string_selected_NOT_NULL_base2#Template
 
 
-////////        #region {{modulePageName}}_string_NULL_base2#Template
+////////        #region {{modulePageName}}_string_selected_NULL_base2#Template
 #Template           if(!string.IsNullOrEmpty(model.{{fieldName}})){
 #Template                  entity.{{fieldLocalName}} = model.{{fieldLabel}};
 #Template           }
-////////        #endregion {{modulePageName}}_string_NULL_base2#Template
+////////        #endregion {{modulePageName}}_string_selected_NULL_base2#Template
 
 
 ////////        #region {{modulePageName}}_bool_selected_base2#Template
@@ -390,27 +385,27 @@
 #Template       }
 ////////        #endregion {{modulePageName}}_DateTime_NULL_selected_base2#Template
 
-////////            #region {{modulePageName}}_int_NULL_base2#Template
-////////            #region {{modulePageName}}_float_NULL_base2#Template
-////////            #region {{modulePageName}}_long_NULL_base2#Template
+////////            #region {{modulePageName}}_int_NULL_selected_base2#Template
+////////            #region {{modulePageName}}_float_NULL_selected_base2#Template
+////////            #region {{modulePageName}}_long_NULL_selected_base2#Template
            
 #Template           if(model.{{fieldName}}>0){
 #Template               entity.{{fieldLocalName}}=model.{{fieldLabel}};
 #Template           }
-////////            #endregion {{modulePageName}}_long_NULL_base2#Template           
-////////            #endregion {{modulePageName}}_float_NULL_base2#Template
-////////            #endregion {{modulePageName}}_int_NULL_base2#Template
+////////            #endregion {{modulePageName}}_long_NULL_selected_base2#Template           
+////////            #endregion {{modulePageName}}_float_NULL_selected_base2#Template
+////////            #endregion {{modulePageName}}_int_NULL_selected_base2#Template
 
 
-////////            #region {{modulePageName}}_int_NOT_NULL_base2#Template
-////////            #region {{modulePageName}}_float_NOT_NULL_base2#Template
-////////            #region {{modulePageName}}_long_NOT_NULL_base2#Template
+////////            #region {{modulePageName}}_int_NOT_NULL_selected_base2#Template
+////////            #region {{modulePageName}}_float_NOT_NULL_selected_base2#Template
+////////            #region {{modulePageName}}_long_NOT_NULL_selected_base2#Template
 #Template           if(model.{{fieldName}}>0){
 #Template               entity.{{fieldLocalName}} = model.{{fieldLabel}};
 #Template           }
-////////        #endregion {{modulePageName}}_long_NOT_NULL_base2#Template
-////////        #endregion {{modulePageName}}_float_NOT_NULL_base2#Template
-////////        #endregion {{modulePageName}}_int_NOT_NULL_base2#Template
+////////        #endregion {{modulePageName}}_long_NOT_NULL_selected_base2#Template
+////////        #endregion {{modulePageName}}_float_NOT_NULL_selected_base2#Template
+////////        #endregion {{modulePageName}}_int_NOT_NULL_selected_base2#Template
 
 ////////            #region {{modulePageName}}_DateTime_CreatedDate_selected_base2#Template
 #Template           if(model.{{modulePrimaryLabel}} == 0){

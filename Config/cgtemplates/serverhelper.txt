@@ -1,0 +1,56 @@
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using Hokonui_Huanui.Business.Models;
+
+namespace Hokonui_Huanui.Business.Helpers
+{
+    public static class {{ModulePublicNameDistinctSingular}}Helper
+    {
+
+        public static ErrorResponse Validate({{ModulePublicNameDistinctSingular}}Model {{ModulePublicNameDistinctSingularCamelCase}}Model)
+        {
+            var response = new ErrorResponse
+            {
+                Errors = new List<ErrorModel>()
+            };
+////////        #region {{ModuleName}}_int_base#Template
+////////        #endregion {{ModuleName}}_int_base#Template
+////////        #region {{ModuleName}}_string_NOT_NULL#Template
+////////#Template                    if (string.IsNullOrEmpty({{ModulePublicNameDistinctSingularCamelCase}}Model.{{fieldName}})||string.IsNullOrWhiteSpace({{ModulePublicNameDistinctSingularCamelCase}}Model.{{fieldName}}))
+////////#Template                     {
+////////#Template                                    response.Errors.Add(new ErrorModel
+////////#Template                                    {
+////////#Template                                        FieldName = nameof({{ModulePublicNameDistinctSingularCamelCase}}Model.{{fieldName}}),
+////////#Template                                        Message = "The {{fieldLabel}} field is required."
+////////#Template                                    });
+////////#Template                     }
+////////#Template                     else
+////////#Template                    if ({{ModulePublicNameDistinctSingularCamelCase}}Model.{{fieldName}}.Length>{{fieldMaxValue}})
+////////#Template                     {
+////////#Template                                    response.Errors.Add(new ErrorModel
+////////#Template                                    {
+////////#Template                                        FieldName = nameof({{ModulePublicNameDistinctSingularCamelCase}}Model.{{fieldName}}),
+////////#Template                                        Message = "The {{fieldLabel}} field character limit exceeds."
+////////#Template                                    });
+////////#Template                     }
+////////        #endregion {{ModuleName}}_string_NOT_NULL#Template
+////////        #region {{ModuleName}}_string_NULL#Template
+////////#Template                    if (!string.IsNullOrEmpty({{ModulePublicNameDistinctSingularCamelCase}}Model.{{fieldName}})&&{{ModulePublicNameDistinctSingularCamelCase}}Model.{{fieldName}}.Length>{{fieldMaxValue}})
+////////#Template                     {
+////////#Template                                    response.Errors.Add(new ErrorModel
+////////#Template                                    {
+////////#Template                                        FieldName = nameof({{ModulePublicNameDistinctSingularCamelCase}}Model.{{fieldName}}),
+////////#Template                                        Message = "The {{fieldLabel}} field character limit exceeds."
+////////#Template                                    });
+////////#Template                     }
+
+////////        #endregion {{ModuleName}}_string_NULL#Template
+////////        #region {{ModuleName}}_allparams#Template
+////////        #endregion {{ModuleName}}_allparams#Template 
+           
+
+            return response;
+        }
+    }
+}

@@ -49,34 +49,7 @@
         "MinLimit": 0
       }
     },
-    "Pages": {
-      "CustomBackground": {
-        "PageName": "CustomBackground",
-        "Modules": [
-          "Controller",
-          "Entity",
-          "Get",
-          "GetById",
-          "GetService",
-          "ManualService",
-          "Model"
-        ],
-        "FieldsList": {
-          "tri_title": {
-            "ServerName": "cu_title",
-            "Properties": []
-          },
-          "cu_id": {
-            "ServerName": "cu_id",
-            "Properties": []
-          },
-          "cu_background": {
-            "ServerName": "cu_background",
-            "Properties": []
-          }
-        }
-      }
-    },
+    "Pages": {},
     "ModelBuilder": true,
     "ModelData": [
       {
