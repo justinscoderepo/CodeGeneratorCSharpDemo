@@ -220,12 +220,7 @@
             "ServerName": "us_status",
             "ForeignTableDetails": {
               "ServerName": "ml_status",
-              "FieldsList": {
-                "stus_title": {
-                  "Order": 0,
-                  "ServerName": "stus_title"
-                }
-              }
+              "FieldsList": {}
             }
           },
           "us_logo": {
@@ -237,12 +232,7 @@
             "ServerName": "us_reported",
             "ForeignTableDetails": {
               "ServerName": "ml_status",
-              "FieldsList": {
-                "stus_title": {
-                  "Order": 0,
-                  "ServerName": "stus_title"
-                }
-              }
+              "FieldsList": {}
             }
           },
           "us_commissionrate": {
@@ -258,18 +248,12 @@
             "ServerName": "us_createdby",
             "ForeignTableDetails": {
               "ServerName": "ml_user",
-              "FieldsList": {
-                "us_name": {
-                  "Order": 0,
-                  "ServerName": "us_name"
-                }
-              }
+              "FieldsList": {}
             }
           }
         },
         "Modules": [
-          "Model",
-          "Entity"
+          "Model"
         ]
       }
     },

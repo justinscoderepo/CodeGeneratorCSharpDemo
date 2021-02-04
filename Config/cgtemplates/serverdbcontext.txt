@@ -10,7 +10,7 @@ namespace {{configProjectName}}.Entities
     /// </summary>
     public class {{configProjectName}}DbContext : DbContext
     {
-            
+       
 
         //// region ModuleListEntity#
         #Template   public virtual DbSet<{{subModulePublicName}}> {{subModulePublicName}} { get; set; }

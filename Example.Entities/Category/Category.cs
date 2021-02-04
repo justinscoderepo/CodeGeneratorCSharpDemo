@@ -72,9 +72,9 @@ namespace Example.Data.Entities
             get;
             set;
         }
-    ////region CustomCodeBlock4#
-    ////endregion CustomCodeBlock4#
-    ////region CustomCodeBlock5#
-    ////endregion CustomCodeBlock5#
+        ////region CustomCodeBlock4#
+        ////endregion CustomCodeBlock4#
+        ////region CustomCodeBlock5#
+        ////endregion CustomCodeBlock5#
     }
 }

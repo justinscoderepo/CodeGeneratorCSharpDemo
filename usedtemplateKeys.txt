@@ -1,5 +1,10 @@
-Category_string_NOT_NULL_base#Template- serverentity.txt
-Category_string_NULL_base#Template- serverentity.txt
-Category_int_Primary#Template- serverentity.txt
-Category_int_NOT_NULL_base#Template- serverentity.txt
-Category_DateTime_NULL_base#Template- serverentity.txt
+UserDetails_int_NULL_selected_Foreign#Template- servermodel.txt
+UserDetails_int_NULL_selected#Template- servermodel.txt
+UserDetails_Default_NULL_selected#Template- servermodel.txt
+UserDetails_int_NULL_selected_Foreign2#Template- servermodel.txt
+UserDetails_DateTime_NULL_selected#Template- servermodel.txt
+UserDetails_int_NOT_NULL_selected_Foreign#Template- servermodel.txt
+UserDetails_int_NOT_NULL_selected#Template- servermodel.txt
+UserDetails_Default_NOT_NULL_selected#Template- servermodel.txt
+UserDetails_int_NOT_NULL_selected_Foreign2#Template- servermodel.txt
+UserDetails_string_NULL_selected#Template- servermodel.txt

@@ -105,7 +105,8 @@
         "FieldsList": {
           "ca_id": {
             "Order": 0,
-            "ServerName": "ca_id"
+            "ServerName": "ca_id",
+            "DisabledTemplates": []
           },
           "ca_description": {
             "Order": 0,
