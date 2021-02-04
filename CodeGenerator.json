@@ -1,0 +1,132 @@
+{
+  "ProjectName": "Example",
+  "Version": "v1",
+  "ConnectionString": null,
+  "TablePrefix": "tr",
+  "DataBaseType": null,
+  "EntityFolder": null,
+  "ResourceFolder": "//Config//CGResources",
+  "TemplateFolder": "//Config//cgtemplates",
+  "MultiLineBreakConfig": {
+    "RemoveEndComma": ",",
+    "SQLANDEND": "AND "
+  },
+  "TemplateList": [
+    {
+      "DestinationFolder": "Example.Models/{{modulePageNameLabelShort}}/",
+      "DestinationFile": "{{modulePageName}}Model.cs",
+      "TemplateSourceFile": "servermodel.txt",
+      "Code": null,
+      "GeneratedCode": null
+    },
+    {
+      "DestinationFolder": "Example.Entities/{{modulePageNameLabelShort}}/",
+      "DestinationFile": "{{modulePageName}}.cs",
+      "TemplateSourceFile": "serverentity.txt",
+      "Code": null,
+      "GeneratedCode": null
+    },
+    {
+      "DestinationFolder": "Example.Entities/",
+      "DestinationFile": "ExampleContext.cs",
+      "TemplateSourceFile": "serverdbcontext.txt",
+      "Code": null,
+      "GeneratedCode": null
+    },
+    {
+      "DestinationFolder": "Example.WebApi/",
+      "DestinationFile": "Startup.cs",
+      "TemplateSourceFile": "serverstartup.txt",
+      "Code": null,
+      "GeneratedCode": null
+    },
+    {
+      "DestinationFolder": "Example.Business/{{modulePageNameLabelShort}}/",
+      "DestinationFile": "{{modulePageName}}Service.cs",
+      "TemplateSourceFile": "serverservice.txt",
+      "Code": null,
+      "GeneratedCode": null
+    },
+    {
+      "DestinationFolder": "Example.Business/Helpers/{{modulePageNameLabelShort}}/",
+      "DestinationFile": "{{modulePageName}}.cs",
+      "TemplateSourceFile": "servercollectionhelper.txt",
+      "Code": null,
+      "GeneratedCode": null
+    },
+    {
+      "DestinationFolder": "Example.Business/{{modulePageNameLabelShort}}/",
+      "DestinationFile": "I{{modulePageName}}Service.cs",
+      "TemplateSourceFile": "serveriservice.txt",
+      "Code": null,
+      "GeneratedCode": null
+    },
+    {
+      "DestinationFolder": "Example.WebApi/Controllers/{{modulePageNameLabelShort}}/",
+      "DestinationFile": "{{modulePageName}}Controller.cs",
+      "TemplateSourceFile": "servercontroller.txt",
+      "Code": null,
+      "GeneratedCode": null
+    }
+  ],
+  "ForeignFieldLabelRules": [
+    {
+      "Label": "title",
+      "LocalName": null,
+      "Order": 0,
+      "ServerName": null,
+      "DataType": "varchar",
+      "ServerDataType": null,
+      "SqlDataType": null,
+      "TSDataType": null,
+      "Limit": 0,
+      "IsNullable": null,
+      "IsPrimaryKey": false,
+      "ForeignKeyTable": null,
+      "ForeignTableDetails": null,
+      "ForeignKeyField": null,
+      "IsForeignKey": false,
+      "MinLimit": 0,
+      "Properties": null
+    },
+    {
+      "Label": "label",
+      "LocalName": null,
+      "Order": 0,
+      "ServerName": null,
+      "DataType": "varchar",
+      "ServerDataType": null,
+      "SqlDataType": null,
+      "TSDataType": null,
+      "Limit": 0,
+      "IsNullable": null,
+      "IsPrimaryKey": false,
+      "ForeignKeyTable": null,
+      "ForeignTableDetails": null,
+      "ForeignKeyField": null,
+      "IsForeignKey": false,
+      "MinLimit": 0,
+      "Properties": null
+    },
+    {
+      "Label": "name",
+      "LocalName": null,
+      "Order": 0,
+      "ServerName": null,
+      "DataType": "varchar",
+      "ServerDataType": null,
+      "SqlDataType": null,
+      "TSDataType": null,
+      "Limit": 0,
+      "IsNullable": null,
+      "IsPrimaryKey": false,
+      "ForeignKeyTable": null,
+      "ForeignTableDetails": null,
+      "ForeignKeyField": null,
+      "IsForeignKey": false,
+      "MinLimit": 0,
+      "Properties": null
+    }
+  ],
+  "MultiConvertCodeList": []
+}

@@ -1,0 +1,101 @@
+{
+  "Key": "ml_state",
+  "Value": {
+    "isGlobalTable": false,
+    "LocalName": "State",
+    "PublicName": "State",
+    "ServerName": "ml_state",
+    "FieldsList": {
+      "sta_id": {
+        "Label": "Id",
+        "LocalName": "Id",
+        "Order": 0,
+        "ServerName": "sta_id",
+        "ExternalName": "id",
+        "ServerDataType": "int",
+        "SqlDataType": "Int",
+        "TSDataType": "number",
+        "Limit": 10,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": true,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "sta_recid": {
+        "Label": "RecId",
+        "LocalName": "RecId",
+        "Order": 0,
+        "ServerName": "sta_recid",
+        "ExternalName": "recid",
+        "ServerDataType": "int",
+        "SqlDataType": "Int",
+        "TSDataType": "number",
+        "Limit": 200,
+        "IsNullable": "NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "sta_title": {
+        "Label": "Title",
+        "LocalName": "Title",
+        "Order": 0,
+        "ServerName": "sta_title",
+        "ExternalName": "govName",
+        "ServerDataType": "string",
+        "SqlDataType": "nvarchar",
+        "TSDataType": "string",
+        "Limit": 200,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      }
+    },
+    "Pages": {
+      "State": {
+        "PageName": "State",
+        "Modules": [
+          "Entity",
+          "Model",
+          "ManualService",
+          "GetService",
+          "Controller",
+          "Get",
+          "GetById",
+          "FunctionalComponentManage",
+          "DuxManage",
+          "FunctionalComponentList",
+          "DuxList",
+          "ModelGenericList",
+          "ApiModel",
+          "EntityICollection",
+          "SetService",
+          "RemoveService",
+          "RangeService",
+          "CreateRange",
+          "UpdateRange",
+          "DeleteRange",
+          "Create",
+          "Set",
+          "Remove",
+          "ApiController",
+          "ApiSyncService",
+          "Lists"
+        ],
+        "FieldsList": {
+          "sta_id": {
+            "ServerName": "sta_id"
+          },
+          "sta_title": {
+            "ServerName": "sta_title",
+            "Properties": ["Generating", "ContainsFilter"]
+          },
+          "sta_recid": {
+            "ServerName": "sta_recid"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "Key": "ml_templatebio",
+  "Value": {
+    "isGlobalTable": false,
+    "LocalName": "TemplateBio",
+    "PublicName": "TemplateBio",
+    "ServerName": "ml_templatebio",
+    "FieldsList": {
+      "tb_id": {
+        "Label": "Id",
+        "LocalName": "Id",
+        "Order": 0,
+        "ServerName": "tb_id",
+        "ServerDataType": "int",
+        "SqlDataType": "Int",
+        "TSDataType": "number",
+        "Limit": 10,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": true,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "tb_message": {
+        "Label": "Message",
+        "LocalName": "Message",
+        "Order": 0,
+        "ServerName": "tb_message",
+        "ServerDataType": "string",
+        "SqlDataType": "nvarchar",
+        "TSDataType": "string",
+        "Limit": 200,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "tb_content": {
+        "Label": "Content",
+        "LocalName": "Content",
+        "Order": 0,
+        "ServerName": "tb_content",
+        "ServerDataType": "string",
+        "SqlDataType": "nvarchar",
+        "TSDataType": "string",
+        "Limit": "500",
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "tb__agefrom": {
+        "Label": "AgeFrom",
+        "LocalName": "AgeFrom",
+        "Order": 0,
+        "ServerName": "tb_agefrom",
+        "ServerDataType": "int",
+        "SqlDataType": "Int",
+        "TSDataType": "number",
+        "Limit": 10,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "tb__ageto": {
+        "Label": "AgeTo",
+        "LocalName": "AgeTo",
+        "Order": 0,
+        "ServerName": "tb_ageto",
+        "ServerDataType": "int",
+        "SqlDataType": "Int",
+        "TSDataType": "number",
+        "Limit": 10,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "tb_gender": {
+        "Label": "Gender",
+        "LocalName": "Gender",
+        "Order": 0,
+        "ServerName": "tb_gender",
+        "ServerDataType": "int",
+        "SqlDataType": "Int",
+        "TSDataType": "number",
+        "Limit": 10,
+        "IsNullable": "NULL",
+        "IsPrimaryKey": false,
+        "ForeignKeyTable": "ml_gender",
+        "ForeignKeyField": "gd_id",
+        "IsForeignKey": true,
+        "MinLimit": 0
+      }
+    },
+    "Pages": {
+      "TemplateBio": {
+        "PageName": "TemplateBio",
+        "Modules": [
+          "Controller",
+          "Entity",
+          "Get",
+          "GetById",
+          "GetService",
+          "ManualService",
+          "Model"
+        ],
+        "FieldsList": {
+          "tb_message": {
+            "ServerName": "tb_message",
+            "Properties": []
+          },
+          "tb_content": {
+            "ServerName": "tb_content",
+            "Properties": []
+          },
+          "tb_ageto": {
+            "ServerName": "tb_ageto",
+            "Properties": []
+          },
+          "tb_agefrom": {
+            "ServerName": "tb_agefrom",
+            "Properties": []
+          },
+          "tb_gender": {
+            "ServerName": "tb_gender",
+            "Properties": []
+          },
+          "tb_id": {
+            "ServerName": "tb_id",
+            "Properties": []
+          }
+        }
+      }
+    },
+    "ModelBuilder": true,
+    "ModelData": [
+      {
+        "tb_id": "1",
+        "tb_message": "My/our condolences template",
+        "tb_content": "Please accept our sincerest condolences ",
+        "tb__agefrom": "20",
+        "tb__ageto": "50",
+        "tb_gender": "1"
+      },
+      {
+        "tb_id": "2",
+        "tb_message": "Please accept our sincerest condolences template.",
+        "tb_content": "Please accept our sincerest condolences ",
+        "tb__agefrom": "10",
+        "tb__ageto": "20",
+        "tb_gender": "1"
+      },
+      {
+        "tb_id": "3",
+        "tb_message": "Condolence template",
+        "tb_content": "Please accept our sincerest condolences ",
+        "tb__agefrom": "30",
+        "tb__ageto": "70",
+        "tb_gender": "2"
+      }
+    ]
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "Key": "ml_status",
+  "Value": {
+    "isGlobalTable": false,
+    "LocalName": "Status",
+    "PublicName": "Status",
+    "ServerName": "ml_status",
+    "FieldsList": {
+      "stus_id": {
+        "Label": "Id",
+        "LocalName": "Id",
+        "Order": 0,
+        "ServerName": "stus_id",
+        "ServerDataType": "int",
+        "SqlDataType": "Int",
+        "TSDataType": "number",
+        "Limit": 10,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": true,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "stus_title": {
+        "Label": "Title",
+        "LocalName": "Title",
+        "Order": 0,
+        "ServerName": "stus_title",
+        "ServerDataType": "string",
+        "SqlDataType": "nvarchar",
+        "TSDataType": "string",
+        "Limit": 200,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      }
+    },
+    "Pages": {
+      "Status": {
+        "PageName": "Status",
+        "Modules": [
+          "Controller",
+          "Entity",
+          "Get",
+          "GetById",
+          "GetService",
+          "ManualService",
+          "Model"
+        ],
+        "FieldsList": {
+          "stus_title": {
+            "ServerName": "stus_title",
+            "Properties": []
+          },
+          "stus_id": {
+            "ServerName": "stus_id",
+            "Properties": []
+          }
+        }
+      }
+    },
+    "ModelBuilder": true,
+    "ModelData": [
+      {
+        "stus_id": "1",
+        "stus_title": "Active"
+      },
+      {
+        "stus_id": "2",
+        "stus_title": "Inactive"
+      }
+    ]
+  }
+}

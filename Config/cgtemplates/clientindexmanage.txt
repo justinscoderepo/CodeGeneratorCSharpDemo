@@ -1,0 +1,21 @@
+#module_IndexManage
+import { connect } from 'react-redux'
+import Manage{{modulePageName}}Container from './manage{{modulePageNamePlural}}Container'
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    
+  }
+}
+
+const mapStateToProps = (state) => {
+  return {
+  
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Manage{{modulePageName}}Container)
+#endmodule_IndexManage

@@ -1,0 +1,400 @@
+////////#module_StoredProcedure
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+/*********************EXIST CHECK**********************/
+IF OBJECT_ID('{{configVersion}}_Select{{modulePageName}}','P') IS NOT NULL
+DROP PROCEDURE [dbo].[{{configVersion}}_Select{{modulePageName}}]
+GO
+
+/*********************EXIST CHECK**********************/
+IF OBJECT_ID('{{configVersion}}_Update{{modulePageName}}','P') IS NOT NULL
+DROP PROCEDURE [dbo].[{{configVersion}}_Update{{modulePageName}}]
+GO
+
+/*********************EXIST CHECK**********************/
+IF OBJECT_ID('{{configVersion}}_Count{{modulePageName}}','P') IS NOT NULL
+DROP PROCEDURE [dbo].[{{configVersion}}_Count{{modulePageName}}]
+GO
+
+/*********************EXIST CHECK**********************/
+IF OBJECT_ID('{{configVersion}}_Delete{{modulePageName}}','P') IS NOT NULL
+DROP PROCEDURE [dbo].[{{configVersion}}_Delete{{modulePageName}}]
+GO
+
+/*
+//////// <copyright file="{{modulePageName}}.sql" project="{{configProjectName}}">
+////////   The {{modulePageNameAsWordLower}} stored procedure
+//////// </copyright>
+*/
+////////#module_Get
+
+/*********************CREATE**********************/
+CREATE PROCEDURE [dbo].[{{configVersion}}_Select{{modulePageName}}]
+/*********************PARAMS**********************/
+
+////////#region {{modulePageName}}_string_selected#Template
+////////#property_SearchField
+////////#Template   @{{fieldName}} {{fieldSqlDataType}}({{fieldLimit}}) = NULL,#RemoveEndComma#Index
+////////#endproperty_SearchField
+////////#endregion {{modulePageName}}_string_selected#Template
+
+////////#region {{modulePageName}}_int_selected#Template
+////////#property_SearchField
+////////#Template   @{{fieldName}} {{fieldSqlDataType}} = 0,#RemoveEndComma#Index
+////////#endproperty_SearchField
+////////#endregion {{modulePageName}}_int_selected#Template
+
+////////#region {{modulePageName}}_Default_selected#Template
+////////#property_SearchField
+////////#Template   @{{fieldName}} {{fieldSqlDataType}} ({{fieldLimit}}) = NULL,#RemoveEndComma#Index
+////////#endproperty_SearchField
+////////#endregion {{modulePageName}}_Default_selected#Template
+
+////////#region {{modulePageName}}_allparams#Template
+////////#endregion {{modulePageName}}_allparams#Template
+////////#module_Pagination
+    @pageOffset int = 0,
+    @pageRows int = 100,#RemoveEndComma#Index
+////////#endmodule_Pagination
+////////#module_Sorting
+    @sortField varchar(20) = 'Order',
+    @sortOrder varchar(20) = 'ASC',#RemoveEndComma#Index                
+////////#endmodule_Sorting
+
+AS
+BEGIN
+/*********************SELECT**********************/
+SELECT 
+////////#module_Pagination
+    COUNT(*) OVER() TotalRowCount,#RemoveEndComma2#Index
+////////#endmodule_Pagination
+////////#region {{modulePageName}}_Default_selected2#Template
+////////#Template    {{TabSpaces}}[{{parentTableLocalName}}_{{currentTableLocalName}}].[{{fieldServerName}}] AS "{{fieldName}}",#RemoveEndComma2#Index
+////////#endregion {{modulePageName}}_Default_selected2#Template
+////////#region {{modulePageName}}_allparams2#Template
+////////#endregion {{modulePageName}}_allparams2#Template
+
+
+/*********************JOIN**********************/
+FROM [{{moduleServerName}}] [_{{moduleLocalName}}]
+////////#region {{modulePageName}}_int_selected_Foreign_toJoin3#Template
+#Template{{TabSpaces}}    LEFT JOIN [{{foreignServerName}}] 
+#Template{{TabSpaces}}                  as {{currentTableLocalName}}_{{foreignLocalName}} 
+#Template{{TabSpaces}}                  on [{{parentTableLocalName}}_{{currentTableLocalName}}].[{{fieldServerName}}] 
+#Template{{TabSpaces}}                  = [{{currentTableLocalName}}_{{foreignLocalName}}].[{{foreignPrimaryServerName}}]
+////////#endregion {{modulePageName}}_int_selected_Foreign_toJoin3#Template
+////////#region {{modulePageName}}_allparams3#Template
+////////#endregion {{modulePageName}}_allparams3#Template
+
+
+////////#module_SearchByFields
+/*********************WHERE**********************/
+WHERE 
+
+////////#region {{modulePageName}}_string_selected4#Template
+////////#property_SearchField
+#Template   (@{{fieldName}} IS NULL OR [{{parentTableLocalName}}_{{currentTableLocalName}}].[{{fieldServerName}}] = @{{fieldName}}) AND #SQLANDEND4#Index
+////////#endproperty_SearchField
+////////#endregion {{modulePageName}}_string_selected4#Template
+////////#region {{modulePageName}}_int_selected4#Template
+////////#property_SearchField
+#Template   (@{{fieldName}} = 0 OR [{{parentTableLocalName}}_{{currentTableLocalName}}].[{{fieldServerName}}] = @{{fieldName}}) AND #SQLANDEND4#Index
+////////#endproperty_SearchField
+////////#endregion {{modulePageName}}_int_selected4#Template
+////////#region {{modulePageName}}_Default_selected4#Template
+////////#property_SearchField
+#Template   (@{{fieldName}} IS NULL OR [{{parentTableLocalName}}_{{currentTableLocalName}}].[{{fieldServerName}}] = @{{fieldName}}) AND #SQLANDEND4#Index
+////////#endproperty_SearchField
+////////#endregion {{modulePageName}}_Default_selected4#Template
+
+////////#region {{modulePageName}}_allparams4#Template
+////////#endregion {{modulePageName}}_allparams4#Template
+
+////////#endmodule_SearchByFields
+
+////////#module_Sorting
+/*********************ORDER**********************/
+ORDER BY 
+////////#region {{modulePageName}}_Default_selected5#Template
+////////#property_SortOrder
+#Template   CASE WHEN @sortOrder = 'ASC' AND @sortField = '{{fieldName}}' 
+#Template        THEN [{{parentTableLocalName}}_{{currentTableLocalName}}].[{{fieldServerName}}] END ASC, 
+#Template   CASE WHEN @sortOrder = 'DESC' AND @sortField = '{{fieldName}}'
+#Template        THEN [{{parentTableLocalName}}_{{currentTableLocalName}}].[{{fieldServerName}}] END DESC,
+
+////////#endproperty_SortOrder
+////////#endregion {{modulePageName}}_Default_selected5#Template
+
+////////#region {{modulePageName}}_Default_Order_base6#Template
+////////#property_OrderField
+#Template   CASE WHEN @sortOrder = 'ASC' AND @sortField = '{{fieldName}}' 
+#Template        THEN [{{parentTableLocalName}}_{{currentTableLocalName}}].[{{fieldServerName}}] END ASC, 
+#Template   CASE WHEN @sortOrder = 'DESC' AND @sortField = '{{fieldName}}' 
+#Template        THEN [{{parentTableLocalName}}_{{currentTableLocalName}}].[{{fieldServerName}}] END DESC,
+
+////////#endproperty_OrderField
+////////#endregion {{modulePageName}}_Default_Order_base6#Template
+
+////////#region {{modulePageName}}_Default_ModifiedDate_base6#Template
+#Template   [_{{moduleLocalName}}].[{{fieldServerName}}] DESC
+////////#endregion {{modulePageName}}_Default_ModifiedDate_base6#Template
+
+////////#region {{modulePageName}}_allparams5#Template
+////////#endregion {{modulePageName}}_allparams5#Template
+////////#region {{modulePageName}}_allparams6#Template
+////////#endregion {{modulePageName}}_allparams6#Template
+
+////////#endmodule_Sorting
+
+////////#module_Pagination
+/*********************OFFSET**********************/
+OFFSET  @pageOffset ROWS FETCH NEXT @pageRows ROWS ONLY;
+////////#endmodule_Pagination
+END
+////////#endmodule_Get
+////////#module_Set
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+/*********************CREATE**********************/
+CREATE PROCEDURE [dbo].[{{configVersion}}_Update{{modulePageName}}]
+/*********************PARAMS**********************/
+
+////////#region {{modulePageName}}_string_selected_base7#Template
+////////#Template   @{{fieldName}} {{fieldSqlDataType}}({{fieldLimit}}) = NULL,
+////////#endregion {{modulePageName}}_string_selected_base7#Template
+////////#region {{modulePageName}}_int_selected_base7#Template
+////////#Template   @{{fieldName}} {{fieldSqlDataType}} = 0,
+////////#endregion {{modulePageName}}_int_selected_base7#Template
+////////#region {{modulePageName}}_Default_selected_base7#Template
+////////#Template   @{{fieldName}} {{fieldSqlDataType}} ({{fieldLimit}}) = NULL,
+////////#endregion {{modulePageName}}_Default_selected_base7#Template
+////////#region {{modulePageName}}_int_selected_Primary7#Template
+////////#endregion {{modulePageName}}_int_selected_Primary7#Template
+////////#region {{modulePageName}}_allparams7#Template
+////////#endregion {{modulePageName}}_allparams7#Template
+@{{modulePrimaryLabel}} {{modulePrimaryDataType}} = 0
+AS
+SET NOCOUNT OFF;
+BEGIN
+if (@{{modulePrimaryLabel}} IS NOT NULL AND @{{modulePrimaryLabel}} != 0)
+BEGIN
+/*********************UPDATE**********************/
+UPDATE
+[{{moduleServerName}}]
+SET
+////////#region {{modulePageName}}_int_selected_base8#Template
+////////#Template   [{{moduleServerName}}].[{{fieldServerName}}] = CASE WHEN @{{fieldName}} = 0 THEN NULL 
+////////#Template                          ELSE IsNull(@{{fieldName}}, [{{moduleServerName}}].[{{fieldServerName}}]) 
+////////#Template                     END,#RemoveEndComma8#Index
+////////#endregion {{modulePageName}}_int_selected_base8#Template
+////////#region {{modulePageName}}_Default_selected_base8#Template
+////////#Template   [{{moduleServerName}}].[{{fieldServerName}}] = IsNull(@{{fieldName}}, [{{moduleServerName}}].[{{fieldServerName}}]),#RemoveEndComma8#Index
+////////#endregion {{modulePageName}}_Default_selected_base8#Template
+////////#region {{modulePageName}}_int_selected_Primary8#Template
+////////#endregion {{modulePageName}}_int_selected_Primary8#Template
+////////#region {{modulePageName}}_allparams8#Template
+////////#endregion {{modulePageName}}_allparams8#Template
+
+/*********************WHERE**********************/
+WHERE 
+
+////////#region {{modulePageName}}_string_selected10#Template
+////////#property_UpdateFilter
+#Template   (@{{fieldName}} IS NULL OR [{{parentTableLocalName}}_{{currentTableLocalName}}].[{{fieldServerName}}] = @{{fieldName}}) AND 
+////////#endproperty_UpdateFilter
+////////#endregion {{modulePageName}}_string_selected10#Template
+////////#region {{modulePageName}}_int_selected10#Template
+////////#property_UpdateFilter
+#Template   (@{{fieldName}} = 0 OR [{{parentTableLocalName}}_{{currentTableLocalName}}].[{{fieldServerName}}] = @{{fieldName}}) AND 
+////////#endproperty_UpdateFilter
+////////#endregion {{modulePageName}}_int_selected10#Template
+////////#region {{modulePageName}}_Default_selected10#Template
+////////#property_UpdateFilter
+#Template   (@{{fieldName}} IS NULL OR [{{parentTableLocalName}}_{{currentTableLocalName}}].[{{fieldServerName}}] = @{{fieldName}}) AND 
+////////#endproperty_UpdateFilter
+////////#endregion {{modulePageName}}_Default_selected10#Template
+////////#region {{modulePageName}}_int_selected_Primary10#Template
+////////#endregion {{modulePageName}}_int_selected_Primary10#Template
+////////#region {{modulePageName}}_allparams10#Template
+////////#endregion {{modulePageName}}_allparams10#Template
+[{{moduleServerName}}].[{{modulePrimaryServerName}}] = @{{modulePrimaryLabel}}
+
+END
+ELSE
+BEGIN
+/*********************INSERT**********************/
+INSERT INTO [{{moduleServerName}}]
+(
+////////#region {{modulePageName}}_Default_selected_base11#Template
+////////#Template   [{{fieldServerName}}],#RemoveEndComma11#Index
+////////#endregion {{modulePageName}}_Default_selected_base11#Template
+////////#region {{modulePageName}}_int_selected_Primary11#Template
+////////#endregion {{modulePageName}}_int_selected_Primary11#Template
+////////#region {{modulePageName}}_allparams11#Template
+////////#endregion {{modulePageName}}_allparams11#Template
+)
+/*********************VALUES**********************/
+VALUES (
+////////#region {{modulePageName}}_Default_selected_base12#Template
+////////#Template   @{{fieldName}},#RemoveEndComma12#Index
+////////#endregion {{modulePageName}}_Default_selected_base12#Template
+////////#region {{modulePageName}}_int_selected_Primary12#Template
+////////#endregion {{modulePageName}}_int_selected_Primary12#Template
+////////#region {{modulePageName}}_allparams12#Template
+////////#endregion {{modulePageName}}_allparams12#Template
+)
+////////#module_GetInsertId
+/*********************IDENTITY**********************/
+Select SCOPE_IDENTITY()
+////////#endmodule_GetInsertId
+END
+END
+////////#endmodule_Set
+////////#module_Remove
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+/*********************CREATE**********************/
+CREATE PROCEDURE [dbo].[{{configVersion}}_Delete{{modulePageName}}]
+/*********************PARAMS**********************/
+////////#region {{modulePageName}}_string_selected_base13#Template
+////////#Template#property_DeleteByField
+////////#Template   @{{fieldName}} {{fieldSqlDataType}}({{fieldLimit}}) = NULL,
+////////#Template#endproperty_DeleteByField
+////////#endregion {{modulePageName}}_string_selected_base13#Template
+////////#region {{modulePageName}}_int_selected_base13#Template
+////////#Template#property_DeleteByField
+////////#Template   @{{fieldName}} {{fieldSqlDataType}} = 0,
+////////#Template#endproperty_DeleteByField
+////////#endregion {{modulePageName}}_int_selected_base13#Template
+////////#region {{modulePageName}}_Default_selected_base13#Template
+////////#Template#property_DeleteByField
+////////#Template   @{{fieldName}} {{fieldSqlDataType}} ({{fieldLimit}}) = NULL,
+////////#Template#endproperty_DeleteByField
+////////#endregion {{modulePageName}}_Default_selected_base13#Template
+////////#region {{modulePageName}}_int_selected_Primary13#Template
+////////#endregion {{modulePageName}}_int_selected_Primary13#Template
+////////#region {{modulePageName}}_allparams13#Template
+////////#endregion {{modulePageName}}_allparams13#Template
+@{{modulePrimaryLabel}} {{modulePrimaryDataType}} = 0
+AS
+SET NOCOUNT OFF;
+BEGIN
+if (@{{modulePrimaryLabel}} IS NOT NULL AND @{{modulePrimaryLabel}} != 0)
+BEGIN
+/*********************DELETE**********************/
+DELETE FROM
+[{{moduleServerName}}]
+
+/*********************WHERE**********************/
+WHERE 
+
+////////#region {{modulePageName}}_string_selected14#Template
+////////#property_DeleteByField
+#Template   (@{{fieldName}} IS NULL OR [{{parentTableLocalName}}_{{currentTableLocalName}}].[{{fieldServerName}}] = @{{fieldName}}) AND 
+////////#endproperty_DeleteByField
+////////#endregion {{modulePageName}}_string_selected14#Template
+////////#region {{modulePageName}}_int_selected14#Template
+////////#property_DeleteByField
+#Template   (@{{fieldName}} = 0 OR [{{parentTableLocalName}}_{{currentTableLocalName}}].[{{fieldServerName}}] = @{{fieldName}}) AND 
+////////#endproperty_DeleteByField
+////////#endregion {{modulePageName}}_int_selected14#Template
+////////#region {{modulePageName}}_Default_selected14#Template
+////////#property_DeleteByField
+#Template   (@{{fieldName}} IS NULL OR [{{parentTableLocalName}}_{{currentTableLocalName}}].[{{fieldServerName}}] = @{{fieldName}}) AND 
+////////#endproperty_DeleteByField
+////////#endregion {{modulePageName}}_Default_selected14#Template
+////////#region {{modulePageName}}_int_selected_Primary14#Template
+////////#endregion {{modulePageName}}_int_selected_Primary14#Template
+////////#region {{modulePageName}}_allparams14#Template
+////////#endregion {{modulePageName}}_allparams14#Template
+[{{moduleServerName}}].[{{modulePrimaryServerName}}] = @{{modulePrimaryLabel}}
+////////#module_GetDeleteCount
+/*********************DELETECOUNT**********************/
+SELECT @@ROWCOUNT 
+////////#endmodule_GetDeleteCount
+END
+END
+////////#endmodule_Remove
+
+
+////////#module_Count
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+/*********************CREATE**********************/
+CREATE PROCEDURE [dbo].[{{configVersion}}_Count{{modulePageName}}]
+/*********************PARAMS**********************/
+////////#module_CountByFields
+////////#region {{modulePageName}}_string_selected15#Template
+////////#property_CountByField
+////////#Template   @{{fieldName}} {{fieldSqlDataType}}({{fieldLimit}}) = NULL,#RemoveEndComma15#Index
+////////#endproperty_CountByField
+////////#endregion {{modulePageName}}_string_selected15#Template
+
+////////#region {{modulePageName}}_int_selected15#Template
+////////#property_CountByField
+////////#Template   @{{fieldName}} {{fieldSqlDataType}} = 0,#RemoveEndComma15#Index
+////////#endproperty_CountByField
+////////#endregion {{modulePageName}}_int_selected15#Template
+
+////////#region {{modulePageName}}_Default_selected15#Template
+////////#property_CountByField
+////////#Template   @{{fieldName}} {{fieldSqlDataType}} ({{fieldLimit}}) = NULL,#RemoveEndComma15#Index
+////////#endproperty_CountByField
+////////#endregion {{modulePageName}}_Default_selected15#Template
+
+////////#region {{modulePageName}}_allparams15#Template
+////////#endregion {{modulePageName}}_allparams15#Template
+////////#endmodule_CountByFields
+AS
+BEGIN
+/*********************COUNT**********************/
+SELECT Top 1 COUNT(*) OVER() TotalRowCount
+/*********************JOIN**********************/
+FROM [{{moduleServerName}}] [_{{moduleLocalName}}]
+////////#region {{modulePageName}}_int_selected_Foreign_toJoin16#Template
+#Template{{TabSpaces}}    LEFT JOIN [{{foreignServerName}}] 
+#Template{{TabSpaces}}                  as {{currentTableLocalName}}_{{foreignLocalName}} 
+#Template{{TabSpaces}}                  on [{{parentTableLocalName}}_{{currentTableLocalName}}].[{{fieldServerName}}] 
+#Template{{TabSpaces}}                  = [{{currentTableLocalName}}_{{foreignLocalName}}].[{{foreignPrimaryServerName}}]
+////////#endregion {{modulePageName}}_int_selected_Foreign_toJoin16#Template
+////////#region {{modulePageName}}_allparams16#Template
+////////#endregion {{modulePageName}}_allparams16#Template
+
+////////#module_CountByFields
+/*********************WHERE**********************/
+WHERE 
+
+////////#region {{modulePageName}}_string_selected17#Template
+////////#property_CountByField
+#Template   (@{{fieldName}} IS NULL OR [{{parentTableLocalName}}_{{currentTableLocalName}}].[{{fieldServerName}}] = @{{fieldName}}) AND #SQLANDEND17#Index
+////////#endproperty_CountByField
+////////#endregion {{modulePageName}}_string_selected17#Template
+////////#region {{modulePageName}}_int_selected17#Template
+////////#property_CountByField
+#Template   (@{{fieldName}} = 0 OR [{{parentTableLocalName}}_{{currentTableLocalName}}].[{{fieldServerName}}] = @{{fieldName}}) AND #SQLANDEND17#Index
+////////#endproperty_CountByField
+////////#endregion {{modulePageName}}_int_selected17#Template
+////////#region {{modulePageName}}_Default_selected17#Template
+////////#property_CountByField
+#Template   (@{{fieldName}} IS NULL OR [{{parentTableLocalName}}_{{currentTableLocalName}}].[{{fieldServerName}}] = @{{fieldName}}) AND #SQLANDEND17#Index
+////////#endproperty_CountByField
+////////#endregion {{modulePageName}}_Default_selected17#Template
+////////#region {{modulePageName}}_allparams17#Template
+////////#endregion {{modulePageName}}_allparams17#Template
+
+////////#endmodule_CountByFields
+END
+////////#endmodule_Count
+////////#endmodule_StoredProcedure

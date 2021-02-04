@@ -1,0 +1,66 @@
+{
+  "Key": "ml_gender",
+  "Value": {
+    "isGlobalTable": false,
+    "LocalName": "Gender",
+    "PublicName": "Gender",
+    "ServerName": "ml_gender",
+    "FieldsList": {
+      "gd_id": {
+        "Label": "Id",
+        "LocalName": "Id",
+        "Order": 0,
+        "ServerName": "gd_id",
+        "ServerDataType": "int",
+        "SqlDataType": "Int",
+        "TSDataType": "number",
+        "Limit": 10,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": true,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "gd_title": {
+        "Label": "Title",
+        "LocalName": "Title",
+        "Order": 0,
+        "ServerName": "gd_title",
+        "ServerDataType": "string",
+        "SqlDataType": "nvarchar",
+        "TSDataType": "string",
+        "Limit": 200,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      }
+    },
+    "Pages": {
+      "Gender": {
+        "PageName": "Gender",
+        "Modules": [
+          "Entity",
+          "Model",
+          "GetService",
+          "Controller",
+          "Get",
+          "ManualService",
+          "GetById",
+          "FunctionalComponentManage",
+          "DuxManage",
+          "DuxList",
+          "FunctionalComponentList"
+        ],
+        "FieldsList": {
+          "gd_id": {
+            "ServerName": "gd_id"
+          },
+          "gd_title": {
+            "ServerName": "gd_title",
+            "Properties": ["SortableField", "Generating"]
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "Key": "ml_event_type",
+  "Value": {
+    "isGlobalTable": false,
+    "LocalName": "EventType",
+    "PublicName": "EventType",
+    "ServerName": "ml_event_type",
+    "FieldsList": {
+      "evt_id": {
+        "Label": "Id",
+        "LocalName": "Id",
+        "Order": 0,
+        "ServerName": "evt_id",
+        "ServerDataType": "int",
+        "SqlDataType": "Int",
+        "TSDataType": "number",
+        "Limit": 10,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": true,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "evt_type": {
+        "Label": "Type",
+        "LocalName": "Type",
+        "Order": 0,
+        "ServerName": "evt_type",
+        "ServerDataType": "string",
+        "SqlDataType": "nvarchar",
+        "TSDataType": "string",
+        "Limit": 200,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      }
+    },
+    "Pages": {
+      "Gender": {
+        "PageName": "Gender",
+        "Modules": [
+          "Entity",
+          "Model",
+          "GetService",
+          "Controller",
+          "Get",
+          "ManualService",
+          "GetById",
+          "FunctionalComponentManage",
+          "DuxManage",
+          "DuxList",
+          "FunctionalComponentList"
+        ],
+        "FieldsList": {
+          "evt_id": {
+            "ServerName": "evt_id"
+          },
+          "evt_type": {
+            "ServerName": "evt_type",
+            "Properties": ["SortableField", "Generating"]
+          }
+        }
+      }
+    }
+  }
+}

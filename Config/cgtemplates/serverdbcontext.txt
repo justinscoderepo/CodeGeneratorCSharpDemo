@@ -1,0 +1,30 @@
+using Example.Data.Entities;
+using Microsoft.EntityFrameworkCore;
+using System;
+
+namespace Example.Entities
+{
+    /// <summary>
+    /// ExampleDbContext class
+    /// </summary>
+    public class ExampleDbContext : DbContext
+    {
+            
+
+        //// region ModuleListEntity#
+        #Template   public virtual DbSet<{{subModulePublicName}}> {{subModulePublicName}} { get; set; }
+        //// endregion ModuleListEntity#       
+        
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        { 
+        
+        }
+        
+        public ExampleDbContext(DbContextOptions<ExampleDbContext> options)
+          : base(options)
+        {
+
+        }
+    }
+}

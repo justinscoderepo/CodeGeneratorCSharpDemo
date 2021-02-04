@@ -1,0 +1,500 @@
+////////#module_ManualService
+////////// --------------------------------------------------------------------------------------------------------------------
+////////// <copyright file="{{modulePageName}}.cs" company="Example">
+//////////   The {{modulePageNameAsWordLower}} business logic
+////////// </copyright>
+////////// <summary>Defines the {{modulePageNameAsWordLower}} type.</summary>
+////////// --------------------------------------------------------------------------------------------------------------------
+
+////////namespace Example.Business.Service
+////////{
+////////    using System;
+////////    using System.Collections.Generic;   
+////////    using System.Linq;
+////////    using Example.Models;
+////////    using Example.Business.Contracts;
+////////    using Example.Entities.Repository;
+////////    using Example.Data.Entities;
+////////    using Example.Models.Common;
+////////    using Example.Utilities;
+////////    using LinqKit;
+////////#module_IncludeHelper
+////////    using Microsoft.EntityFrameworkCore;
+////////    using Example.Business.Helpers;
+////////#endmodule_IncludeHelper
+////region CustomCodeBlockUsing#
+////endregion CustomCodeBlockUsing#
+
+
+////////    /// <summary>The {{modulePageNameAsWordLower}} business Example.Logic.</summary>
+////////    public class {{modulePageName}}Service : I{{modulePageName}}Service
+////////    {
+////////        private readonly IRepository<{{moduleLocalName}}> _repository;
+                public {{modulePageName}}Service(IRepository<{{moduleLocalName}}> repository
+                ){
+                    _repository = repository;
+            }
+
+////////#module_GetService
+////////#module_Sort
+ private IQueryable<{{modulePageName}}Model> sortData(IQueryable<{{modulePageName}}Model> data, SortModel sortModel)
+        {
+            if(sortModel == null){
+                sortModel = new SortModel();
+            }
+            if(sortModel.SortOrder == "asc")
+            {
+                switch (sortModel.SortField)
+                {
+////////                      #region {{modulePageName}}_int_selected_Foreign_base8#Template
+ ////////            #property_SortableField
+#Template                       case "{{fieldLabel}}":
+#Template                        return data.OrderBy(x => x.{{fieldLabel}}Title);
+ ////////            #endproperty_SortableField
+////////        #endregion {{modulePageName}}_int_selected_Foreign_base8#Template
+                    #region {{modulePageName}}_Default_selected_base8#Template
+ ////////            #property_SortableField
+#Template                       case "{{fieldLabel}}":
+#Template                        return data.OrderBy(x => x.{{fieldLabel}});
+ ////////            #endproperty_SortableField
+////////        #endregion {{modulePageName}}_Default_selected_base8#Template
+////////        #region {{modulePageName}}_allparams8#Template
+////////        #endregion {{modulePageName}}_allparams8#Template
+  ////////        #region {{modulePageName}}_Default_selected_base10#Template                    
+                     ////////            #property_DefaultSortField
+#Template                       default:
+#Template                        return data.OrderBy(x => x.{{fieldLabel}});
+////////           #property_DefaultSortField
+////////        #endregion {{modulePageName}}_Default_selected_base10#Template
+////////        #region {{modulePageName}}_allparams10#Template
+////////        #endregion {{modulePageName}}_allparams10#Template
+                }
+                
+
+            } 
+            else
+            {
+                switch (sortModel.SortField)
+                {
+ ////////                   #region {{modulePageName}}_int_selected_Foreign_base7#Template
+ ////////            #property_SortableField
+ #Template                       case "{{fieldLabel}}":
+#Template                        return data.OrderByDescending(x => x.{{fieldLabel}}Title);
+////////            #endproperty_SortableField
+////////        #endregion {{modulePageName}}_int_selected_Foreign_base7#Template
+
+                    ////////        #region {{modulePageName}}_Default_selected_base7#Template
+                     ////////            #property_SortableField
+#Template                       case "{{fieldLabel}}":
+#Template                        return data.OrderByDescending(x => x.{{fieldLabel}});
+////////            #endproperty_SortableField
+////////        #endregion {{modulePageName}}_Default_selected_base7#Template
+////////        #region {{modulePageName}}_allparams7#Template
+////////        #endregion {{modulePageName}}_allparams7#Template
+  ////////        #region {{modulePageName}}_Default_selected_base9#Template                    
+                     ////////            #property_DefaultSortField
+#Template                       default:
+#Template                        return data.OrderByDescending(x => x.{{fieldLabel}});
+////////           #property_DefaultSortField
+////////        #endregion {{modulePageName}}_Default_selected_base9#Template
+////////        #region {{modulePageName}}_allparams9#Template
+////////        #endregion {{modulePageName}}_allparams9#Template
+                  
+                }
+            }
+            return data;
+        }
+////////#endmodule_Sort
+////////        /// <summary>Get {{modulePageNameAsWordLower}}.</summary>
+////////        /// <param name="model">{{modulePageNameAsWordLower}} model.</param>
+////////        /// <param name="validModelParameters">The valid Model Parameters.</param> 
+////////        /// <returns>The <see cref="List"/>.</returns>
+////////        public GetResponseModel<{{modulePageName}}Model> Get({{modulePageName}}Model model
+////////#module_Pagination
+////////        ,PaginationModel paginationModel = null
+////////#endmodule_Pagination
+////////#module_Sort
+////////        ,SortModel sortModel = null
+////////#endmodule_Sort
+)
+////////        {
+                    var perPage = 1000;
+                    var startIndex = 0;
+
+////////#module_Pagination
+///--------------------Pagination Data----------------------
+                if(paginationModel != null){
+                    if(paginationModel.PageSize != null)
+                    {
+                        perPage = paginationModel.PageSize.Value;
+                    }
+                    if(paginationModel.PageNumber != null)
+                    {
+                        startIndex = paginationModel.PageNumber.Value;
+                    }
+                }
+////////#endmodule_Pagination  
+                    var pagination =  new Pagination<{{modulePageName}}Model>(startIndex, perPage);
+
+///--------------------Predicate Conditions----------------------
+////////            var predicate = PredicateBuilder.New<{{moduleLocalName}}>(true);
+
+////////        #region {{modulePageName}}_string_selected_base#Template
+////////#property_ContainsFilter
+#Template if(!string.IsNullOrEmpty(model.{{fieldName}})){
+#Template    predicate.And(x=>x.{{fieldLocalName}}.ToLower().Contains(model.{{fieldLabel}}.ToLower()));
+#Template }
+////////#endproperty_ContainsFilter
+////////#property_EqualFilter
+#Template if(!string.IsNullOrEmpty(model.{{fieldName}})){
+#Template    predicate.And(x=>x.{{fieldLocalName}} == model.{{fieldLabel}});
+#Template }
+////////#endproperty_EqualFilter
+
+////////        #endregion {{modulePageName}}_string_selected_base#Template
+
+////////        #region {{modulePageName}}_int_selected_Foreign_base#Template
+////////#property_EqualFilter
+#Template           if(model.{{fieldLabel}}Id>0){
+#Template               predicate.And(x=>x.{{fieldLocalName}} == (model.{{fieldLabel}}Id));
+#Template           }
+////////#endproperty_EqualFilter
+
+////////          #property_ListFilter
+////Foreign
+
+#Template if (model.{{fieldLocalName}}IdList != null && model.{{fieldLocalName}}IdList.Count() > 0)
+#Template             {
+#Template                predicate.And(x => model.{{fieldLocalName}}IdList.Contains(x.{{fieldLocalName}}));
+#Template             }
+////////        #endproperty_ListFilter
+////////        #endregion {{modulePageName}}_int_selected_Foreign_base#Template
+
+////////            #region {{modulePageName}}_int_selected_base#Template
+////////            #property_EqualFilter
+#Template           if(model.{{fieldName}}>0){
+#Template               predicate.And(x=>x.{{fieldLocalName}} == (model.{{fieldLabel}}));
+#Template           }
+////////            #endproperty_EqualFilter
+////////            #endregion {{modulePageName}}_int_selected_base#Template
+
+////////#module_GetById
+////////           #region {{modulePageName}}_int_Primary3#Template
+#Template           if(model.{{fieldName}}>0){
+#Template               predicate.And(x=>x.{{fieldLocalName}} == (model.{{fieldLabel}}));
+#Template           }
+////////            #endregion {{modulePageName}}_int_Primary3#Template
+////////        #region {{modulePageName}}_allparams3#Template
+////////        #endregion {{modulePageName}}_allparams3#Template
+////////#endmodule_GetById
+
+////////        #region {{modulePageName}}_string_selected_ForeignField#Template
+////////            #property_EqualFilter
+#Template           if(!string.IsNullOrEmpty(model.{{fieldName}})){
+#Template               predicate.And(x=>x.{{parentFieldLocalName}}Relation.{{fieldLocalName}} == (model.{{fieldName}}));
+#Template           }
+////////             #endproperty_EqualFilter
+////////            #property_ContainsFilter
+#Template           if(!string.IsNullOrEmpty(model.{{fieldName}})){
+#Template               predicate.And(x=>x.{{parentFieldLocalName}}Relation.{{fieldLocalName}}.ToLower().Contains(model.{{fieldName}}.ToLower()));
+#Template           }
+////////            #endproperty_ContainsFilter
+////////        #endregion {{modulePageName}}_string_selected_ForeignField#Template
+
+////////        #region {{modulePageName}}_int_selected_ForeignField#Template
+////////            #property_EqualFilter
+#Template           if(model.{{fieldName}}>0){
+#Template               predicate.And(x=>x.{{parentFieldLocalName}}Relation.{{fieldLocalName}} == (model.{{fieldName}}));
+#Template           }
+////////            #endproperty_EqualFilter
+////////          #property_ListFilter
+////ForeignField
+
+#Template if (model.{{fieldLocalName}}IdList != null && model.{{fieldLocalName}}IdList.Count() > 0)
+#Template             {
+#Template                predicate.And(x => model.{{fieldLocalName}}IdList.Contains(x.{{fieldLocalName}}));
+#Template             }
+////////        #endproperty_ListFilter
+////////        #endregion {{modulePageName}}_int_selected_ForeignField#Template
+
+
+////////            #region {{modulePageName}}_DateTime_selected_base#Template
+////////            #property_EqualFilter
+#Template           if(model.{{fieldName}} != DateTime.MinValue && model.{{fieldName}} != DateTime.MaxValue){
+#Template               predicate.And(x=>x.{{fieldLocalName}} == (model.{{fieldLabel}}));
+#Template           }
+////////            #endproperty_EqualFilter
+////////            #endregion {{modulePageName}}_DateTime_selected_base#Template
+
+////////        #region {{modulePageName}}_int_selected_ReverseForeign#Template
+////////            #property_ListFilter
+#Template if (model.{{fieldLocalName}}IdList != null && model.{{fieldLocalName}}IdList.Count() > 0)
+#Template             {
+#Template                 predicate.And(x => x.{{currentTablePublicName}}List.Any(y => model.{{fieldLocalName}}IdList.Contains(y.{{fieldLocalName}})));
+#Template             }
+////////            #endproperty_ListFilter
+////////        #endregion {{modulePageName}}_int_selected_ReverseForeign#Template
+
+////////            #region {{modulePageName}}_Default_selected_base#Template
+////////#property_IsActiveFilter
+#Template    predicate.And(x=>x.{{fieldLocalName}} == true); 
+////////#endproperty_IsActiveFilter
+////////            #endregion {{modulePageName}}_Default_selected_base#Template
+
+////////        #region {{modulePageName}}_allparams#Template
+////////        #endregion {{modulePageName}}_allparams#Template
+
+
+////region CustomCodeBlockPredicate#
+////endregion CustomCodeBlockPredicate#
+
+
+////////            var rows = _repository.Find(predicate);
+
+////////#module_IncludeRelations
+///--------------------Include Relational Tables----------------------
+
+////////        #region {{modulePageName}}_SubQuery_Reverse6#Template
+#Template        rows = rows.Include(x=>x.{{fieldLocalName}}List);
+////////        #endregion {{modulePageName}}_SubQuery_Reverse6#Template
+////////        #region {{modulePageName}}_allparams6#Template
+////////        #endregion {{modulePageName}}_allparams6#Template
+
+////////        #region {{modulePageName}}_int_selected_ReverseForeign11#Template
+#Template        rows = rows.Include(x=>x.{{currentTableLocalName}}List).ThenInclude(x=>x.{{fieldLocalName}}Relation);
+////////        #endregion {{modulePageName}}_int_selected_ReverseForeign11#Template
+////////        #region {{modulePageName}}_allparams11#Template
+////////        #endregion {{modulePageName}}_allparams11#Template
+////////#endmodule_IncludeRelations
+
+
+///--------------------Select Data----------------------
+                var results = rows.Select(x => new {{modulePageName}}Model(){
+////            region CustomCodeBlockSelection#
+////            endregion CustomCodeBlockSelection#                  
+////////        #region {{modulePageName}}_Default_selected_base4#Template
+
+#Template    {{fieldLabel}} = x.{{fieldLocalName}},
+////////        #endregion {{modulePageName}}_Default_selected_base4#Template
+
+////////        #region {{modulePageName}}_int_selected_Foreign_base4#Template
+
+#Template    {{fieldLabel}}Id = x.{{fieldLocalName}},
+////////        #endregion {{modulePageName}}_int_selected_Foreign_base4#Template
+
+
+////////        #region {{modulePageName}}_SubQuery_Reverse4#Template
+////////            #property_SelectCollection
+#Template    {{fieldLabel}}List = x.{{fieldLocalName}}List.Select(y => 
+#Template    {{fieldLocalName}}Helper.ToModel(y)).ToList(),
+////////            #endproperty_SelectCollection
+////////            #property_SelectCount
+#Template    {{fieldLabel}}Count = x.{{fieldLocalName}}List.Count(),
+
+////////            #endproperty_SelectCount
+////////        #endregion {{modulePageName}}_SubQuery_Reverse4#Template
+
+////////        #region {{modulePageName}}_string_selected_ForeignField4#Template
+#Template       {{fieldName}} = x.{{parentFieldLocalName}}Relation.{{fieldLocalName}},
+////////        #endregion {{modulePageName}}_string_selected_ForeignField4#Template
+
+
+
+
+////////        #region {{modulePageName}}_int_selected_ForeignField4#Template
+#Template       {{fieldName}} = x.{{parentFieldLocalName}}Relation.{{fieldLocalName}},
+////////        #endregion {{modulePageName}}_int_selected_ForeignField4#Template
+
+////////        #region {{modulePageName}}_allparams4#Template
+////////        #endregion {{modulePageName}}_allparams4#Template
+});
+
+///--------------------Sorting Data-------------------------
+#module_Sort
+
+                results = sortData(results, sortModel);
+#endmodule_Sort
+        var totalCount = results.Count(); //defaultValue
+            pagination.results(results);
+            
+///--------------------Return----------------------
+////////            return pagination;
+////////        }
+////////#endmodule_GetService
+
+////////#module_SetService
+
+////////        /// <summary>Save {{modulePageNameAsWordLower}}.</summary>
+////////        /// <param name="model">{{modulePageNameAsWordLower}} model.</param>
+////////        /// <returns>The <see cref="{{modulePageName}}Model"/>.</returns>
+////////        /// <param name="validModelParameters">The valid Model Parameters.</param> 
+
+
+////////        public RawResponseModel<{{modulePageName}}Model> Save({{modulePageName}}Model model)
+////////        {
+////////             if (model != null)
+////////            {
+                        
+////////            }
+////////            else
+////////            {
+////////                model = new {{modulePageName}}Model();
+////////            }
+////////            var entity = new {{moduleLocalName}}();
+                    
+////////           if(model.{{modulePrimaryLabel}} > 0){
+////////               var data = _repository.Find(x => x.{{modulePrimaryLocalName}} == model.{{modulePrimaryLabel}});
+////////                if (data.Any())
+////////                    entity = data.FirstOrDefault();
+////////                else
+////////                    return new RawResponseModel<{{modulePageName}}Model>(null, "{{moduleLocalName}} does not exist!", false);
+////////           }
+
+////////        #region {{modulePageName}}_int_Foreign_base2#Template
+#Template           if(model.{{fieldLabel}}Id>0){
+#Template               entity.{{fieldLocalName}} = model.{{fieldLabel}}Id;   
+#Template           }
+////////        #endregion {{modulePageName}}_int_Foreign_base2#Template
+
+////////            #region {{modulePageName}}_string_NOT_NULL_base2#Template
+
+#Template           if(!string.IsNullOrEmpty(model.{{fieldName}})){
+#Template                  entity.{{fieldLocalName}} = (model.{{fieldLabel}});
+#Template           }
+
+////////           #endregion {{modulePageName}}_string_NOT_NULL_base2#Template
+
+
+////////        #region {{modulePageName}}_string_NULL_base2#Template
+#Template           if(!string.IsNullOrEmpty(model.{{fieldName}})){
+#Template                  entity.{{fieldLocalName}} = model.{{fieldLabel}};
+#Template           }
+////////        #endregion {{modulePageName}}_string_NULL_base2#Template
+
+
+////////        #region {{modulePageName}}_bool_selected_base2#Template
+#Template       if(model.{{fieldName}} != null ){
+#Template                  entity.{{fieldLocalName}} = model.{{fieldLabel}};
+#Template       }                
+////////        #endregion {{modulePageName}}_bool_selected_base2#Template
+
+////////        #region {{modulePageName}}_DateTime_NOT_NULL_selected_base2#Template
+#Template       if(model.{{fieldName}} != DateTime.MinValue && model.{{fieldName}} != DateTime.MaxValue){
+#Template                  entity.{{fieldLocalName}} = model.{{fieldLabel}};
+#Template       }
+////////        #endregion {{modulePageName}}_DateTime_NOT_NULL_selected_base2#Template
+
+////////        #region {{modulePageName}}_DateTime_NULL_selected_base2#Template
+#Template       if(model.{{fieldName}} != DateTime.MinValue && model.{{fieldName}} != DateTime.MaxValue){
+#Template                  entity.{{fieldLocalName}} = model.{{fieldLabel}};
+#Template       }
+////////        #endregion {{modulePageName}}_DateTime_NULL_selected_base2#Template
+
+////////            #region {{modulePageName}}_int_NULL_base2#Template
+////////            #region {{modulePageName}}_float_NULL_base2#Template
+////////            #region {{modulePageName}}_long_NULL_base2#Template
+           
+#Template           if(model.{{fieldName}}>0){
+#Template               entity.{{fieldLocalName}}=model.{{fieldLabel}};
+#Template           }
+////////            #endregion {{modulePageName}}_long_NULL_base2#Template           
+////////            #endregion {{modulePageName}}_float_NULL_base2#Template
+////////            #endregion {{modulePageName}}_int_NULL_base2#Template
+
+
+////////            #region {{modulePageName}}_int_NOT_NULL_base2#Template
+////////            #region {{modulePageName}}_float_NOT_NULL_base2#Template
+////////            #region {{modulePageName}}_long_NOT_NULL_base2#Template
+#Template           if(model.{{fieldName}}>0){
+#Template               entity.{{fieldLocalName}} = model.{{fieldLabel}};
+#Template           }
+////////        #endregion {{modulePageName}}_long_NOT_NULL_base2#Template
+////////        #endregion {{modulePageName}}_float_NOT_NULL_base2#Template
+////////        #endregion {{modulePageName}}_int_NOT_NULL_base2#Template
+
+////////            #region {{modulePageName}}_DateTime_CreatedDate_selected_base2#Template
+#Template           if(model.{{modulePrimaryLabel}} == 0){
+#Template               entity.{{fieldLocalName}} = DateTime.UtcNow;
+#Template           }
+////////            #endregion {{modulePageName}}_DateTime_CreatedDate_selected_base2#Template
+////////            #region {{modulePageName}}_DateTime_ModifiedDate_selected_base2#Template
+#Template           entity.{{fieldLocalName}} = DateTime.UtcNow;
+////////            #endregion {{modulePageName}}_DateTime_ModifiedDate_selected_base2#Template
+
+////////            #region {{modulePageName}}_int_CreatedBy_selected_base2#Template
+////////            #property_SetUserId
+#Template           model.CreatedById = this.CurrentUser.Id;
+////////            #endproperty_SetUserId
+////////            #endregion {{modulePageName}}_int_CreatedBy_selected_base2#Template
+
+
+
+
+////////        #region {{modulePageName}}_allparams2#Template
+////////        #endregion {{modulePageName}}_allparams2#Template
+
+                if(model.{{modulePrimaryLabel}} == 0){
+                    _repository.Create(entity);
+                }
+                else{
+                    _repository.Update(entity);
+                }
+////////        _repository.Save();
+////////        model.{{modulePrimaryLabel}} = entity.{{modulePrimaryLocalName}};
+////////        return new RawResponseModel<{{modulePageName}}Model>(model);
+////////        }
+////////#endmodule_SetService
+
+
+////////#module_RemoveService
+////////        /// <summary>Delete {{modulePageNameAsWordLower}}.</summary>
+////////        /// <param name="model">{{modulePageNameAsWordLower}} model.</param>
+////////        /// <returns>The <see cref="{{modulePageName}}Model"/>.</returns>
+////////        public DeleteResponseModel Delete({{modulePageName}}Model model)
+////////        {
+////////            var entity = new {{moduleLocalName}}();
+////////             if (model.{{modulePrimaryLabel}} <= 0)
+////////             {
+////////                 return new DeleteResponseModel("Can't delete items due to missing some information or invalid data",false);
+////////             }
+////////             else
+ ////////            {
+////////                 entity.{{modulePrimaryLocalName}} = model.{{modulePrimaryLabel}};
+////////             }
+////////            #region {{modulePageName}}_string_base5#Template
+////////#property_DeleteFilter
+#Template           if(!string.IsNullOrEmpty(model.{{fieldName}})){
+#Template                  entity.{{fieldLocalName}} = (model.{{fieldLabel}});
+#Template           }
+////////#endproperty_DeleteFilter
+////////           #endregion {{modulePageName}}_string_base5#Template
+
+////////            #region {{modulePageName}}_int_base5#Template
+////////            #region {{modulePageName}}_float_base5#Template
+////////#property_DeleteFilter
+#Template           if(model.{{fieldName}}>0){
+#Template               entity.{{fieldLocalName}} = model.{{fieldLabel}};
+#Template           }
+////////#endproperty_DeleteFilter
+////////            #endregion {{modulePageName}}_float_base5#Template
+////////            #endregion {{modulePageName}}_int_base5#Template
+
+////////        #region {{modulePageName}}_int_selected_Foreign_base5#Template
+////////#property_DeleteFilter
+#Template           if(model.{{fieldLabel}}Id>0){
+#Template               entity.{{fieldLocalName}} = model.{{fieldLabel}}Id;
+#Template           }
+////////#endproperty_DeleteFilter
+////////        #endregion {{modulePageName}}_int_selected_Foreign_base5#Template
+
+////////        #region {{modulePageName}}_allparams5#Template
+////////        #endregion {{modulePageName}}_allparams5#Template
+
+////////        _repository.Delete(entity);
+////////        _repository.Save();
+////////        return new DeleteResponseModel("Deleted",true);
+////////        }
+////////#endmodule_RemoveService
+////////    }
+////////}
+////////#endmodule_ManualService

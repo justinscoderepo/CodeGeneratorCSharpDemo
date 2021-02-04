@@ -1,0 +1,257 @@
+#module_Model
+////////// --------------------------------------------------------------------------------------------------------------------
+////////// <copyright file="{{modulePageName}}Model.cs" company="Example">
+//////////   The {{modulePublicNameAsWordLower}} Model
+////////// </copyright>
+////////// <summary>
+//////////   The {{modulePublicNameAsWordLower}} Model.
+////////// </summary>
+////////// --------------------------------------------------------------------------------------------------------------------
+
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
+////////#module_ModelGenericList
+using System.Collections.Generic;
+////////#endmodule_ModelGenericList
+namespace Example.Models
+{
+    public class {{modulePageName}}Model
+    {
+
+////////        #region {{modulePageName}}_string_NOT_NULL_selected#Template
+////////#Template         /// _string_NOT_NULL_selected
+////////#Template         /// <summary>
+////////#Template         /// Gets or sets the from {{fieldLabelAsWordLower}}.
+////////#Template         /// </summary>
+////////#property_JsonIgnore
+////////#Template         [JsonIgnore]
+////////#endproperty_JsonIgnore
+////////#Template         [Display(Name ="{{fieldLabelAsWord}}"), StringLength({{fieldLimit}})]
+////////#Template         public {{fieldServerDataType}} {{fieldName}} { get; set; }
+////////        #endregion {{modulePageName}}_string_NOT_NULL_selected#Template
+
+////////        #region {{modulePageName}}_string_NULL_selected#Template
+////////#Template         /// _string_NULL_selected
+////////#Template         /// <summary>
+////////#Template         /// Gets or sets the from {{fieldLabelAsWordLower}}.
+////////#Template         /// </summary>
+////////#property_JsonIgnore
+////////#Template         [JsonIgnore]
+////////#endproperty_JsonIgnore
+////////#Template         [Display(Name ="{{fieldLabelAsWord}}"), StringLength({{fieldLimit}})]
+////////#Template         public {{fieldServerDataType}} {{fieldName}} { get; set; }
+////////        #endregion {{modulePageName}}_string_NULL_selected#Template
+
+////////        #region {{modulePageName}}_int_NULL_selected_Foreign#Template
+////////#Template         /// int_NULL_selected_Foreign
+////////#Template         /// <summary>
+////////#Template         /// Gets or sets the {{fieldLabelAsWordLower}}.
+////////#Template         /// </summary>
+////////#property_JsonIgnore
+////////#Template         [JsonIgnore]
+////////#endproperty_JsonIgnore
+////////#Template         [Display(Name ="{{fieldLabelAsWord}}"), Range(int.MinValue, int.MaxValue)]
+////////#Template         public int? {{fieldName}}Id { get; set; }
+
+////////        #endregion {{modulePageName}}_int_NULL_selected_Foreign#Template
+
+////////        #region {{modulePageName}}_int_NULL_selected_Foreign2#Template
+////////#property_ListFilter
+////////#Template         /// int_NULL_selected_Foreign
+////////#Template         /// <summary>
+////////#Template         /// Gets or sets the {{fieldLabelAsWordLower}}.
+////////#Template         /// </summary>
+////////#property_JsonIgnore
+////////#Template         [JsonIgnore]
+////////#endproperty_JsonIgnore
+////////#Template         [Display(Name ="{{fieldLabelAsWord}}")]
+////////#Template         public List<int?> {{fieldName}}IdList { get; set; }
+////////#endproperty_ListFilter
+////////        #endregion {{modulePageName}}_int_NULL_selected_Foreign2#Template
+////////        #region {{modulePageName}}_int_NULL_selected_ReverseForeign2#Template
+////////#property_ListFilter
+////////#Template         /// int_NULL_selected_Foreign
+////////#Template         /// <summary>
+////////#Template         /// Gets or sets the {{fieldLabelAsWordLower}}.
+////////#Template         /// </summary>
+////////#property_JsonIgnore
+////////#Template         [JsonIgnore]
+////////#endproperty_JsonIgnore
+////////#Template         [Display(Name ="{{fieldLabelAsWord}}")]
+////////#Template         public List<int?> {{fieldLabel}}IdList { get; set; }
+////////#endproperty_ListFilter
+////////        #endregion {{modulePageName}}_int_NULL_selected_ReverseForeign2#Template
+////////        #region {{modulePageName}}_int_NOT_NULL_selected_Foreign2#Template
+////////#property_ListFilter
+////////#Template         /// int_NULL_selected_Foreign
+////////#Template         /// <summary>
+////////#Template         /// Gets or sets the {{fieldLabelAsWordLower}}.
+////////#Template         /// </summary>
+////////#property_JsonIgnore
+////////#Template         [JsonIgnore]
+////////#endproperty_JsonIgnore
+////////#Template         [Display(Name ="{{fieldLabelAsWord}}")]
+////////#Template         public List<int?> {{fieldName}}IdList { get; set; }
+////////#endproperty_ListFilter
+////////        #endregion {{modulePageName}}_int_NOT_NULL_selected_Foreign2#Template
+////////        #region {{modulePageName}}_int_NOT_NULL_selected_ReverseForeign2#Template
+////////#property_ListFilter
+////////#Template         /// int_NULL_selected_Foreign
+////////#Template         /// <summary>
+////////#Template         /// Gets or sets the {{fieldLabelAsWordLower}}.
+////////#Template         /// </summary>
+////////#property_JsonIgnore
+////////#Template         [JsonIgnore]
+////////#endproperty_JsonIgnore
+////////#Template         [Display(Name ="{{fieldLabelAsWord}}")]
+////////#Template         public List<int?> {{fieldLabel}}IdList { get; set; }
+////////#endproperty_ListFilter
+////////        #endregion {{modulePageName}}_int_NOT_NULL_selected_ReverseForeign2#Template
+////////        #region {{modulePageName}}_int_NOT_NULL_selected_Foreign#Template
+////////#Template         /// int_NOT_NULL_selected_Foreign
+////////#Template         /// <summary>
+////////#Template         /// Gets or sets the {{fieldLabelAsWordLower}}.
+////////#Template         /// </summary>
+////////#property_JsonIgnore
+////////#Template         [JsonIgnore]
+////////#endproperty_JsonIgnore
+////////#Template         [Display(Name ="{{fieldLabelAsWord}}"), Range(int.MinValue, int.MaxValue)]
+////////#Template         public int {{fieldName}}Id { get; set; }
+
+////////        #endregion {{modulePageName}}_int_NOT_NULL_selected_Foreign#Template
+
+////////        #region {{modulePageName}}_int_NULL_selected#Template
+////////        #region {{modulePageName}}_float_NULL_selected#Template
+////////        #region {{modulePageName}}_long_NULL_selected#Template
+////////#Template         /// _float_NULL
+////////#Template         /// <summary>
+////////#Template         /// Gets or sets the {{fieldLabelAsWordLower}}.
+////////#Template         /// </summary>
+////////#property_JsonIgnore
+////////#Template         [JsonIgnore]
+////////#endproperty_JsonIgnore
+////////#Template         [Display(Name ="{{fieldLabelAsWord}}"), Range({{fieldServerDataType}}.MinValue, {{fieldServerDataType}}.MaxValue)]
+////////#Template         public {{fieldServerDataType}}? {{fieldName}} { get; set; }
+////////        #endregion {{modulePageName}}_long_NULL_selected#Template
+////////        #endregion {{modulePageName}}_float_NULL_selected#Template
+////////        #endregion {{modulePageName}}_int_NULL_selected#Template
+
+////////        #region {{modulePageName}}_int_NOT_NULL_selected#Template
+////////        #region {{modulePageName}}_float_NOT_NULL_selected#Template
+////////        #region {{modulePageName}}_long_NOT_NULL_selected#Template
+////////#Template         /// _float_NOT_NULL_selected
+////////#Template         /// <summary>
+////////#Template         /// Gets or sets the {{fieldLabelAsWordLower}}.
+////////#Template         /// </summary>
+////////#property_JsonIgnore
+////////#Template         [JsonIgnore]
+////////#endproperty_JsonIgnore
+////////#Template         [Display(Name ="{{fieldLabelAsWord}}"), Range({{fieldServerDataType}}.MinValue, {{fieldServerDataType}}.MaxValue)]
+////////#Template         public {{fieldServerDataType}} {{fieldName}} { get; set; }
+////////        #endregion {{modulePageName}}_long_NOT_NULL_selected#Template
+////////        #endregion {{modulePageName}}_float_NOT_NULL_selected#Template
+////////        #endregion {{modulePageName}}_int_NOT_NULL_selected#Template
+
+
+
+////////        #region {{modulePageName}}_Default_NOT_NULL_selected#Template
+////////#Template         /// _Default_NOT_NULL_selected
+////////#Template         /// <summary>
+////////#Template         /// Gets or sets the {{fieldLabelAsWordLower}}.
+////////#Template         /// </summary>
+////////#property_JsonIgnore
+////////#Template         [JsonIgnore]
+////////#endproperty_JsonIgnore
+////////#Template         [Display(Name ="{{fieldLabelAsWord}}")]
+////////#Template         public {{fieldServerDataType}} {{fieldName}} { get; set; }
+
+////////        #endregion {{modulePageName}}_Default_NOT_NULL_selected#Template
+
+////////        #region {{modulePageName}}_Default_NULL_selected#Template
+////////#Template         /// _Default_NULL_selected
+////////#Template         /// <summary>
+////////#Template         /// Gets or sets the {{fieldLabelAsWordLower}}.
+////////#Template         /// </summary>
+////////#property_JsonIgnore
+////////#Template         [JsonIgnore]
+////////#endproperty_JsonIgnore
+////////#Template         [Display(Name ="{{fieldLabelAsWord}}")]
+////////#Template         public {{fieldServerDataType}}? {{fieldName}} { get; set; }
+
+////////        #endregion {{modulePageName}}_Default_NULL_selected#Template
+
+
+////////        #region {{modulePageName}}_DateTime_NOT_NULL_selected#Template
+////////#Template         /// _DateTime_NOT_NULL_selected
+////////#Template         /// <summary>
+////////#Template         /// Gets or sets the {{fieldLabelAsWordLower}}.
+////////#Template         /// </summary>
+////////#property_JsonIgnore
+////////#Template         [JsonIgnore]
+////////#endproperty_JsonIgnore
+////////#Template         [Display(Name ="{{fieldLabelAsWord}}")]
+////////#Template         public {{fieldServerDataType}} {{fieldName}} { get; set; }
+////////        #endregion {{modulePageName}}_DateTime_NOT_NULL_selected#Template
+
+////////        #region {{modulePageName}}_DateTime_NULL_selected#Template
+////////#Template         /// _DateTime_NULL_selected
+////////#Template         /// <summary>
+////////#Template         /// Gets or sets the {{fieldLabelAsWordLower}}.
+////////#Template         /// </summary>
+////////#property_JsonIgnore
+////////#Template         [JsonIgnore]
+////////#endproperty_JsonIgnore
+////////#Template         [Display(Name ="{{fieldLabelAsWord}}")]
+////////#Template         public {{fieldServerDataType}}? {{fieldName}} { get; set; }
+////////        #endregion {{modulePageName}}_DateTime_NULL_selected#Template
+
+
+
+
+
+////////        #region {{modulePageName}}_int_selected_Primary#Template
+////////#Template         /// _int_Primary_selected
+////////#Template         /// <summary>
+////////#Template         /// Gets or sets the {{fieldLabelAsWordLower}}.
+////////#Template         /// </summary>
+////////#property_JsonIgnore
+////////#Template         [JsonIgnore]
+////////#endproperty_JsonIgnore
+////////#Template         [Key, Display(Name = "{{fieldLabelAsWord}}")]
+////////#Template         public int {{fieldName}} { get; set; }
+////////            #property_IsDeleteField
+////////#Template         /// <summary>
+////////#Template         /// Gets or sets the IsDelete.
+////////#Template         /// </summary>
+////////#Template         public bool IsDelete { get; set; }
+////////            #endproperty_IsDeleteField
+////////        #endregion {{modulePageName}}_int_selected_Primary#Template
+////////#module_ModelGenericList
+////////        #region {{modulePageName}}_SubQuery_Reverse#Template
+////////            #property_SelectCollection
+////////#Template         /// <summary>
+////////#Template         /// Gets or sets the {{fieldLabelAsWordLower}}.
+////////#Template         /// </summary>
+////////#Template         public List<{{fieldLocalName}}HelperModel> {{fieldLocalName}}List { get; set; }
+////////            #endproperty_SelectCollection
+////////            #property_ICollectionCount
+////////#Template         /// <summary>
+////////#Template         /// Gets or sets the {{fieldLabelAsWordLower}}.
+////////#Template         /// </summary>
+////////#Template         public int {{fieldLocalName}}Count { get; set; }
+////////            #endproperty_ICollectionCount
+
+////////        #endregion {{modulePageName}}_SubQuery_Reverse#Template
+////////#endmodule_ModelGenericList
+////region CustomCodeBlock1#
+////endregion CustomCodeBlock1#
+////////        #region {{modulePageName}}_allparams2#Template
+////////        #endregion {{modulePageName}}_allparams2#Template
+////////        #region {{modulePageName}}_allparams#Template
+////////        #endregion {{modulePageName}}_allparams#Template
+
+
+    }
+}
+#endmodule_Model

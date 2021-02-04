@@ -1,0 +1,98 @@
+{
+  "Key": "ml_attend_slot",
+  "Value": {
+    "isGlobalTable": false,
+    "LocalName": "AttendSlot",
+    "PublicName": "AttendSlot",
+    "ServerName": "ml_attend_slot",
+    "FieldsList": {
+     
+
+      "ats_event_id": {
+          "Label": "Type",
+          "LocalName": "Type",
+          "Order": 0,
+          "ServerName": "ev_type",
+          "ServerDataType": "string",
+          "SqlDataType": "nvarchar",
+          "TSDataType": "string",
+          "Limit": 300,
+          "IsNullable": "NOT NULL",
+          "IsPrimaryKey": false,
+          "ForeignKeyTable": "ml_event",
+          "ForeignKeyField": "ev_id",
+          "IsForeignKey": true,
+          "MinLimit": 0
+        },
+
+        "ats_slot": {
+          "Label": "Slot",
+          "LocalName": "Slot",
+          "Order": 0,
+          "ServerName": "ev_",
+          "ServerDataType": "string",
+          "SqlDataType": "nvarchar",
+          "TSDataType": "string",
+          "Limit": 300,
+          "IsNullable": "NOT NULL",
+          "IsPrimaryKey": false,
+          
+          "IsForeignKey": false,
+          "MinLimit": 0
+        },
+
+
+      "ats_visitor_count": {
+          "Label": "VisitorCount",
+          "LocalName": "VisitorCount",
+          "Order": 0,
+          "ServerName": "ats_visitor_count",
+          "ServerDataType": "int",
+          "SqlDataType": "Int",
+          "TSDataType": "number",
+          "Limit": 10,
+          "IsNullable": "NULL",
+          "IsPrimaryKey": false,
+          "ForeignKeyTable": "ml_user",
+          "ForeignKeyField": "us_id",
+          "IsForeignKey": true,
+          "MinLimit": 0
+        },
+       
+
+
+
+
+    
+    
+     
+      
+     
+      "ats_id": {
+        "Label": "Id",
+        "LocalName": "Id",
+        "Order": 0,
+        "ServerName": "ats_id",
+        "ServerDataType": "int",
+        "SqlDataType": "Int",
+        "TSDataType": "number",
+        "Limit": 10,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": true,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      }
+    },
+    "Pages": {
+      "AttendSlot": {
+        "PageName": "AttendSlot",
+        "FieldsList": {},
+        "Modules": ["Model", "ModelAssociate"]
+      }
+    }
+  }
+}
+   
+   
+  
+  

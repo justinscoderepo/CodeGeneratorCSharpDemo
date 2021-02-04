@@ -1,0 +1,71 @@
+using$$a$$=>=
+#region$$m$$=>=
+#endregion$$m$$=>=
+namespace$$a$$=>=
+{ get$$m$$=>=__safeget__$$m$$
+{get$$m$$=>=__safeget__$$m$$
+
+set; }=>=__safeset__
+
+{=>=
+    {=>=
+    }$$a$$=>=
+}$$a$$=>=
+}=>=
+
+: BaseModel=>=
+: UsersModel=>=
+
+__safeget__$$m$$=>={ get$$m$$
+
+__safeset__$$m$$=>=set; }$$m$$
+
+public class $$moduleName$$=>=
+///$$m$$=>=
+//$$m$$=>=
+
+
+/////////With Get and Set
+[Required$$rem$$ public $$dataType$$ $$fieldName$$ { get; set; }=>="$$fieldName$$": new ModelProperties(dataType:"$$dataTypeLower$$", [Required$$rem$$),
+
+[Display$$rem$$ public $$dataType$$ $$fieldName$$ { get; set; }=>="$$fieldName$$": new ModelProperties(dataType:"$$dataTypeLower$$", [Display$$rem$$),
+
+public $$dataType$$ $$fieldName$$ { get; set; }=>="$$fieldName$$": new ModelProperties(dataType:"$$dataTypeLower$$"),
+
+public List<$$dataType$$> $$fieldName$$ { get; set; }=>=
+
+/////////Without Get and Set
+
+public List<$$dataType$$> $$fieldName$$=>=
+
+[Range$$rem$$[Required$$rem2$$ public $$dataType$$ $$fieldName$$=>="$$fieldName$$": new ModelProperties(dataType:"$$dataTypeLower$$", [Range$$rem$$[Required$$rem2$$),
+
+[Required$$rem$$ public $$dataType$$ $$fieldName$$=>="$$fieldName$$": new ModelProperties(dataType:"$$dataTypeLower$$", [Required$$rem$$),
+
+[JsonIgnore$$rem$$ public $$dataType$$ $$fieldName$$=>="$$fieldName$$": new ModelProperties(dataType:"$$dataTypeLower$$", [JsonIgnore$$rem$$),
+
+[Required]$$m$$=>=requiredField:true,$$m$$
+
+get;=>=
+set;=>=
+[JsonIgnore]$$m$$=>=$$m$$
+[JsonEncrypt]$$m$$=>=$$m$$
+
+[EmailAddress]$$m$$=>=email:true,$$m$$
+
+[DataType(DataType.$$dataType$$)]$$m$$=>=type:"$$dataTypeLower$$",$$m$$
+
+[Range(long.MinValue, long.MaxValue)]$$m$$=>=min:0,$$m$$
+[Range(int.MinValue, int.MaxValue)]$$m$$=>=min:0,$$m$$
+
+
+[StringLength($$length$$)]$$m$$=>=maxLength:$$length$$,$$m$$
+
+[RegularExpression(@"$$regex$$")]$$m$$=>=pattern:r"$$regex$$",$$m$$
+
+ErrorMessage = "$$e$$",$$m$$=>=errorMessage:"$$e$$",$$m$$
+
+[Display(Name = "$$label$$")]$$m$$=>=display:"$$label$$",$$m$$
+
+public $$fieldDetails$$=>=$$fieldDetails$$
+

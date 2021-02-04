@@ -1,0 +1,98 @@
+{
+  "Key": "ml_user_role",
+  "Value": {
+    "isGlobalTable": false,
+    "LocalName": "UserRole",
+    "PublicName": "UserRole",
+    "ServerName": "ml_user_role",
+    "FieldsList": {
+      "ur_title": {
+        "Label": "Title",
+        "LocalName": "Title",
+        "Order": 0,
+        "ServerName": "ur_title",
+        "ServerDataType": "string",
+        "SqlDataType": "nvarchar",
+        "TSDataType": "string",
+        "Limit": 20,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "ur_order": {
+        "Label": "Order",
+        "LocalName": "Order",
+        "Order": 0,
+        "ServerName": "ur_order",
+        "ServerDataType": "int",
+        "SqlDataType": "Int",
+        "TSDataType": "number",
+        "Limit": 10,
+        "IsNullable": "NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "ur_id": {
+        "Label": "Id",
+        "LocalName": "Id",
+        "Order": 0,
+        "ServerName": "ur_id",
+        "ServerDataType": "int",
+        "SqlDataType": "Int",
+        "TSDataType": "number",
+        "Limit": 10,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": true,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      }
+    },
+    "Pages": {
+      "UserRole": {
+        "PageName": "UserRole",
+        "Modules": [
+          "Entity",
+          "Model",
+          "ManualService",
+          "GetService",
+          "GetById",
+          "Get",
+          "Controller",
+          "FunctionalComponentManage",
+          "DuxManage",
+          "FunctionalComponentList",
+          "DuxList"
+        ],
+        "FieldsList": {
+          "ur_title": {
+            "ServerName": "ur_title",
+            "Properties": ["Generating", "ContainsFilter"]
+          },
+          "ur_id": {
+            "ServerName": "ur_id"
+          }
+        }
+      }
+    },
+    "ModelBuilder": true,
+    "ModelData": [
+      {
+        "ur_id": "1",
+        "ur_order": "1",
+        "ur_title": "Partner Manager"
+      },
+      {
+        "ur_id": "2",
+        "ur_order": "2",
+        "ur_title": "User Manager"
+      },
+      {
+        "ur_id": "3",
+        "ur_order": "3",
+        "ur_title": "Profile Manager"
+      }
+    ]
+  }
+}

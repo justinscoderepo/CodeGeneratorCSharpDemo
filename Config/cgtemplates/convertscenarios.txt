@@ -1,0 +1,248 @@
+ViewBag.Title = "$$moduleName$$"=>=//$$moduleName$$
+ViewBag.Title = "$$moduleName$$";=>=//$$moduleName$$
+
+@model Web.$$parentDirectory$$Models.$$modelName$$=>=
+@model Models.$$parentDirectory$$.$$modelName$$=>=
+
+////Adding blank parentDirectory
+@mod$$parentDirectory$$el $$modelName$$=>=
+
+@DataHelper.Encrypt($$value$$)$$m$$=>=$$value$$$$m$$
+
+@using (Html.BeginForm("$$action$$", "$$controller$$", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.$$method$$, new {$$rem$$})=>=SubmitForm( state:formState["form"],boxProperties:BoxProperties( method:"$$method$$", action:"$$controller$$/$$action$$",$$rem$$),  children:<Widget>[=>=$$importElement=SubmitForm$$
+
+<form$$p$$id="$$id$$"$$a$$class="$$className$$"$$s$$method="$$method$$"$$x$$action="@Url.Action("$$action$$", "$$controller$$")$$postfix$$=>=SubmitForm( state:formState["form"], boxProperties:BoxProperties(id:"$$id$$", method:"$$method$$", action:"$$controller$$/$$action$$"),  children:<Widget>[=>=$$importElement=SubmitForm$$
+
+</form>=>=]),////Form Ends
+
+@using (Html.BeginForm("$$action$$", "$$controller$$", FormMethod.$$method$$, $$postfix$$, new {$$rem$$}>=>=SubmitForm( state:formState["form"],boxProperties:BoxProperties( method:"$$method$$", action:"$$controller$$/$$action$$",$$rem$$ ), children:<Widget>[=>=$$importElement=SubmitForm$$
+
+@Html.AntiForgeryToken()=>=
+
+@Html.ValidationMessageFor($$m$$ => $$m$$.$$statevalue$$, "", new { @class = "$$classes$$" })=>=ValidationSummary(input:this.state["$$statevalue$$"],boxProperties:BoxProperties(name:"$$statevalue$$")),=>=$$importElement=ValidationSummary$$
+
+@Html.ValidationMessageFor($$m$$ => $$m$$.$$statevalue$$)=>=ValidationSummary(input:this.state["$$statevalue$$"],boxProperties:BoxProperties(name:"$$statevalue$$")),=>=$$importElement=ValidationSummary$$
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })=>=
+@Html.ValidationSummary("", new { @class = "text-danger" })=>=
+
+
+@Html.LabelFor($$m$$ => $$m$$.$$statevalue$$, new { @class = "$$classes$$" })=>=Label(boxProperties:BoxProperties(name:'$$statevalue$$',className:'$$classes$$')),=>=$$importElement=Label$$
+
+for="$$for$$"$$post$$=>=name:"$$for$$", $$post$$
+
+<label$$a$$>$$b$$<a$$link$$a></label>=>=Label(boxProperties:BoxProperties(text:"$$b$$",$$a$$),children:<Widget>[<a$$link$$a>]),/*Label with link tag ends*/=>=$$importElement=Label$$
+
+<label$$a$$>$$b$$</label>=>=Label(boxProperties:BoxProperties(text:"$$b$$",$$a$$)),/*Label tag ends*/=>=$$importElement=Label$$
+
+title="$$title$$"$$post$$=>=title:"$$title$$", $$post$$
+
+type="$$type$$"$$post$$=>=type:"$$type$$", $$post$$
+type = "$$type$$"$$post$$=>=type:"$$type$$" $$post$$
+
+@class = "$$v$$"$$post$$=>=className:"$$v$$" $$post$$
+
+role = "$$v$$"$$post$$=>=role:"$$v$$", $$post$$
+
+id="$$v$$"$$post$$=>=id:"$$v$$", $$post$$
+id = "$$v$$"$$post$$=>=id:"$$v$$" $$post$$
+
+placeholder = "$$v$$"$$post$$=>=placeholder:"$$v$$" $$post$$
+placeholder="$$v$$"$$post$$=>=placeholder:"$$v$$", $$post$$
+
+autocomplete="$$v$$"$$post$$=>=autocomplete:"$$v$$", $$post$$
+autocomplete = "$$v$$"$$post$$=>=autocomplete:"$$v$$" $$post$$
+autocomplete= "$$v$$",$$post$$=>=autocomplete:"$$v$$", $$post$$
+
+data_$$b$$_attr = "$$x$$"$$post$$=>=dataAttrKey1:"$$b$$",dataAttrTo1:"$$x$$" $$post$$
+
+data_inline_$$b$$ = "$$x$$"$$post$$=>=dataInlineKey1:"$$b$$",dataInlineTo1:"$$x$$" $$post$$
+
+data_$$b$$ = "$$x$$"$$post$$=>=data$$bCapitalizeUnderScore$$:"$$x$$" $$post$$
+
+@Html.$$tagtype$$For($$m$$ => $$m$$.$$statevalue$$,$$s$$new {$$x$$})=>=FormControl(input:this.state["$$statevalue$$"],boxProperties:BoxProperties(tagType:"$$tagtype$$",name:"$$statevalue$$",label:"$$statevalueAsWord$$",$$x$$)),=>=$$importElement=FormControl$$
+
+@Html.$$tagtype$$For($$m$$ => $$m$$.$$statevalue$$)=>=FormControl(boxProperties:BoxProperties(tagType:"$$tagtype$$",name:"$$statevalue$$",label:"$$statevalueAsWord$$"),input:this.state["$$statevalue$$"]),=>=$$importElement=FormControl$$
+
+
+@Html.$$tagtype$$For($$m$$ => $$m$$.$$statevalue$$,$$s$$new {$$x$$})=>=FormControl(input:this.state["$$statevalue$$"],boxProperties:BoxProperties(tagType:"$$tagtype$$",name:"$$statevalue$$",label:"$$statevalueAsWord$$",$$x$$)),=>=$$importElement=FormControl$$
+
+@Html.$$tagtype$$For($$m$$ => $$m$$.$$statevalue$$)=>=FormControl(input:this.state["$$statevalue$$"]),boxProperties:BoxProperties(tagType:"$$tagtype$$",name:"$$statevalue$$",label:"$$statevalueAsWord$$"),=>=$$importElement=FormControl$$
+
+
+
+<input$$inputContent$$type="submit"$$inputContentAfter$$value="$$inputValue$$"$$afterValue$$/>=>=UIButton(onPressed: formState["form"].onFormSubmit,boxProperties:BoxProperties(type:"submit", text:"$$inputValue$$"))=>=$$importElement=UIButton$$
+
+
+
+<h2>$$viewBagHeading$$</h2>=>=
+
+
+
+/////Handle multiline json attributes
+
+
+
+data-select="$$a$$"$$post$$=>=$$post$$
+
+{$$b$$}$$c$$=>={{$$b$$__safeend__$$c$$
+
+
+href="@Url.Action($$s$$"$$action$$"$$s$$,$$s$$"$$controller$$"$$s$$)$$queryparams$$"$$post$$=>=redirect:"$$controller$$/$$action$$",queryparams:"$$queryparams$$", $$post$$
+
+href="#"$$post$$=>=redirect:"", $$post$$
+
+
+href="@Url.Action($$s$$"$$action$$"$$s$$,$$s$$"$$controller$$"$$s$$)"$$post$$=>=redirect:"$$controller$$/$$action$$", $$post$$
+
+data-$$prop$$="@Url.Action($$s$$"$$action$$"$$s$$,$$s$$"$$controller$$"$$s$$)"$$post$$=>=data$$propCapitalizeUnderScore$$:"$$controller$$/$$action$$", $$post$$
+
+value="$$value$$"$$post$$=>=value:"$$value$$", $$post$$
+id="$$id$$"$$post$$=>=id:"$$id$$", $$post$$
+
+class="$$className$$"$$post$$=>=className:"$$className$$", $$post$$
+
+name="$$name$$"$$post$$=>=name:"$$name$$", $$post$$
+type="$$type$$"$$post$$=>=type:"$$type$$", $$post$$
+style="$$style$$"$$post$$=>=style:"$$style$$", $$post$$
+
+aria-$$dataattribute$$="$$attributevalue$$"$$post$$=>=aria$$dataattributeCapitalizeUnderScore$$:"$$attributevalue$$", $$post$$
+
+
+data-inline-$$b$$="$$x$$"$$y$$data-inline-$$b2$$="$$x2$$"$$post$$=>=dataInlineKey1:"$$b$$",dataInlineTo1:"$$x$$",dataInlineKey2:"$$b2$$",dataInlineTo2:"$$x2$$", $$post$$
+
+"href"=>="redirect"
+
+data-inline-$$b$$="$$x$$"$$post$$=>=dataInlineKey1:"$$bCapitalizeUnderScore$$",dataInlineTo1:"$$x$$", $$post$$
+
+
+data-$$b$$-attr="$$x$$"$$post$$=>=dataAttrKey1:"$$bCapitalizeUnderScore$$",dataAttrTo1:"$$x$$", $$post$$
+
+data-key="$$v$$"$$post$$=>=dataKey:"$$v$$", $$post$$
+
+data-val-$$dataattribute$$="$$attributevalue$$"$$post$$=>=data$$dataattributeCapitalizeUnderScore$$:"$$attributevalue$$", $$post$$
+
+data-jltext-$$b$$="true"$$post$$=>=jltext:"$$bCapitalizeUnderScore$$", $$post$$
+
+
+
+data-if-$$b$$="$$condition$$"$$post$$=>=condition:"$$b$$_match_$$condition$$", $$post$$
+
+data-$$a$$="true"$$post$$=>=data$$aCapitalizeUnderScore$$:true, $$post$$
+
+
+
+data-binderinit-$$b$$="$$a$$"$$post$$=>=initOn:"$$b$$_In_$$a$$", $$post$$
+
+initOn:"$$initializer$$", $$post$$=>=initOn: "$$initializer$$", $$post$$
+
+data-filterby-required="$$requiredFilter$$"$$post$$=>=requiredFilters:"$$requiredFilter$$", $$post$$
+
+data-filterby="$$filter$$"$$post$$=>=filters:"$$filter$$", $$post$$
+
+data-$$a$$-$$b$$="value"$$post$$=>=value:"$$b$$", $$post$$
+
+data-target="$$datatarget$$"$$post$$=>=dataTarget:"$$datatarget$$", $$post$$
+
+data-$$dataattribute$$="$$attributevalue$$"$$post$$=>=data$$dataattributeCapitalizeUnderScore$$:"$$attributevalue$$", $$post$$
+
+data-$$dataattribute$$:"$$attributevalue$$"$$post$$=>=data$$dataattributeCapitalizeUnderScore$$:"$$attributevalue$$" $$post$$
+
+
+
+
+"@ViewBag.$$ViewBagItem$$"$$post$$=>=routeParams["$$ViewBagItem$$"]$$post$$
+
+
+<input$$pre$$name:"$$statevalue$$"$$b$$/>=>=FormControl(input:this.state["$$statevalue$$"],boxProperties:BoxProperties(name:"$$statevalue$$", label:"$$statevalueAsWord$$" $$b$$)),=>=$$importElement=FormControl$$
+
+<input$$pre$$name="$$statevalue$$"$$b$$/>=>=FormControl(input:this.state["$$statevalue$$"],boxProperties:BoxProperties(name:"$$statevalue$$",label:"$$statevalueAsWord$$")),=>=$$importElement=FormControl$$
+
+<option$$a$$>$$text$$</option>=>=Option(boxProperties:BoxProperties(text:"$$text$$",$$a$$)), =>=$$importElement=Option$$
+
+<select$$p$$>=>=DropDown(boxProperties:BoxProperties($$p$$),children:<Widget>[ =>=$$importElement=DropDown$$
+
+</select$$rem$$=>=]),
+
+
+<i$$x$$></i>$$post$$=>=Span(boxProperties:BoxProperties($$x$$)),$$post$$
+
+<span$$x$$>$$z$$<span$$x2$$>$$z2$$</span>$$text$$</span>=>=Span(boxProperties:BoxProperties($$x$$), children:<Widget>[ Span(boxProperties:BoxProperties($$x2$$), children:<Widget>[]),Span(boxProperties:BoxProperties(text:"$$text$$")) ]),/*Span Collection tag ends*/=>=$$importElement=Span$$
+
+<span$$x$$>$$z$$Span($$y$$)),$$text$$</span>=>=Span(boxProperties:BoxProperties(text:"$$text$$",$$x$$), children:<Widget>[ Span($$y$$)) ]),/*Span with text tag ends*/=>=$$importElement=Span$$
+
+<span$$p$$class="$$className$$"></span>$$c$$=>=Span(boxProperties:BoxProperties(className:"$$className$$",text:"$$c$$")),/*Span before text ends*/=>=$$importElement=Span$$
+
+<span$$x$$>$$e$$</span>$$post$$=>=Span(boxProperties:BoxProperties(text:"$$e$$",$$x$$)),/*Span with more ends*/$$post$$=>=$$importElement=Span$$
+
+<span$$x$$>$$e$$</span>=>=Span(boxProperties:BoxProperties(text:"$$e$$",$$x$$)),/*Span tag ends*/=>=$$importElement=Span$$
+
+<span$$p$$>=>=Span(boxProperties:BoxProperties($$p$$),children:<Widget>[=>=$$importElement=Span$$
+
+</span$$rem$$=>=]),////Span multiline ends
+
+<a$$x$$>$$z$$Span($$y$$))$$z$$</a>$$more$$=>=Link(boxProperties:BoxProperties($$x$$), children:<Widget>[ Span($$y$$)) ]),/*Link with span and more ends*/$$more$$=>=$$importElement=Link$$
+
+<a$$x$$>$$z$$Span($$y$$))$$z$$</a>=>=Link(boxProperties:BoxProperties($$x$$), children:<Widget>[ Span($$y$$)) ]),/*Link with span ends*/=>=$$importElement=Link$$
+
+<a$$a$$><$$post$$=>=Link(boxProperties:BoxProperties($$a$$),children:<Widget>[<$$post$$=>=$$importElement=Link$$
+
+<a$$a$$>$$b$$</a>=>=Link(boxProperties:BoxProperties(text:"$$b$$",$$a$$), children:<Widget>[ ])/*Link ends*/,=>=$$importElement=Link$$
+
+<a$$a$$>=>=Link(boxProperties:BoxProperties($$a$$),children:<Widget>[=>=$$importElement=Link$$
+
+</a$$rem$$=>=]),////Link ends
+
+
+<button$$x$$>$$z$$Span($$y$$))$$z$$Span($$y2$$))$$z$$</button=>=UIButton(boxProperties:BoxProperties($$x$$), children:<Widget>[ Span($$y$$)),Span($$y2$$)) ]),////$$z$$=>=$$importElement=Link$$
+
+<button$$x$$>$$z$$Span($$y$$))$$z2$$</button=>=UIButton(boxProperties:BoxProperties($$x$$), children:<Widget>[ Span($$y$$)) ]),////$$z$$=>=$$importElement=Link$$
+
+<button$$x$$>$$e$$</button>=>=UIButton(boxProperties:BoxProperties(text:"$$e$$",$$x$$)), =>=$$importElement=UIButton$$
+
+<button$$p$$>=>=UIButton(boxProperties:BoxProperties($$p$$),children:<Widget>[=>=$$importElement=UIButton$$
+
+</button$$rem$$=>=]),////Button ends
+
+UIButton(boxProperties:BoxProperties($$a$$type:"submit"$$b$$=>=UIButton(onPressed: formState["form"].onFormSubmit, boxProperties:BoxProperties($$a$$type:"submit"$$b$$
+
+
+
+
+
+
+<div$$a$$>$$b$$</div>=>=Division(boxProperties:BoxProperties(text:"$$b$$",$$a$$), children:<Widget>[ ]),=>=$$importElement=Division$$
+
+<div$$a$$>=>=Division(boxProperties:BoxProperties($$a$$),children:<Widget>[=>=$$importElement=Division$$
+
+</div$$rem$$=>=]),////Division ends
+
+$$pre$$<b>$$b$$</b>$$post$$=>=Span(boxProperties:BoxProperties(text:"$$pre$$",inline:true)),Span(boxProperties:BoxProperties(text:"$$b$$",bold:true,inline:true)),Span(boxProperties:BoxProperties(text:"$$post$$",inline:true)),=>=$$importElement=Span$$
+
+
+
+<blockquote$$a$$>$$b$$</blockquote>=>=BlockQuote(boxProperties:BoxProperties(text:"""$$b$$""",$$a$$)),=>=$$importElement=BlockQuote$$
+
+<blockquote$$a$$>=>=BlockQuote(boxProperties:BoxProperties(),children:<Widget>[=>=$$importElement=BlockQuote$$
+
+</blockquote$$rem$$=>=]),////BlockQuote ends
+
+
+<h1$$p$$>$$module$$</h1$$p$$=>=Heading1(boxProperties:BoxProperties(text:"$$module$$",$$p$$))=>=$$importElement=Heading1$$
+
+<h1 $$p$$class="$$className$$"$$a$$=>=Heading1(boxProperties:BoxProperties(className:"$$className$$"),children:<Widget>[ =>=$$importElement=Heading1$$
+</h1$$rem$$=>=]),////h1 ends
+
+<h4 $$p$$class="$$className$$"$$a$$</h4$$p$$=>=Heading4(boxProperties:BoxProperties(className:"$$className$$"),children:<Widget>[ ])=>=$$importElement=Heading4$$
+
+<h4 $$p$$class="$$className$$"$$a$$=>=Heading4(boxProperties:BoxProperties(className:"$$className$$"),,children:<Widget>[ =>=$$importElement=Heading4$$
+
+<h4$$c$$>$$a$$</h4$$p$$=>=Heading4(boxProperties:BoxProperties(text:"$$a$$")),=>=$$importElement=Heading4$$
+
+</h4$$rem$$=>=]),////h4 ends
+
+<hr$$p>=>=HorizontalLine(),=>=$$importElement=HorizontalLine$$
+</hr$$rem$$=>=]),////hr ends
+
+
+<$$p$$class="$$className$$"$$a$$=>=<$$p$$className:"$$className$$"$$a$$

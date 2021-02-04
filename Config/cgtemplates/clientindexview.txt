@@ -1,0 +1,21 @@
+#module_IndexView
+import { connect } from 'react-redux'
+import View{{modulePageName}}Container from './view{{modulePageNamePlural}}Container'
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    
+  }
+}
+
+const mapStateToProps = (state) => {
+  return {
+  
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(View{{modulePageName}}Container)
+#endmodule_IndexView

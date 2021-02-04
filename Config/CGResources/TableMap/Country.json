@@ -1,0 +1,121 @@
+{
+  "Key": "ml_country",
+  "Value": {
+    "isGlobalTable": false,
+    "LocalName": "Country",
+    "PublicName": "Country",
+    "ServerName": "ml_country",
+    "FieldsList": {
+      "ctr_id": {
+        "Label": "Id",
+        "LocalName": "Id",
+        "Order": 0,
+        "ServerName": "ctr_id",
+        "ExternalName": "id",
+        "ServerDataType": "int",
+        "SqlDataType": "Int",
+        "TSDataType": "number",
+        "Limit": 10,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": true,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "ctr_recid": {
+        "Label": "RecId",
+        "LocalName": "RecId",
+        "Order": 0,
+        "ServerName": "ctr_recid",
+        "ExternalName": "recid",
+        "ServerDataType": "int",
+        "SqlDataType": "Int",
+        "TSDataType": "number",
+        "Limit": 200,
+        "IsNullable": "NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "ctr_country_code": {
+        "Label": "CountryCode",
+        "LocalName": "CountryCode",
+        "Order": 0,
+        "ServerName": "ctr_country_code",
+        "ExternalName": "countryCode",
+        "ServerDataType": "string",
+        "SqlDataType": "nvarchar",
+        "TSDataType": "string",
+        "Limit": 200,
+        "IsNullable": "NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "ctr_title": {
+        "Label": "Title",
+        "LocalName": "Title",
+        "Order": 0,
+        "ServerName": "ctr_title",
+        "ExternalName": "countryName",
+        "ServerDataType": "string",
+        "SqlDataType": "nvarchar",
+        "TSDataType": "string",
+        "Limit": 200,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      }
+    },
+    "Pages": {
+      "Country": {
+        "PageName": "Country",
+        "Modules": [
+          "Entity",
+          "Model",
+          "ManualService",
+          "GetService",
+          "Controller",
+          "Get",
+          "GetById",
+          "FunctionalComponentManage",
+          "DuxManage",
+          "DuxList",
+          "FunctionalComponentList",
+          "Sort",
+          "Pagination",
+          "SetService",
+          "ModelGenericList",
+          "ApiModel",
+          "EntityICollection",
+          "RangeService",
+          "CreateRange",
+          "UpdateRange",
+          "DeleteRange",
+          "Create",
+          "Set",
+          "RemoveService",
+          "Remove",
+          "ApiController",
+          "ApiSyncService",
+          "Lists"
+        ],
+        "FieldsList": {
+          "ctr_id": {
+            "ServerName": "ctr_id"
+          },
+          "ctr_title": {
+            "ServerName": "ctr_title",
+            "Properties": ["SortableField", "ContainsFilter"]
+          },
+          "ctr_recid": {
+            "ServerName": "ctr_recid"
+          },
+          "ctr_country_code": {
+            "ServerName": "ctr_country_code"
+          }
+        }
+      }
+    }
+  }
+}

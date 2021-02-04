@@ -1,0 +1,94 @@
+{
+  "Key": "ml_templateorbituary",
+  "Value": {
+    "isGlobalTable": false,
+    "LocalName": "TemplateOrbituary",
+    "PublicName": "TemplateOrbituary",
+    "ServerName": "ml_templateorbituary",
+    "FieldsList": {
+      "to_id": {
+        "Label": "Id",
+        "LocalName": "Id",
+        "Order": 0,
+        "ServerName": "to_id",
+        "ServerDataType": "int",
+        "SqlDataType": "Int",
+        "TSDataType": "number",
+        "Limit": 10,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": true,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "to_message": {
+        "Label": "Title",
+        "LocalName": "Title",
+        "Order": 0,
+        "ServerName": "to_message",
+        "ServerDataType": "string",
+        "SqlDataType": "nvarchar",
+        "TSDataType": "string",
+        "Limit": 200,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "to_content": {
+        "Label": "Content",
+        "LocalName": "Content",
+        "Order": 0,
+        "ServerName": "to_content",
+        "ServerDataType": "string",
+        "SqlDataType": "nvarchar",
+        "TSDataType": "string",
+        "Limit": 200,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      }
+    },
+    "Pages": {
+      "TemplateOrbituary": {
+        "PageName": "TemplateOrbituary",
+        "Modules": [
+          "Controller",
+          "Entity",
+          "Get",
+          "GetById",
+          "GetService",
+          "ManualService",
+          "Model"
+        ],
+        "FieldsList": {
+          "to_message": {
+            "ServerName": "to_message",
+            "Properties": []
+          },
+          "to_id": {
+            "ServerName": "to_id",
+            "Properties": []
+          },
+          "to_content": {
+            "ServerName": "to_content",
+            "Properties": []
+          }
+        }
+      }
+    },
+    "ModelBuilder": true,
+    "ModelData": [
+      {
+        "to_id": "1",
+        "to_message": "Condolences_Template",
+        "to_content": "With Heartfelt Sympathy_Template"
+      },
+      {
+        "to_id": "2",
+        "to_message": "With Heartfelt Sympathy_Template",
+        "to_content": "With Heartfelt Sympathy_Template"
+      }
+    ]
+  }
+}

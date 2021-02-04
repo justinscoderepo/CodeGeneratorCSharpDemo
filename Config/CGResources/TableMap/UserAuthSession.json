@@ -1,0 +1,183 @@
+{
+  "Key": "ml_user_auth_session",
+  "Value": {
+    "isGlobalTable": false,
+    "LocalName": "UserAuthSession",
+    "PublicName": "UserAuthSession",
+    "ServerName": "ml_user_auth_session",
+    "FieldsList": {
+      "uas_id": {
+        "Label": "Id",
+        "LocalName": "Id",
+        "Order": 0,
+        "ServerName": "uas_id",
+        "DataType": "int",
+        "ServerDataType": "int",
+        "SqlDataType": "Int",
+        "TSDataType": "number",
+        "Limit": 10,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": true,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "uas_user": {
+        "Label": "User",
+        "LocalName": "User",
+        "Order": 0,
+        "ServerName": "uas_user",
+        "DataType": "int",
+        "ServerDataType": "int",
+        "SqlDataType": "int",
+        "TSDataType": "number",
+        "Limit": 10,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "ForeignKeyTable": "ml_user",
+        "ForeignKeyField": "us_id",
+        "IsForeignKey": true,
+        "MinLimit": 0
+      },
+      "uas_jwt_token": {
+        "Label": "jwtToken",
+        "LocalName": "jwtToken",
+        "Order": 0,
+        "ServerName": "uas_jwt_token",
+        "DataType": "nvarchar",
+        "ServerDataType": "string",
+        "SqlDataType": "nvarchar",
+        "TSDataType": "string",
+        "Limit": 1000,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "uas_reftresh_token": {
+        "Label": "RefreshToken",
+        "LocalName": "RefreshToken",
+        "Order": 0,
+        "ServerName": "uas_reftresh_token",
+        "DataType": "nvarchar",
+        "ServerDataType": "string",
+        "SqlDataType": "nvarchar",
+        "TSDataType": "string",
+        "Limit": 200,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "uas_ip_address": {
+        "Label": "IPAddress",
+        "LocalName": "IPAddress",
+        "Order": 0,
+        "ServerName": "uas_ip_address",
+        "DataType": "nvarchar",
+        "ServerDataType": "string",
+        "SqlDataType": "nvarchar",
+        "TSDataType": "string",
+        "Limit": 200,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "uas_expiry": {
+        "Label": "Expiry",
+        "LocalName": "Expiry",
+        "Order": 0,
+        "ServerName": "uas_expiry",
+        "DataType": "datetime",
+        "ServerDataType": "DateTime",
+        "SqlDataType": "DateTime",
+        "TSDataType": "Date",
+        "Limit": 10,
+        "IsNullable": "NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "uas_createddate": {
+        "Label": "CreatedDate",
+        "LocalName": "Createddate",
+        "Order": 0,
+        "ServerName": "uas_createddate",
+        "DataType": "datetime",
+        "ServerDataType": "DateTime",
+        "SqlDataType": "DateTime",
+        "TSDataType": "Date",
+        "Limit": 10,
+        "IsNullable": "NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "uas_modifieddate": {
+        "Label": "ModifiedDate",
+        "LocalName": "Modifieddate",
+        "Order": 0,
+        "ServerName": "uas_modifieddate",
+        "DataType": "datetime",
+        "ServerDataType": "DateTime",
+        "SqlDataType": "DateTime",
+        "TSDataType": "Date",
+        "Limit": 10,
+        "IsNullable": "NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      }
+    },
+    "Pages": {
+      "UserAuthSession": {
+        "PageName": "UserAuthSession",
+        "Modules": [
+          "Model",
+          "Entity",
+          "GetService",
+          "SetService",
+          "ManualService",
+          "ModelAssociate"
+        ],
+        "FieldsList": {
+          "uas_id": {
+            "Order": 0,
+            "ServerName": "uas_id"
+          },
+          "uas_user": {
+            "Order": 0,
+            "ServerName": "uas_user"
+          },
+          "uas_jwt_token": {
+            "Order": 0,
+            "ServerName": "uas_jwt_token",
+            "Properties": ["EqualFilter"]
+          },
+          "uas_reftresh_token": {
+            "Order": 0,
+            "ServerName": "uas_reftresh_token",
+            "Properties": ["EqualFilter"]
+          },
+          "uas_ip_address": {
+            "Order": 0,
+            "ServerName": "uas_ip_address",
+            "Properties": ["EqualFilter"]
+          },
+          "uas_expiry": {
+            "Order": 0,
+            "ServerName": "uas_expiry"
+          },
+          "uas_createddate": {
+            "Order": 0,
+            "ServerName": "uas_createddate"
+          },
+          "uas_modifieddate": {
+            "Order": 0,
+            "ServerName": "uas_modifieddate"
+          }
+        }
+      }
+    }
+  }
+}

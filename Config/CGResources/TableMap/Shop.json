@@ -1,0 +1,150 @@
+{
+  "Key": "ml_shop",
+  "Value": {
+    "isGlobalTable": false,
+    "LocalName": "Shop",
+    "PublicName": "Shop",
+    "ServerName": "ml_shop",
+    "FieldsList": {
+      "sh_name": {
+        "Label": "Name",
+        "LocalName": "Name",
+        "Order": 0,
+        "ServerName": "sh_name",
+        "ServerDataType": "string",
+        "SqlDataType": "nvarchar",
+        "TSDataType": "string",
+        "Limit": 100,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "sh_add": {
+        "Label": "Address",
+        "LocalName": "Address",
+        "Order": 0,
+        "ServerName": "sh_add",
+        "ServerDataType": "string",
+        "SqlDataType": "nvarchar",
+        "TSDataType": "string",
+        "Limit": 200,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "sh_email": {
+        "Label": "Email",
+        "LocalName": "Email",
+        "Order": 0,
+        "ServerName": "sh_email",
+        "ServerDataType": "string",
+        "SqlDataType": "nvarchar",
+        "TSDataType": "string",
+        "Limit": 300,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "sh_phone": {
+        "Label": "Phone",
+        "LocalName": "Phone",
+        "Order": 0,
+        "ServerName": "sh_phone",
+        "ServerDataType": "string",
+        "SqlDataType": "nvarchar",
+        "TSDataType": "string",
+        "Limit": 15,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "sh_createdby": {
+        "Label": "CreatedBy",
+        "LocalName": "Createdby",
+        "Order": 0,
+        "ServerName": "sh_createdby",
+        "ServerDataType": "int",
+        "SqlDataType": "Int",
+        "TSDataType": "number",
+        "Limit": 10,
+        "IsNullable": "NULL",
+        "IsPrimaryKey": false,
+        "ForeignKeyTable": "ml_user",
+        "ForeignKeyField": "us_id",
+        "IsForeignKey": true,
+        "MinLimit": 0
+      },
+      "sh_createddate": {
+        "Label": "CreatedDate",
+        "LocalName": "Createddate",
+        "Order": 0,
+        "ServerName": "sh_createddate",
+        "ServerDataType": "DateTime",
+        "SqlDataType": "DateTime",
+        "TSDataType": "Date",
+        "Limit": 10,
+        "IsNullable": "NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "sh_modifieddate": {
+        "Label": "ModifiedDate",
+        "LocalName": "Modifieddate",
+        "Order": 0,
+        "ServerName": "sh_modifieddate",
+        "ServerDataType": "DateTime",
+        "SqlDataType": "DateTime",
+        "TSDataType": "Date",
+        "Limit": 10,
+        "IsNullable": "NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "sh_status": {
+        "Label": "Status",
+        "LocalName": "Status",
+        "Order": 0,
+        "ServerName": "sh_status",
+        "ServerDataType": "int",
+        "SqlDataType": "Int",
+        "TSDataType": "number",
+        "Limit": 10,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "ForeignKeyTable": "ml_status",
+        "ForeignKeyField": "stus_id",
+        "IsForeignKey": true,
+        "MinLimit": 0
+      },
+      "sh_id": {
+        "Label": "Id",
+        "LocalName": "Id",
+        "Order": 0,
+        "ServerName": "sh_id",
+        "ServerDataType": "int",
+        "SqlDataType": "Int",
+        "TSDataType": "number",
+        "Limit": 10,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": true,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      }
+    },
+    "Pages": {
+      "Shop": {
+        "PageName": "Shopr",
+        "FieldsList": {},
+        "Modules": ["Model", "ModelAssociate"]
+      }
+    },
+    "ModelBuilder": false,
+    "ModelData": []
+  }
+}

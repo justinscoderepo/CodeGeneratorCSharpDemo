@@ -1,0 +1,94 @@
+{
+  "Key": "ml_custombackground",
+  "Value": {
+    "isGlobalTable": false,
+    "LocalName": "CustomBackground",
+    "PublicName": "CustomBackground",
+    "ServerName": "ml_custombackground",
+    "FieldsList": {
+      "cu_id": {
+        "Label": "Id",
+        "LocalName": "Id",
+        "Order": 0,
+        "ServerName": "cu_id",
+        "ServerDataType": "int",
+        "SqlDataType": "Int",
+        "TSDataType": "number",
+        "Limit": 10,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": true,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "cu_title": {
+        "Label": "Title",
+        "LocalName": "Title",
+        "Order": 0,
+        "ServerName": "cu_title",
+        "ServerDataType": "string",
+        "SqlDataType": "nvarchar",
+        "TSDataType": "string",
+        "Limit": 200,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "cu_background": {
+        "Label": "Background",
+        "LocalName": "Background",
+        "Order": 0,
+        "ServerName": "cu_background",
+        "ServerDataType": "string",
+        "SqlDataType": "nvarchar",
+        "TSDataType": "string",
+        "Limit": 200,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      }
+    },
+    "Pages": {
+      "CustomBackground": {
+        "PageName": "CustomBackground",
+        "Modules": [
+          "Controller",
+          "Entity",
+          "Get",
+          "GetById",
+          "GetService",
+          "ManualService",
+          "Model"
+        ],
+        "FieldsList": {
+          "tri_title": {
+            "ServerName": "cu_title",
+            "Properties": []
+          },
+          "cu_id": {
+            "ServerName": "cu_id",
+            "Properties": []
+          },
+          "cu_background": {
+            "ServerName": "cu_background",
+            "Properties": []
+          }
+        }
+      }
+    },
+    "ModelBuilder": true,
+    "ModelData": [
+      {
+        "cu_id": "1",
+        "cu_title": "Condolences_Template",
+        "cu_background": "bleed blue"
+      },
+      {
+        "cu_id": "2",
+        "cu_title": "With Heartfelt Sympathy_Template",
+        "cu_background": "black"
+      }
+    ]
+  }
+}

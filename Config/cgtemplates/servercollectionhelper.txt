@@ -1,0 +1,54 @@
+////////#module_Helper
+using Example.Data.Entities;
+using Example.Models;
+
+namespace Example.Business.Helpers
+{
+    //// className must ends with Helper
+    //// Add pagename with postfix of Helper
+    public static class {{modulePageName}}
+    {
+        ////////#module_CollectionToModel
+        public static {{modulePageName}}Model ToModel({{moduleLocalName}} x)
+        {
+            return new {{modulePageName}}Model()
+            {
+                
+////////        #region {{modulePageName}}_Default_selected_base4#Template
+#Template    {{fieldLabel}} = x.{{fieldLocalName}},
+////////        #endregion {{modulePageName}}_Default_selected_base4#Template
+////////        #region {{modulePageName}}_int_selected_Foreign_base4#Template
+#Template    {{fieldLabel}}Id = x.{{fieldLocalName}},
+////////        #endregion {{modulePageName}}_int_selected_Foreign_base4#Template
+
+////////        #region {{modulePageName}}_SubQuery_Reverse4#Template
+
+#Template    {{fieldLabel}}List = x.{{fieldLocalName}}List.Select(x=>new {{fieldLabel}}Model(){
+    
+#Template    }).ToList(),
+
+////////        #endregion {{modulePageName}}_SubQuery_Reverse4#Template
+
+
+////////        #region {{modulePageName}}_Default_selected_ForeignField4#Template
+////////        
+////////        #endregion {{modulePageName}}_Default_selected_ForeignField4#Template
+
+////////        #region {{modulePageName}}_string_selected_ForeignField4#Template
+#Template       {{fieldName}} = x.{{parentFieldLocalName}}Relation != null ? x.{{parentFieldLocalName}}Relation.{{fieldLocalName}} : null,
+////////        #endregion {{modulePageName}}_string_selected_ForeignField4#Template
+
+
+////////        #region {{modulePageName}}_int_selected_ForeignField4#Template
+#Template       {{fieldName}} = x.{{parentFieldLocalName}}Relation != null ? x.{{parentFieldLocalName}}Relation.{{fieldLocalName}} : 0,
+////////        #endregion {{modulePageName}}_int_selected_ForeignField4#Template
+
+////////        #region {{modulePageName}}_allparams4#Template
+////////        #endregion {{modulePageName}}_allparams4#Template
+            
+            };
+        }
+        ////////#endmodule_CollectionToModel
+    }
+}
+////////#endmodule_Helper

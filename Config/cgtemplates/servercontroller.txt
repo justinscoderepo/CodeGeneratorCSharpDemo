@@ -1,0 +1,364 @@
+////////#module_Controller
+using System;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
+using Example.Models;
+using Example.Models.Common;
+using Example.Business.Contracts;
+using Swashbuckle.AspNetCore.Annotations;
+using System.Linq;
+////////#module_EnableEnums
+using Example.Utilities.Enums;
+////////#endmodule_EnableEnums
+
+////////#module_EnableUtilities
+using Example.Utilities;
+////////#endmodule_EnableUtilities
+
+
+////////#module_EnableUploadFile
+using Microsoft.AspNetCore.Http;
+using Example.WebApi.Controllers.Utilities;
+
+////////#endmodule_EnableUploadFile
+////////#module_IncludeHelper
+////////    using Microsoft.EntityFrameworkCore;
+////////    using Example.Business.Helpers;
+////////#endmodule_IncludeHelper
+////////#module_SetContentApplicationId
+////////    using Example.Utilities.Enums;
+////////#endmodule_SetContentApplicationId
+namespace Example.WebApi.Controllers
+{
+    ///<summary> The {{modulePageNameAsWordLower}} controller. </summary>
+    [ApiController]
+    [Route("{{modulePageNameAsWordHyphenizeLower}}")]
+    public class {{modulePageName}}Controller : ApiBaseController
+    {
+        private const string groupName = "{{modulePageNameLabelShort}}";
+        private I{{modulePageName}}Service _logic;
+        ////////#module_EnableUploadFile
+        private IFileUploadService _file;
+        ////////#endmodule_EnableUploadFile
+        
+        ////region CustomCodeBlockPrivateVariables#
+        ////endregion CustomCodeBlockPrivateVariables#
+////////#module_IncludeHelper
+////////        #region {{modulePageName}}_SubQuery_Reverse13#Template
+#Template        private I{{fieldLabel}}HelperService _{{fieldLabelFirstCharLower}};
+////////        #endregion {{modulePageName}}_SubQuery_Reverse13#Template
+////////        #region {{modulePageName}}_allparams13#Template
+////////        #endregion {{modulePageName}}_allparams13#Template
+////////#endmodule_IncludeHelper
+        ///<summary> The {{modulePageNameAsWordLower}} constructor. </summary>
+        public {{modulePageName}}Controller(I{{modulePageName}}Service logic
+        ////////#module_EnableUploadFile
+        , IFileUploadService file
+        ////////#endmodule_EnableUploadFile
+
+        ////region CustomCodeBlockInjection#
+        ////endregion CustomCodeBlockInjection#
+////////#module_IncludeHelper
+////////        #region {{modulePageName}}_SubQuery_Reverse10#Template
+#Template       , I{{fieldLabel}}HelperService {{fieldLabelFirstCharLower}}
+////////        #endregion {{modulePageName}}_SubQuery_Reverse10#Template  
+////////        #region {{modulePageName}}_allparams10#Template
+////////        #endregion {{modulePageName}}_allparams10#Template    
+////////#endmodule_IncludeHelper   
+        ){
+            _logic = logic;
+            ////////#module_EnableUploadFile
+             _file = file;
+            ////////#endmodule_EnableUploadFile 
+        ////region CustomCodeBlockCBody#
+        ////endregion CustomCodeBlockCBody#
+////////#module_IncludeHelper
+////////        #region {{modulePageName}}_SubQuery_Reverse11#Template
+#Template       _{{fieldLabelFirstCharLower}} = {{fieldLabelFirstCharLower}};
+////////        #endregion {{modulePageName}}_SubQuery_Reverse11#Template  
+////////        #region {{modulePageName}}_allparams11#Template
+////////        #endregion {{modulePageName}}_allparams11#Template  
+////////#endmodule_IncludeHelper   
+
+       
+        }
+////////#module_GetById
+/// <summary>Get the {{modulePublicNameAsWordLower}} filtered by {{modulePrimaryLabel}}.</summary>
+/// <param name = "model">The {{modulePageNameAsWordLower}} model.</param>
+/// <returns>The <see cref = "IActionResult"/>.</returns>
+////////        [HttpGet("{{{modulePrimaryLabel}}}")]
+////////        [SwaggerOperation(Tags = new []{groupName})]
+////////        public IActionResult GetById(int {{modulePrimaryLabel}})
+////////        {
+////////            var model = new {{modulePageName}}Model();
+                    model.{{modulePrimaryLabel}} = {{modulePrimaryLabel}};
+////////            if (model == null)
+////////            {
+////////                model = new {{modulePageName}}Model();
+////////            }
+
+////////            var results = _logic.Get(model);
+
+////////            return this.Ok(new RawResponseModel<{{modulePageName}}Model>(results.Data.FirstOrDefault()));
+////////        }
+////////#endmodule_GetById
+
+
+////////#module_GetRow
+/// <summary>Get the {{modulePublicNameAsWordLower}} filtered on the basis of {{modulePageName}}Model parameters.</summary>
+/// <param name = "model">The {{modulePageNameAsWordLower}} model.</param>
+/// <returns>The <see cref = "IActionResult"/>.</returns>
+////////        [HttpGet("GetRow")]
+////////        [SwaggerOperation(Tags = new []{groupName})]
+////////        public IActionResult GetRow([FromQuery]{{modulePageName}}Model model = null)
+////////        {
+////////            if (model == null)
+////////            {
+////////                model = new {{modulePageName}}Model();
+////////            }
+
+////////            #region {{modulePageName}}_int_CreatedBy_selected_base#Template
+////////            #property_FilterByUserId
+#Template           model.CreatedById = this.CurrentUser.Id;
+////////            #endproperty_FilterByUserId
+////////            #endregion {{modulePageName}}_int_CreatedBy_selected_base#Template
+
+////////            #region {{modulePageName}}_int_User_selected_base#Template
+////////            #property_FilterByUserId
+#Template           model.UserId = this.CurrentUser.Id;
+////////            #endproperty_FilterByUserId
+////////            #endregion {{modulePageName}}_int_User_selected_base#Template
+
+////////        #region {{modulePageName}}_allparams#Template
+////////        #endregion {{modulePageName}}_allparams#Template
+////////            var results = _logic.Get(model);
+
+////////            return this.Ok(new RawResponseModel<{{modulePageName}}Model>(results.Data.FirstOrDefault()));
+////////        }
+////////#endmodule_GetRow
+
+////////#module_Get
+/// <summary>Get the {{modulePublicNameAsWordLower}} list.</summary>
+/// <param name = "model">The {{modulePageNameAsWordLower}} model.</param>
+/// <returns>The <see cref = "IActionResult"/>.</returns>
+////////        [HttpGet("")]
+////////        [SwaggerOperation(Tags = new []{groupName})]
+////////        public IActionResult Get([FromQuery]{{modulePageName}}Model model = null
+        ////////#module_Pagination
+//////// ,[FromQuery]PaginationModel paginationModel = null
+////////#endmodule_Pagination
+////////#module_Sort
+//////// ,[FromQuery]SortModel sortModel = null
+////////#endmodule_Sort
+)
+////////        {
+////////            if (model == null)
+////////            {
+////////                model = new {{modulePageName}}Model();
+////////            }
+////////            #region {{modulePageName}}_int_Type_selected_Foreign_base5#Template
+////////            #property_SetContentTypeController
+#Template               model.{{fieldLocalName}}Id = (int)ContentTypes.{{modulePageNameLabelShort}};
+////////            #endproperty_SetContentTypeController
+////////            #endregion {{modulePageName}}_int_Type_selected_Foreign_base5#Template
+        ////region CustomCodeBlockBeforeGet#
+        ////endregion CustomCodeBlockBeforeGet#
+////////        #region {{modulePageName}}_allparams5#Template
+////////        #endregion {{modulePageName}}_allparams5#Template
+                var results = _logic.Get(model
+                        ////////#module_Pagination
+//////// , paginationModel
+////////#endmodule_Pagination
+////////#module_Sort
+//////// , sortModel 
+////////#endmodule_Sort
+                );
+
+        ////region CustomCodeBlockAfterGet#
+        ////endregion CustomCodeBlockAfterGet#
+////////            return this.Ok(results);
+////////        }
+////////#endmodule_Get
+
+////////#module_Count
+////////        /// <summary>Get the {{modulePublicNameAsWordLower}} count.</summary>
+////////        /// <param name="model">The {{modulePageNameAsWordLower}} model.</param>
+////////        /// <returns>count value</returns>
+////////        [HttpPost("")]
+////////        [SwaggerOperation(Tags = new []{groupName})]
+////////        public IActionResult Count({{modulePageName}}Model model)
+////////        {
+////////            if (model == null)
+////////            {
+////////                model = new {{modulePageName}}Model();
+////////            }
+////////            var results = _logic.Count(model);
+////////            return this.Ok(results);
+////////        }
+////////#endmodule_Count
+
+////////#module_Create
+
+////////        /// <summary>Create the {{modulePublicNameAsWordLower}}.</summary>
+////////        /// <param name="model">{{modulePageNameAsWordLower}} model.</param>
+////////        /// <returns>The <see cref="IActionResult"/>.</returns>
+////////        [HttpPost("")]
+////////        [SwaggerOperation(Tags = new []{groupName})]
+////////        public IActionResult Create([FromBody]{{modulePageName}}Model model)
+////////        {
+////////            var row = this.SaveRow(model);
+////////            return this.Ok(row);
+////////        }
+////////#endmodule_Create
+
+
+////////#module_Set
+
+////////        /// <summary>Update the {{modulePublicNameAsWordLower}}.</summary>
+////////        /// <param name="model">{{modulePageNameAsWordLower}} model.</param>
+////////        /// <returns>The <see cref="IActionResult"/>.</returns>
+////////        [HttpPut("")]
+////////        [SwaggerOperation(Tags = new []{groupName})]
+////////        public IActionResult Save([FromBody]{{modulePageName}}Model model)
+////////        {
+////////            var row = this.SaveRow(model);
+////////            return this.Ok(row);
+////////        }
+////////#endmodule_Set
+
+////////#module_UploadFile
+
+
+
+////////        /// <summary>Update the {{modulePublicNameAsWordLower}}.</summary>
+////////        /// <param name="model">{{modulePageNameAsWordLower}} model.</param>
+////////        /// <returns>The <see cref="IActionResult"/>.</returns>
+////////        [HttpPut("")]
+////////        [SwaggerOperation(Tags = new []{groupName})]
+////////        public IActionResult Save(IFormFile file,string uploadFolderName)
+////////        {
+////////            var userName = this.CurrentUser.Name;
+////////#module_EnableFileContentName      
+                     var uploadFileName = uploadFolderName;
+////////#endmodule_EnableFileContentName 
+////////            uploadFolderName="{{modulePublicName}}";
+////////#module_EnableFileContentName      
+                     uploadFolderName = uploadFolderName+"/"+uploadFileName;
+////////#endmodule_EnableFileContentName 
+////////            var result = _file.UploadFIle(file, uploadFolderName, userName);
+////////            return this.Ok(new FileResponseModel<string>(result.Data,result.Message,result.Success,result.FileSize,result.FileName,result.FileType));
+////////        }
+////////#endmodule_UploadFile
+
+////////#module_Remove
+
+////////        /// <summary>Remove {{modulePublicNameAsWordLower}}.</summary>
+////////        /// <param name="model">{{modulePageNameAsWordLower}} model.</param>
+////////        /// <returns>The <see cref="IActionResult"/>.</returns>
+////////        [HttpDelete("")]
+////////        [SwaggerOperation(Tags = new []{groupName})]
+////////        public IActionResult Remove([FromBody]{{modulePageName}}Model model = null)
+////////        {
+////////            if (model == null)
+////////            {
+////////            return this.Ok(new DeleteResponseModel("Can't save items due to missing some information or invalid data",false));
+////////            }
+////////            #region {{modulePageName}}_int_Type_selected_Foreign_base7#Template
+////////            #property_SetContentTypeController
+#Template               model.{{fieldLocalName}}Id = (int)ContentTypes.{{modulePageNameLabelShort}};
+////////            #endproperty_SetContentTypeController
+////////            #endregion {{modulePageName}}_int_Type_selected_Foreign_base7#Template
+////////        #region {{modulePageName}}_allparams7#Template
+////////        #endregion {{modulePageName}}_allparams7#Template
+////////            var results = _logic.Delete(model);
+////////            return this.Ok(results);
+////////        }
+////////#endmodule_Remove
+
+////////#module_Set
+
+////////        /// <summary>Save {{modulePublicNameAsWordLower}}.</summary>
+////////        /// <param name="model">{{modulePageNameAsWordLower}} model.</param>
+////////        /// <returns>The <see cref="{{modulePageName}}Model"/>.</returns>
+////////        private RawResponseModel<{{modulePageName}}Model> SaveRow({{modulePageName}}Model model)
+////////        {
+////////            if (model == null)
+////////            {
+////////                    return new RawResponseModel<{{modulePageName}}Model>(null, "model can't be null!", false);
+////////            }
+////region CustomCodeBlockBeforeSave#
+////endregion CustomCodeBlockBeforeSave#
+
+////////            #region {{modulePageName}}_int_Type_selected_Foreign_base2#Template
+////////            #property_SetContentTypeController
+#Template               model.{{fieldLocalName}}Id = (int)ContentTypes.{{modulePageNameLabelShort}};
+////////            #endproperty_SetContentTypeController
+////////            #endregion {{modulePageName}}_int_Type_selected_Foreign_base2#Template
+
+////////            #region {{modulePageName}}_int_CreatedBy_selected_base2#Template
+////////            #property_SetUserId
+#Template           model.CreatedById = this.CurrentUser.Id;
+////////            #endproperty_SetUserId
+////////            #endregion {{modulePageName}}_int_CreatedBy_selected_base2#Template
+
+////////            #region {{modulePageName}}_int_User_selected_base2#Template
+////////            #property_SetUserId
+#Template           model.UserId = this.CurrentUser.Id;
+////////            #endproperty_SetUserId
+////////            #endregion {{modulePageName}}_int_User_selected_base2#Template
+
+////////        #region {{modulePageName}}_allparams2#Template
+////////        #endregion {{modulePageName}}_allparams2#Template
+////////                var result = _logic.Save(model);
+
+
+
+////////            #region {{modulePageName}}_int_Primary9#Template
+#Template           var primaryId = result.Data.{{fieldLabel}};
+////////            #endregion {{modulePageName}}_int_Primary9#Template
+
+////////        #region {{modulePageName}}_allparams9#Template
+////////        #endregion {{modulePageName}}_allparams9#Template
+
+
+
+
+////////        #region {{modulePageName}}_SubQuery_Reverse12#Template
+#Template        if(model.{{fieldLabel}}List != null)
+#Template        {
+#Template        foreach (var item in model.{{fieldLabel}}List)
+#Template           {
+#Template                item.{{reverseFieldLabel}}Id = primaryId;
+////////            #property_SetCollectionCreatedId
+#Template           item.CreatedById = this.CurrentUser.Id;
+////////            #endproperty_SetCollectionCreatedId
+
+////////            #property_DeleteCollection
+#Template                if(item.IsDelete){
+#Template                   _{{fieldLabelFirstCharLower}}.Delete(item);                                
+#Template                }
+#Template                else
+#Template                {
+////////            #endproperty_DeleteCollection
+#Template                _{{fieldLabelFirstCharLower}}.Save(item);
+////////            #property_DeleteCollection
+#Template                         }
+////////            #endproperty_DeleteCollection
+#Template                 }
+#Template           }
+////////        #endregion {{modulePageName}}_SubQuery_Reverse12#Template
+
+////////#module_SaveICollection
+////////        #region {{modulePageName}}_allparams12#Template
+////////        #endregion {{modulePageName}}_allparams12#Template
+////////#endmodule_SaveICollection
+////region CustomCodeBlockSubICollectionSave#
+////endregion CustomCodeBlockSubICollectionSave#
+
+////////                return result;
+////////        }
+////////#endmodule_Set
+
+    }
+}
+////////#endmodule_Controller

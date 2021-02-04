@@ -1,0 +1,144 @@
+
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
+using System;
+using System.IO;
+using System.Reflection;
+using System.Text;
+using Example.Data;
+using Example.Data.Repository;
+using Example.Business.Services;
+using Example.Business.Contracts;
+using Example.Business.Services.Contracts;
+using Example.Business.Configuration;
+
+namespace Example
+{
+    public class Startup
+    {
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
+        public IConfiguration Configuration { get; }
+        public static IConfiguration StaticConfig { get; private set; }
+
+        // This method gets called by the runtime. Use this method to add services to the container.
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddControllers().ConfigureApiBehaviorOptions(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            });
+            services.AddMemoryCache();
+            services.AddRouting(opt => opt.LowercaseUrls = true);
+
+            services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
+           
+            services.AddTransient<IAccountsService, AccountsService>();
+            services.AddTransient<IServiceProviderService, ServiceProviderService>();
+            //// region ModuleListOfImport#
+            #Template services.AddTransient<I{{SubModulePublicNameDistinct}}Service, {{SubModulePublicNameDistinct}}Service>();
+            //// endregion ModuleListOfImport#
+            services.AddTransient<IEmailService, EmailService>();
+             services.AddTransient<IMailSender, AwsMailSender>();
+            services.Configure<AwsConfiguration>(Configuration.GetSection("AwsSettings"));
+            services.Configure<AwsS3Configuration>(Configuration.GetSection("AwsS3Settings"));
+            services.Configure<AwsSesConfiguration>(Configuration.GetSection("AwsSesSettings"));
+
+            services.AddDbContext<ExampleDbContext>(options =>
+            {
+                options.UseLazyLoadingProxies();
+                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"));
+            });
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowOrigin",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    );
+            });
+
+            
+            services.AddMvc(options =>
+            {
+               
+            });
+
+            // Register the Swagger generator, defining 1 or more Swagger documents
+            services.AddSwaggerGen(c =>
+            {
+                var version = Assembly.GetEntryAssembly().GetName().Version;
+                var apiBuildNumber = $"{version.Major}.{version.Minor}.{version.Revision}";
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Example REST API", Version = "v1", Description = $"<strong>Build #: </strong> {apiBuildNumber}" });
+                // Set the comments path for the Swagger JSON and UI.
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+            });
+        }
+
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            // Apply migrations to the database.
+            UpdateDatabase(app);
+
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+
+            app.UseStaticFiles();
+
+            app.UseHttpsRedirection();
+
+            app.UseRouting();
+
+            app.UseCors(builder => builder.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader());
+
+            app.UseAuthentication();
+
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
+
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("./swagger/v1/swagger.json", "Example REST API'S V1");
+                c.RoutePrefix = string.Empty;
+            });
+        }
+
+        private static void UpdateDatabase(IApplicationBuilder app)
+        {
+            using (var serviceScope = app.ApplicationServices
+                .GetRequiredService<IServiceScopeFactory>()
+                .CreateScope())
+            {
+                using (var context = serviceScope.ServiceProvider.GetService<ExampleDbContext>())
+                {
+                    context.Database.Migrate();
+                }
+            }
+        }
+    }
+}

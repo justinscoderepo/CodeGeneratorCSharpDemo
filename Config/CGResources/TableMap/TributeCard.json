@@ -1,0 +1,94 @@
+{
+  "Key": "ml_tributecard",
+  "Value": {
+    "isGlobalTable": false,
+    "LocalName": "TributeCard",
+    "PublicName": "TributeCard",
+    "ServerName": "ml_tributecard",
+    "FieldsList": {
+      "trc_id": {
+        "Label": "Id",
+        "LocalName": "Id",
+        "Order": 0,
+        "ServerName": "trc_id",
+        "ServerDataType": "int",
+        "SqlDataType": "Int",
+        "TSDataType": "number",
+        "Limit": 10,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": true,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "trc_title": {
+        "Label": "Title",
+        "LocalName": "Title",
+        "Order": 0,
+        "ServerName": "trc_title",
+        "ServerDataType": "string",
+        "SqlDataType": "nvarchar",
+        "TSDataType": "string",
+        "Limit": 200,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "trc_message": {
+        "Label": "Message",
+        "LocalName": "Message",
+        "Order": 0,
+        "ServerName": "trc_message",
+        "ServerDataType": "string",
+        "SqlDataType": "nvarchar",
+        "TSDataType": "string",
+        "Limit": 200,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      }
+    },
+    "Pages": {
+      "TributeCard": {
+        "PageName": "TributeCard",
+        "Modules": [
+          "Controller",
+          "Entity",
+          "Get",
+          "GetById",
+          "GetService",
+          "ManualService",
+          "Model"
+        ],
+        "FieldsList": {
+          "tri_title": {
+            "ServerName": "trc_title",
+            "Properties": []
+          },
+          "tri_message": {
+            "ServerName": "trc_message",
+            "Properties": []
+          },
+          "trc_id": {
+            "ServerName": "trc_id",
+            "Properties": []
+          }
+        }
+      }
+    },
+    "ModelBuilder": true,
+    "ModelData": [
+      {
+        "trc_id": "1",
+        "trc_title": "Condolences_Template",
+        "trc_message": "I was so sad to hear of your loss."
+      },
+      {
+        "trc_id": "2",
+        "trc_title": "With Heartfelt Sympathy_Template",
+        "trc_message": "I was so sad to hear of your loss."
+      }
+    ]
+  }
+}

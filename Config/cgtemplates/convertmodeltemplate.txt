@@ -1,0 +1,5 @@
+import 'package:Example/utilities/elementmanager.dart';
+final {{moduleNameFirstCharLower}} =
+{
+{{moduleBody}}
+};

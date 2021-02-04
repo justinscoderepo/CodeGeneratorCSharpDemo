@@ -1,0 +1,11 @@
+<style>(.*?)</style>
+<script(.*?)</script>
+@section Styles{(.*?)}
+@section Scripts{(.*?)}
+@section Scripts {(.*?)}
+
+/\*(.*?)\*/
+\@\*(.*?)\*\@
+//(.*?)\r?\n
+""((\\[^\n]|[^""\n])*)""
+@(""[^""]*"")+

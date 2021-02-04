@@ -1,0 +1,178 @@
+////////#module_Entity
+////////// --------------------------------------------------------------------------------------------------------------------
+////////// <copyright file="{{modulePageName}}.cs" company="Example">
+//////////   The {{modulePageNameAsWordLower}} Entity
+////////// </copyright>
+////////// <summary>
+//////////   The {{modulePageNameAsWordLower}} Entity.
+////////// </summary>
+////////// --------------------------------------------------------------------------------------------------------------------
+
+using System;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+////////#module_EntityICollection
+using System.Collections.Generic;
+////////#endmodule_EntityICollection
+namespace Example.Data.Entities
+{
+    [Table("{{moduleServerName}}")]
+
+    public class {{moduleLocalName}}
+    {
+
+////////        #region {{modulePageName}}_string_NOT_NULL_base#Template
+////////#Template         /// _string_NOT_NULL_base
+////////#Template         /// <summary>
+////////#Template         /// Gets or sets the from {{fieldLabelAsWordLower}}.
+////////#Template         /// </summary>
+////////#Template         [Column("{{fieldServerName}}"), Description("{{fieldLabelAsWord}}"),Required, MaxLength({{fieldLimit}})]
+////////#Template         public {{fieldServerDataType}} {{fieldLocalName}} { get; set; }
+////////        #endregion {{modulePageName}}_string_NOT_NULL_base#Template
+
+////////        #region {{modulePageName}}_string_NULL_base#Template
+////////#Template         /// _string_NULL_base
+////////#Template         /// <summary>
+////////#Template         /// Gets or sets the {{fieldLabelAsWordLower}}.
+////////#Template         /// </summary>
+////////#Template         [Column("{{fieldServerName}}"), Description("{{fieldLabelAsWord}}"), MaxLength({{fieldLimit}})]
+////////#Template         public {{fieldServerDataType}} {{fieldLocalName}} { get; set; }
+////////        #endregion {{modulePageName}}_string_NULL_base#Template
+
+////////        #region {{modulePageName}}_int_Foreign_base2#Template
+
+////////#Template         public virtual {{foreignLocalName}} {{fieldLocalName}}Relation { get; set; }
+
+////////        #endregion {{modulePageName}}_int_Foreign_base2#Template
+
+
+////////        #region {{modulePageName}}_int_NULL_Foreign_base#Template
+////////#Template         /// _int_NULL_Foreign_base
+////////#Template         /// <summary>
+////////#Template         /// Gets or sets the {{fieldLabelAsWordLower}}.
+////////#Template         /// </summary>
+////////#Template         [Column("{{fieldServerName}}"), Description("{{fieldLabelAsWord}}"),ForeignKey("{{fieldName}}Relation"), Range(int.MinValue, int.MaxValue)]
+////////#Template         public int? {{fieldLocalName}} { get; set; }
+////////        #endregion {{modulePageName}}_int_NULL_Foreign_base#Template
+
+
+
+
+////////        #region {{modulePageName}}_int_NOT_NULL_Foreign_base#Template
+////////#Template         /// _int_NOT_NULL_Foreign_base
+////////#Template         /// <summary>
+////////#Template         /// Gets or sets the {{fieldLabelAsWordLower}}.
+////////#Template         /// </summary>
+////////#Template         [Column("{{fieldServerName}}"), Description("{{fieldLabelAsWord}}"),ForeignKey("{{fieldName}}Relation"), Range(int.MinValue, int.MaxValue)]
+////////#Template         public int {{fieldLocalName}} { get; set; }
+
+////////        #endregion {{modulePageName}}_int_NOT_NULL_Foreign_base#Template
+
+
+
+////////        #region {{modulePageName}}_int_NULL_base#Template
+////////        #region {{modulePageName}}_float_NULL_base#Template
+////////        #region {{modulePageName}}_long_NULL_base#Template
+////////#Template         /// _int_NULL_base
+////////#Template         /// <summary>
+////////#Template         /// Gets or sets the {{fieldLabelAsWordLower}}.
+////////#Template         /// </summary>
+////////#Template         [Column("{{fieldServerName}}"), Description("{{fieldLabelAsWord}}"), Range({{fieldServerDataType}}.MinValue, {{fieldServerDataType}}.MaxValue)]
+////////#Template         public {{fieldServerDataType}}? {{fieldLocalName}} { get; set; }
+////////        #endregion {{modulePageName}}_long_NULL_base#Template
+////////        #endregion {{modulePageName}}_float_NULL_base#Template
+////////        #endregion {{modulePageName}}_int_NULL_base#Template
+
+////////        #region {{modulePageName}}_int_NOT_NULL_base#Template
+////////        #region {{modulePageName}}_float_NOT_NULL_base#Template
+////////        #region {{modulePageName}}_long_NOT_NULL_base#Template
+////////#Template         /// _int_NOT_NULL_base
+////////#Template         /// <summary>
+////////#Template         /// Gets or sets the {{fieldLabelAsWordLower}}.
+////////#Template         /// </summary>
+////////#Template         [Column("{{fieldServerName}}"), Description("{{fieldLabelAsWord}}"),Required, Range({{fieldServerDataType}}.MinValue, {{fieldServerDataType}}.MaxValue)]
+////////#Template         public {{fieldServerDataType}} {{fieldLocalName}} { get; set; }
+////////        #endregion {{modulePageName}}_long_NOT_NULL_base#Template
+////////        #endregion {{modulePageName}}_float_NOT_NULL_base#Template
+////////        #endregion {{modulePageName}}_int_NOT_NULL_base#Template
+
+////////        #region {{modulePageName}}_DateTime_NOT_NULL_base#Template
+////////#Template         /// _DateTime_NOT_NULL_base
+////////#Template         /// <summary>
+////////#Template         /// Gets or sets the {{fieldLabelAsWordLower}}.
+////////#Template         /// </summary>
+////////#Template         [Column("{{fieldServerName}}"), Description("{{fieldLabelAsWord}}"), Required]
+////////#Template         public {{fieldServerDataType}} {{fieldLocalName}} { get; set; }
+
+////////        #endregion {{modulePageName}}_DateTime_NOT_NULL_base#Template
+
+////////        #region {{modulePageName}}_DateTime_NULL_base#Template
+////////#Template         /// _DateTime_NULL_base
+////////#Template         /// <summary>
+////////#Template         /// Gets or sets the {{fieldLabelAsWordLower}}.
+////////#Template         /// </summary>
+////////#Template         [Column("{{fieldServerName}}"), Description("{{fieldLabelAsWord}}")]
+////////#Template         public {{fieldServerDataType}}? {{fieldLocalName}} { get; set; }
+
+////////        #endregion {{modulePageName}}_DateTime_NULL_base#Template
+
+////////        #region {{modulePageName}}_bool_NOT_NULL_base#Template
+////////#Template         /// _bool_NOT_NULL_base
+////////#Template         /// <summary>
+////////#Template         /// Gets or sets the {{fieldLabelAsWordLower}}.
+////////#Template         /// </summary>
+////////#Template         [Column("{{fieldServerName}}"), Description("{{fieldLabelAsWord}}"), Required]
+////////#Template         public {{fieldServerDataType}} {{fieldLocalName}} { get; set; }
+
+////////        #endregion {{modulePageName}}_bool_NOT_NULL_base#Template
+
+////////        #region {{modulePageName}}_bool_NULL_base#Template
+////////#Template         /// _DateTime_NULL_base
+////////#Template         /// <summary>
+////////#Template         /// Gets or sets the {{fieldLabelAsWordLower}}.
+////////#Template         /// </summary>
+////////#Template         [Column("{{fieldServerName}}"), Description("{{fieldLabelAsWord}}")]
+////////#Template         public {{fieldServerDataType}}? {{fieldLocalName}} { get; set; }
+
+////////        #endregion {{modulePageName}}_bool_NULL_base#Template
+
+
+////////        #region {{modulePageName}}_int_Primary#Template
+////////#Template         /// <summary>
+////////#Template         /// Gets or sets the {{fieldLabelAsWordLower}}.
+////////#Template         /// </summary>
+////////#Template         [Key, Required, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+////////#Template         [Column("{{fieldServerName}}")]
+////////#Template         [Display(Name = "{{fieldLabelAsWord}}")]
+////////#Template         public int {{fieldLocalName}} { get; set; }
+
+////////        #endregion {{modulePageName}}_int_Primary#Template
+
+////////        #region {{modulePageName}}_SubQuery_Reverse3#Template
+////////#Template         /// <summary>
+////////#Template         /// Gets or sets the {{fieldLabelAsWordLower}}.
+////////#Template         /// </summary>
+////////#Template         public ICollection<{{fieldLocalName}}> {{fieldLocalName}}List { get; set; }
+////////        #endregion {{modulePageName}}_SubQuery_Reverse3#Template
+
+
+////////        #region {{modulePageName}}_allparams#Template
+////////        #endregion {{modulePageName}}_allparams#Template
+
+////region CustomCodeBlock4#
+////endregion CustomCodeBlock4#
+
+////////        #region {{modulePageName}}_allparams2#Template
+////////        #endregion {{modulePageName}}_allparams2#Template
+
+////////#module_EntityICollection
+////////        #region {{modulePageName}}_allparams3#Template
+////////        #endregion {{modulePageName}}_allparams3#Template
+////////#endmodule_EntityICollection
+
+////region CustomCodeBlock5#
+////endregion CustomCodeBlock5#
+    }
+}
+////////#endmodule_Entity

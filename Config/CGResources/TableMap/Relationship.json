@@ -1,0 +1,85 @@
+{
+  "Key": "ml_relationship",
+  "Value": {
+    "isGlobalTable": false,
+    "LocalName": "Relationship",
+    "PublicName": "Relationship",
+    "ServerName": "ml_relationship",
+    "FieldsList": {
+      "rp_id": {
+        "Label": "Id",
+        "LocalName": "Id",
+        "Order": 0,
+        "ServerName": "rp_id",
+        "ExternalName": "id",
+        "ServerDataType": "int",
+        "SqlDataType": "Int",
+        "TSDataType": "number",
+        "Limit": 10,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": true,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "rp_title": {
+        "Label": "Title",
+        "LocalName": "Title",
+        "Order": 0,
+        "ServerName": "rp_title",
+        "ExternalName": "relation",
+        "ServerDataType": "string",
+        "SqlDataType": "nvarchar",
+        "TSDataType": "string",
+        "Limit": 200,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      }
+    },
+    "Pages": {
+      "Relationship": {
+        "PageName": "Relationship",
+        "Modules": [
+          "Entity",
+          "ManualService",
+          "Model",
+          "GetService",
+          "Controller",
+          "Get",
+          "GetById",
+          "DuxManage",
+          "DuxList",
+          "FunctionalComponentList",
+          "FunctionalComponentManage",
+          "Sort",
+          "Pagination",
+          "ModelGenericList",
+          "ApiModel",
+          "EntityICollection",
+          "SetService",
+          "RemoveService",
+          "RangeService",
+          "CreateRange",
+          "UpdateRange",
+          "DeleteRange",
+          "Create",
+          "Set",
+          "Remove",
+          "ApiController",
+          "ApiSyncService",
+          "Lists"
+        ],
+        "FieldsList": {
+          "rp_id": {
+            "ServerName": "rp_id"
+          },
+          "rp_title": {
+            "ServerName": "rp_title",
+            "Properties": ["SortableField", "ContainsFilter"]
+          }
+        }
+      }
+    }
+  }
+}

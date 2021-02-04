@@ -1,0 +1,106 @@
+{
+  "Key": "ml_venue",
+  "Value": {
+    "isGlobalTable": false,
+    "LocalName": "Venue",
+    "PublicName": "Venue",
+    "ServerName": "ml_venue",
+    "FieldsList": {
+      "ve_name": {
+        "Label": "Name",
+        "LocalName": "Name",
+        "Order": 0,
+        "ServerName": "ve_name",
+        "ServerDataType": "string",
+        "SqlDataType": "nvarchar",
+        "TSDataType": "string",
+        "Limit": 100,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+     
+      "ve_location": {
+        "Label": "Location",
+        "LocalName": "Location",
+        "Order": 0,
+        "ServerName": "ve_location",
+        "ServerDataType": "string",
+        "SqlDataType": "nvarchar",
+        "TSDataType": "string",
+        "Limit": 300,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "ve_address": {
+        "Label": "Address",
+        "LocalName": "Address",
+        "Order": 0,
+        "ServerName": "ve_address",
+        "ServerDataType": "string",
+        "SqlDataType": "nvarchar",
+        "TSDataType": "string",
+        "Limit": 300,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "ve_createddate": {
+        "Label": "CreatedDate",
+        "LocalName": "Createddate",
+        "Order": 0,
+        "ServerName": "ve_createddate",
+        "ServerDataType": "DateTime",
+        "SqlDataType": "DateTime",
+        "TSDataType": "Date",
+        "Limit": 10,
+        "IsNullable": "NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "ve_modifieddate": {
+        "Label": "ModifiedDate",
+        "LocalName": "Modifieddate",
+        "Order": 0,
+        "ServerName": "ve_modifieddate",
+        "ServerDataType": "DateTime",
+        "SqlDataType": "DateTime",
+        "TSDataType": "Date",
+        "Limit": 10,
+        "IsNullable": "NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+     
+      "ve_id": {
+        "Label": "Id",
+        "LocalName": "Id",
+        "Order": 0,
+        "ServerName": "ev_id",
+        "ServerDataType": "int",
+        "SqlDataType": "Int",
+        "TSDataType": "number",
+        "Limit": 10,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": true,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      }
+    },
+    "Pages": {
+      "Venue": {
+        "PageName": "Venue",
+        "FieldsList": {},
+        "Modules": ["Model", "ModelAssociate"]
+      }
+    },
+    "ModelBuilder": false,
+    "ModelData": []
+  }
+}

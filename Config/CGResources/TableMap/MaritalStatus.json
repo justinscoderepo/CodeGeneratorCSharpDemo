@@ -1,0 +1,66 @@
+{
+  "Key": "ml_marital_status",
+  "Value": {
+    "isGlobalTable": false,
+    "LocalName": "MaritalStatus",
+    "PublicName": "MaritalStatus",
+    "ServerName": "ml_marital_status",
+    "FieldsList": {
+      "ms_id": {
+        "Label": "Id",
+        "LocalName": "Id",
+        "Order": 0,
+        "ServerName": "ms_id",
+        "ServerDataType": "int",
+        "SqlDataType": "Int",
+        "TSDataType": "number",
+        "Limit": 10,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": true,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "ms_title": {
+        "Label": "Title",
+        "LocalName": "Title",
+        "Order": 0,
+        "ServerName": "ms_title",
+        "ServerDataType": "string",
+        "SqlDataType": "nvarchar",
+        "TSDataType": "string",
+        "Limit": 200,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      }
+    },
+    "Pages": {
+      "MaritalStatus": {
+        "PageName": "MaritalStatus",
+        "Modules": [
+          "Entity",
+          "Model",
+          "ManualService",
+          "GetService",
+          "Controller",
+          "Get",
+          "GetById",
+          "FunctionalComponentManage",
+          "DuxManage",
+          "FunctionalComponentList",
+          "DuxList"
+        ],
+        "FieldsList": {
+          "ms_id": {
+            "ServerName": "ms_id"
+          },
+          "ms_title": {
+            "ServerName": "ms_title",
+            "Properties": ["Generating", "ContainsFilter"]
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,165 @@
+{
+    "Key": "ml_media_content",
+    "Value": {
+      "isGlobalTable": false,
+      "LocalName": "MediaContent",
+      "PublicName": "MediaContent",
+      "ServerName": "ml_media_content",
+      "FieldsList": {
+       
+        "me_title": {
+          "Label": "Title",
+          "LocalName": "Title",
+          "Order": 0,
+          "ServerName": "me_title",
+          "ServerDataType": "string",
+          "SqlDataType": "nvarchar",
+          "TSDataType": "string",
+          "Limit": 100,
+          "IsNullable": "NOT NULL",
+          "IsPrimaryKey": false,
+         
+          "IsForeignKey": false,
+          "MinLimit": 0
+        },
+        "me_type": {
+          "Label": "Type",
+          "LocalName": "Type",
+          "Order": 0,
+          "ServerName": "me_type",
+          "ServerDataType": "string",
+          "SqlDataType": "nvarchar",
+          "TSDataType": "string",
+          "Limit": 300,
+          "IsNullable": "NOT NULL",
+          "IsPrimaryKey": false,
+          "IsForeignKey": false,
+          "MinLimit": 0
+        },
+        "me_url": {
+            "Label": "Url",
+            "LocalName": "Url",
+            "Order": 0,
+            "ServerName": "me_url",
+            "ServerDataType": "string",
+            "SqlDataType": "nvarchar",
+            "TSDataType": "string",
+            "Limit": 300,
+            "IsNullable": "NOT NULL",
+            "IsPrimaryKey": false,
+            "IsForeignKey": false,
+            "MinLimit": 0
+          },
+         
+       
+
+
+
+        
+        "me_createdby": {
+          "Label": "CreatedBy",
+          "LocalName": "Createdby",
+          "Order": 0,
+          "ServerName": "or_createdby",
+          "ServerDataType": "int",
+          "SqlDataType": "Int",
+          "TSDataType": "number",
+          "Limit": 10,
+          "IsNullable": "NULL",
+          "IsPrimaryKey": false,
+          "ForeignKeyTable": "ml_user",
+          "ForeignKeyField": "us_id",
+          "IsForeignKey": true,
+          "MinLimit": 0
+        },
+        "me_obituary": {
+            "Label": "ObituaryId",
+            "LocalName": "ObituaryId",
+            "Order": 0,
+            "ServerName": "me_obituary",
+            "ServerDataType": "int",
+            "SqlDataType": "Int",
+            "TSDataType": "number",
+            "Limit": 10,
+            "IsNullable": "NULL",
+            "IsPrimaryKey": false,
+            "ForeignKeyTable": "ml_obituary",
+            "ForeignKeyField": "ob_id",
+            "IsForeignKey": true,
+            "MinLimit": 0
+          },
+         
+
+        
+        "or_createddate": {
+          "Label": "CreatedDate",
+          "LocalName": "Createddate",
+          "Order": 0,
+          "ServerName": "or_createddate",
+          "ServerDataType": "DateTime",
+          "SqlDataType": "DateTime",
+          "TSDataType": "Date",
+          "Limit": 10,
+          "IsNullable": "NULL",
+          "IsPrimaryKey": false,
+          "IsForeignKey": false,
+          "MinLimit": 0
+        },
+        "or_modifieddate": {
+          "Label": "ModifiedDate",
+          "LocalName": "Modifieddate",
+          "Order": 0,
+          "ServerName": "or_modifieddate",
+          "ServerDataType": "DateTime",
+          "SqlDataType": "DateTime",
+          "TSDataType": "Date",
+          "Limit": 10,
+          "IsNullable": "NULL",
+          "IsPrimaryKey": false,
+          "IsForeignKey": false,
+          "MinLimit": 0
+        },
+        "or_deleteddate": {
+            "Label": "DeletedDate",
+            "LocalName": "Deleteddate",
+            "Order": 0,
+            "ServerName": "or_deleteddate",
+            "ServerDataType": "DateTime",
+            "SqlDataType": "DateTime",
+            "TSDataType": "Date",
+            "Limit": 10,
+            "IsNullable": "NULL",
+            "IsPrimaryKey": false,
+            "IsForeignKey": false,
+            "MinLimit": 0
+          },
+       
+      
+
+      
+        "me_id": {
+          "Label": "Id",
+          "LocalName": "Id",
+          "Order": 0,
+          "ServerName": "me_id",
+          "ServerDataType": "int",
+          "SqlDataType": "Int",
+          "TSDataType": "number",
+          "Limit": 10,
+          "IsNullable": "NOT NULL",
+          "IsPrimaryKey": true,
+          "IsForeignKey": false,
+          "MinLimit": 0
+        }
+      },
+      "Pages": {
+        "MediaContent": {
+          "PageName": "MediaContent",
+          "FieldsList": {},
+          "Modules": ["Model", "ModelAssociate"]
+        }
+      },
+      "ModelBuilder": false,
+      "ModelData": []
+    }
+  }

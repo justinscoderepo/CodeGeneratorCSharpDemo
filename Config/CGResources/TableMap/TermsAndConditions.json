@@ -1,0 +1,65 @@
+{
+  "Key": "ml_terms_and_conditions",
+  "Value": {
+    "isGlobalTable": false,
+    "LocalName": "TermsAndConditions",
+    "PublicName": "TermsAndConditions",
+    "ServerName": "ml_terms_and_conditions",
+    "FieldsList": {
+      "taco_id": {
+        "Label": "Id",
+        "LocalName": "Id",
+        "Order": 0,
+        "ServerName": "taco_id",
+        "ServerDataType": "int",
+        "SqlDataType": "Int",
+        "TSDataType": "number",
+        "Limit": 10,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": true,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "taco_title": {
+        "Label": "Title",
+        "LocalName": "Title",
+        "Order": 0,
+        "ServerName": "taco_title",
+        "ServerDataType": "string",
+        "SqlDataType": "nvarchar",
+        "TSDataType": "string",
+        "Limit": 10000,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      }
+    },
+    "Pages": {
+      "TermsAndConditions": {
+        "PageName": "TermsAndConditions",
+        "Modules": [
+          "Controller",
+          "Create",
+          "Entity",
+          "Get",
+          "Model",
+          "Remove",
+          "RemoveService",
+          "ManualService",
+          "GetService",
+          "SetService",
+          "Set"
+        ],
+        "FieldsList": {
+          "taco_title": {
+            "ServerName": "taco_title"
+          },
+          "taco_id": {
+            "ServerName": "taco_id"
+          }
+        }
+      }
+    }
+  }
+}

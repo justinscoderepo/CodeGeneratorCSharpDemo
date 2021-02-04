@@ -1,0 +1,78 @@
+{
+  "Key": "ml_tributemessage",
+  "Value": {
+    "isGlobalTable": false,
+    "LocalName": "TributeMessage",
+    "PublicName": "TributeMessage",
+    "ServerName": "ml_tributemessage",
+    "FieldsList": {
+      "trm_id": {
+        "Label": "Id",
+        "LocalName": "Id",
+        "Order": 0,
+        "ServerName": "trm_id",
+        "ServerDataType": "int",
+        "SqlDataType": "Int",
+        "TSDataType": "number",
+        "Limit": 10,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": true,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "trm_message": {
+        "Label": "Message",
+        "LocalName": "Message",
+        "Order": 0,
+        "ServerName": "trm_message",
+        "ServerDataType": "string",
+        "SqlDataType": "nvarchar",
+        "TSDataType": "string",
+        "Limit": 200,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      }
+    },
+    "Pages": {
+      "TributeMessage": {
+        "PageName": "TributeMessage",
+        "Modules": [
+          "Controller",
+          "Entity",
+          "Get",
+          "GetById",
+          "GetService",
+          "ManualService",
+          "Model"
+        ],
+        "FieldsList": {
+          "trm_message": {
+            "ServerName": "trm_message",
+            "Properties": []
+          },
+          "stus_id": {
+            "ServerName": "trm_id",
+            "Properties": []
+          }
+        }
+      }
+    },
+    "ModelBuilder": true,
+    "ModelData": [
+      {
+        "trm_id": "1",
+        "trm_message": "My/our condolences on the passing of your father/mother/friend."
+      },
+      {
+        "trm_id": "2",
+        "trm_message": "Please accept our sincerest condolences."
+      },
+      {
+        "trm_id": "3",
+        "trm_message": "I was so sad to hear of your loss."
+      }
+    ]
+  }
+}

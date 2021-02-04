@@ -1,0 +1,92 @@
+{
+  "Key": "ml_delivery",
+  "Value": {
+    "isGlobalTable": false,
+    "LocalName": "Delivery",
+    "PublicName": "Delivery",
+    "ServerName": "ml_deliveryr",
+    "FieldsList": {
+      "de_name": {
+        "Label": "Name",
+        "LocalName": "Name",
+        "Order": 0,
+        "ServerName": "de_name",
+        "ServerDataType": "string",
+        "SqlDataType": "nvarchar",
+        "TSDataType": "string",
+        "Limit": 100,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "de_add": {
+        "Label": "Address",
+        "LocalName": "Address",
+        "Order": 0,
+        "ServerName": "de_add",
+        "ServerDataType": "string",
+        "SqlDataType": "nvarchar",
+        "TSDataType": "string",
+        "Limit": 100,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "de_phone": {
+        "Label": "Phone",
+        "LocalName": "Phone",
+        "Order": 0,
+        "ServerName": "de_phone",
+        "ServerDataType": "string",
+        "SqlDataType": "nvarchar",
+        "TSDataType": "string",
+        "Limit": 100,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "de_status": {
+        "Label": "Status",
+        "LocalName": "Status",
+        "Order": 0,
+        "ServerName": "de_status",
+        "ServerDataType": "int",
+        "SqlDataType": "Int",
+        "TSDataType": "number",
+        "Limit": 10,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "ForeignKeyTable": "ml_status",
+        "ForeignKeyField": "stus_id",
+        "IsForeignKey": true,
+        "MinLimit": 0
+      },
+      "de_id": {
+        "Label": "Id",
+        "LocalName": "Id",
+        "Order": 0,
+        "ServerName": "de_id",
+        "ServerDataType": "int",
+        "SqlDataType": "Int",
+        "TSDataType": "number",
+        "Limit": 10,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": true,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      }
+    },
+    "Pages": {
+      "Order": {
+        "PageName": "Order",
+        "FieldsList": {},
+        "Modules": ["Model", "ModelAssociate"]
+      }
+    },
+    "ModelBuilder": false,
+    "ModelData": []
+  }
+}

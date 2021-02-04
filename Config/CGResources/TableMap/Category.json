@@ -1,0 +1,92 @@
+{
+  "Key": "ml_category",
+  "Value": {
+    "isGlobalTable": false,
+    "LocalName": "Category",
+    "PublicName": "Category",
+    "ServerName": "ml_category",
+    "FieldsList": {
+      "ca_name": {
+        "Label": "Name",
+        "LocalName": "Name",
+        "Order": 0,
+        "ServerName": "ca_name",
+        "ServerDataType": "string",
+        "SqlDataType": "nvarchar",
+        "TSDataType": "string",
+        "Limit": 20,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "ca_description": {
+        "Label": "Description",
+        "LocalName": "Description",
+        "Order": 0,
+        "ServerName": "ca_description",
+        "ServerDataType": "string",
+        "SqlDataType": "nvarchar",
+        "TSDataType": "string",
+        "Limit": 100,
+        "IsNullable": "NULL",
+        "IsPrimaryKey": false,
+        "ForeignKeyTable": "ml_product",
+        "ForeignKeyField": "or_id",
+        "IsForeignKey": true,
+        "MinLimit": 0
+      },
+      "ca_createddate": {
+        "Label": "CreatedDate",
+        "LocalName": "Createddate",
+        "Order": 0,
+        "ServerName": "ca_createddate",
+        "ServerDataType": "DateTime",
+        "SqlDataType": "DateTime",
+        "TSDataType": "Date",
+        "Limit": 10,
+        "IsNullable": "NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "ca_modifieddate": {
+        "Label": "ModifiedDate",
+        "LocalName": "Modifieddate",
+        "Order": 0,
+        "ServerName": "ca_modifieddate",
+        "ServerDataType": "DateTime",
+        "SqlDataType": "DateTime",
+        "TSDataType": "Date",
+        "Limit": 10,
+        "IsNullable": "NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "ca_id": {
+        "Label": "Id",
+        "LocalName": "Id",
+        "Order": 0,
+        "ServerName": "ca_id",
+        "ServerDataType": "int",
+        "SqlDataType": "Int",
+        "TSDataType": "number",
+        "Limit": 10,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": true,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      }
+    },
+    "Category": {
+      "Order": {
+        "PageName": "Category",
+        "FieldsList": {},
+        "Modules": ["Model", "ModelAssociate"]
+      }
+    },
+    "ModelBuilder": false,
+    "ModelData": []
+  }
+}

@@ -1,0 +1,7 @@
+@{(.*?)}
+@using (.*?)\n
+SubmitForm(.*?)}=>=$0]),////Form Ends
+}]\),////Form Ends=>=]),////Form Ends
+{\r
+}\r
+__safeend__=>=}}

@@ -1,0 +1,28 @@
+////////#module_ManualService
+using System.Collections.Generic;
+using Example.Models;
+using Example.Models.Common;
+
+namespace Example.Business.Contracts
+{
+    public interface I{{modulePageName}}Service
+    {
+        ////////#module_GetService
+        GetResponseModel<{{modulePageName}}Model> Get({{modulePageName}}Model model
+        ////////#module_Pagination
+//////// ,PaginationModel paginationModel = null
+////////#endmodule_Pagination
+////////#module_Sort
+//////// ,SortModel sortModel = null
+////////#endmodule_Sort
+);
+        ////////#endmodule_GetService  
+        ////////#module_SetService
+        RawResponseModel<{{modulePageName}}Model> Save({{modulePageName}}Model model);
+        ////////#endmodule_SetService
+        ////////#module_RemoveService
+        DeleteResponseModel Delete({{modulePageName}}Model model);
+        ////////#endmodule_RemoveService
+    }
+}
+////////#endmodule_ManualService

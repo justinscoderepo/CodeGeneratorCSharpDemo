@@ -1,0 +1,143 @@
+{
+  "Key": "ml_templatemessage",
+  "Value": {
+    "isGlobalTable": false,
+    "LocalName": "TemplateMessage",
+    "PublicName": "TemplateMessage",
+    "ServerName": "ml_templatemessage",
+    "FieldsList": {
+      "tm_id": {
+        "Label": "Id",
+        "LocalName": "Id",
+        "Order": 0,
+        "ServerName": "tm_id",
+        "ServerDataType": "int",
+        "SqlDataType": "Int",
+        "TSDataType": "number",
+        "Limit": 10,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": true,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "tm_message": {
+        "Label": "Message",
+        "LocalName": "Message",
+        "Order": 0,
+        "ServerName": "tm_message",
+        "ServerDataType": "string",
+        "SqlDataType": "nvarchar",
+        "TSDataType": "string",
+        "Limit": 200,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "tm__agefrom": {
+        "Label": "AgeFrom",
+        "LocalName": "AgeFrom",
+        "Order": 0,
+        "ServerName": "tm_agefrom",
+        "ServerDataType": "int",
+        "SqlDataType": "Int",
+        "TSDataType": "number",
+        "Limit": 10,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "tm__ageto": {
+        "Label": "AgeTo",
+        "LocalName": "AgeTo",
+        "Order": 0,
+        "ServerName": "tm_ageto",
+        "ServerDataType": "int",
+        "SqlDataType": "Int",
+        "TSDataType": "number",
+        "Limit": 10,
+        "IsNullable": "NOT NULL",
+        "IsPrimaryKey": false,
+        "IsForeignKey": false,
+        "MinLimit": 0
+      },
+      "tm_gender": {
+        "Label": "Gender",
+        "LocalName": "Gender",
+        "Order": 0,
+        "ServerName": "tm_gender",
+        "ServerDataType": "int",
+        "SqlDataType": "Int",
+        "TSDataType": "number",
+        "Limit": 10,
+        "IsNullable": "NULL",
+        "IsPrimaryKey": false,
+        "ForeignKeyTable": "ml_gender",
+        "ForeignKeyField": "gd_id",
+        "IsForeignKey": true,
+        "MinLimit": 0
+      }
+    },
+    "Pages": {
+      "TemplateMessage": {
+        "PageName": "TemplateMessage",
+        "Modules": [
+          "Controller",
+          "Entity",
+          "Get",
+          "GetById",
+          "GetService",
+          "ManualService",
+          "Model"
+        ],
+        "FieldsList": {
+          "tm_message": {
+            "ServerName": "tm_message",
+            "Properties": []
+          },
+          "tm_gender": {
+            "ServerName": "tm_gender",
+            "Properties": []
+          },
+          "tm_agefrom": {
+            "ServerName": "tm_agefrom",
+            "Properties": []
+          },
+          "tm_ageto": {
+            "ServerName": "tm_ageto",
+            "Properties": []
+          },
+          "tm_id": {
+            "ServerName": "tm_id",
+            "Properties": []
+          }
+        }
+      }
+    },
+    "ModelBuilder": true,
+    "ModelData": [
+      {
+        "tm_id": "1",
+        "tm_message": "What moves through us is a silence, a quiet sadness, a longing for one more day, one more word, one more touch. We may not understand why you left this earth so soon, or why you left before we were ready to say good-bye, but little by little, we begin to remember not just that you died, but that you lived. And that your life gave us memories too beautiful to forget",
+        "tm__agefrom": "20",
+        "tm_ageto": "60",
+        "tm_gender": "1"
+      },
+      {
+        "tm_id": "2",
+        "tm_message": "What moves through us is a silence, a quiet sadness, a longing for one more day, one more word, one more touch. We may not understand why you left this earth so soon, or why you left before we were ready to say good-bye, but little by little, we begin to remember not just that you died, but that you lived. And that your life gave us memories too beautiful to forget",
+        "tm__agefrom": "10",
+        "tm_ageto": "60",
+        "tm_gender": "1"
+      },
+      {
+        "tm_id": "3",
+        "tm_message": "What moves through us is a silence, a quiet sadness, a longing for one more day, one more word, one more touch. We may not understand why you left this earth so soon, or why you left before we were ready to say good-bye, but little by little, we begin to remember not just that you died, but that you lived. And that your life gave us memories too beautiful to forget",
+        "tm__agefrom": "30",
+        "tm_ageto": "60",
+        "tm_gender": "2"
+      }
+    ]
+  }
+}
