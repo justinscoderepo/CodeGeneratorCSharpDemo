@@ -19,7 +19,6 @@ namespace Example.Data.Entities
     [Table("ml_category")]
     public class Category
     {
-        /// _string_NOT_NULL_base
         /// <summary>
         /// Gets or sets the from name.
         /// </summary>
@@ -30,7 +29,6 @@ namespace Example.Data.Entities
             set;
         }
 
-        /// _string_NULL_base
         /// <summary>
         /// Gets or sets the description.
         /// </summary>
@@ -74,9 +72,9 @@ namespace Example.Data.Entities
             get;
             set;
         }
-        ////region CustomCodeBlock4#
-        ////endregion CustomCodeBlock4#
-        ////region CustomCodeBlock5#
-        ////endregion CustomCodeBlock5#
+    ////region CustomCodeBlock4#
+    ////endregion CustomCodeBlock4#
+    ////region CustomCodeBlock5#
+    ////endregion CustomCodeBlock5#
     }
 }

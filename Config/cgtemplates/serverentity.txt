@@ -23,7 +23,6 @@ namespace {{configProjectName}}.Data.Entities
     {
 
 ////////        #region {{modulePageName}}_string_NOT_NULL_base#Template
-////////#Template         /// _string_NOT_NULL_base
 ////////#Template         /// <summary>
 ////////#Template         /// Gets or sets the from {{fieldLabelAsWordLower}}.
 ////////#Template         /// </summary>
@@ -32,7 +31,6 @@ namespace {{configProjectName}}.Data.Entities
 ////////        #endregion {{modulePageName}}_string_NOT_NULL_base#Template
 
 ////////        #region {{modulePageName}}_string_NULL_base#Template
-////////#Template         /// _string_NULL_base
 ////////#Template         /// <summary>
 ////////#Template         /// Gets or sets the {{fieldLabelAsWordLower}}.
 ////////#Template         /// </summary>
